@@ -2,32 +2,37 @@ package co.com.lkm.shen.vampirehelper;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
 
-public class ScenesActivity extends AppCompatActivity {
+public class ChronicleActivity extends AppCompatActivity {
 
     @BindView(R.id.chronicleFloatingMenu) public FloatingActionButton menuButton;
+    @BindView(R.id.chronicle_pager) public ViewPager chroniclePager;
     @BindView(R.id.sceneLayout) public LinearLayout sceneLayout;
     @BindView(R.id.characterLayout) public LinearLayout characterLayout;
+
+    public ChroniclePageAdapter mChroniclePageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scenes);
+        setContentView(R.layout.activity_chronicle);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+
+        mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager());
+        chroniclePager.setAdapter(mChroniclePageAdapter);
     }
 
     public void showOptions(View v) {
@@ -56,7 +61,7 @@ public class ScenesActivity extends AppCompatActivity {
     }
 
     public void createCharacter(View v){
-        
+
     }
 
 }

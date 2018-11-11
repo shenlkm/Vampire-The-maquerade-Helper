@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ScenesActivity"
+            android:name=".ChronicleActivity"
             android:label="@string/title_activity_scenes"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

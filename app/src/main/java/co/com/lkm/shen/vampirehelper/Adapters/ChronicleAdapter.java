@@ -2,19 +2,16 @@ package co.com.lkm.shen.vampirehelper.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
 import co.com.lkm.shen.vampirehelper.R;
-import co.com.lkm.shen.vampirehelper.ScenesActivity;
+import co.com.lkm.shen.vampirehelper.ChronicleActivity;
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;
 
@@ -55,7 +52,7 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ScenesActivity.class);
+                Intent intent = new Intent(mContext, ChronicleActivity.class);
                 mContext.startActivity(intent);
             }
         });
