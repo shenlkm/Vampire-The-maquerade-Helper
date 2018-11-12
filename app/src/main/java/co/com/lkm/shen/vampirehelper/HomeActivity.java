@@ -15,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -65,22 +64,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         mChronicleAdapter = new ChronicleAdapter(this, realm.where(Chronicle.class).findAll());
         mRecyclerView.setAdapter(mChronicleAdapter);
-        mRecyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
     }
 
     @Override
@@ -156,7 +139,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private AlertDialog.Builder getInputDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Chronicle name");
+        builder.setTitle(getString(R.string.title_dialog_create_chronicles));
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);

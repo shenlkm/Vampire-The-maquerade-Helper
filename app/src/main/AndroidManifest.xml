@@ -22,7 +22,7 @@
         </activity>
         <activity
             android:name=".ChronicleActivity"
-            android:label="@string/title_activity_scenes"
+            android:label="@string/title_activity_chronicles"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

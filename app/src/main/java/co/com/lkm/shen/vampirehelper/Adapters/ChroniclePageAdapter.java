@@ -8,10 +8,11 @@ import co.com.lkm.shen.vampirehelper.Fragments.CharacterFragment;
 
 public class ChroniclePageAdapter extends FragmentStatePagerAdapter {
 
-    private static String[] titles = new String[]{"Characers, Scenes"};
+    private static String[] titles;
 
     public ChroniclePageAdapter(FragmentManager fm) {
         super(fm);
+        titles = new String[]{"Characers", "Scenes"};
     }
 
     @Override
@@ -22,17 +23,11 @@ public class ChroniclePageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return titles.length;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case 0:
-                return "Character";
-            case 1:
-                return "Scene";
-        }
-        return null;
+        return titles[position];
     }
 }

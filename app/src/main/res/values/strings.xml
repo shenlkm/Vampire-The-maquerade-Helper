@@ -2,9 +2,13 @@
     <string name="app_name">VampireHelper</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Vampire Helper</string>
+    <string name="nav_header_subtitle">For Game Masters</string>
+    <string name="nav_header_desc">Menu</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_scenes">Scenes</string>
+    <string name="title_activity_chronicles">Chronicles</string>
+
+    <string name="title_dialog_create_chronicles">Chronicle Name</string>
+    <string name="player_name">Player name</string>
+    <string name="character_name">Character name</string>
 </resources>
