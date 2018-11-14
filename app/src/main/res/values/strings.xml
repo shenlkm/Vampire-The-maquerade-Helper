@@ -11,4 +11,21 @@
     <string name="title_dialog_create_chronicles">Chronicle Name</string>
     <string name="player_name">Player name</string>
     <string name="character_name">Character name</string>
+    <string name="choose_clan">Choose clan</string>
+
+    <string-array name="clan_list">
+        <item>Brujah</item>
+        <item>Ganger</item>
+        <item>Malkavian</item>
+        <item>Nosferatu</item>
+        <item>Toreador</item>
+        <item>Tremere</item>
+        <item>Ventrue</item>
+        <item>Lasombra</item>
+        <item>Tzimisce</item>
+        <item>Assamita</item>
+        <item>Giovanni</item>
+        <item>Followers of Set</item>
+        <item>Ravnos</item>
+    </string-array>
 </resources>

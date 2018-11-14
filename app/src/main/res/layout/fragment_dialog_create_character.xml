@@ -18,5 +18,20 @@
             android:layout_margin="8dp"
             android:inputType="text"
             android:hint="@string/character_name"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_clan"/>
+                <Spinner
+                    android:id="@+id/spinner_clans"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"/>
+
+        </LinearLayout>
 
 </LinearLayout>
