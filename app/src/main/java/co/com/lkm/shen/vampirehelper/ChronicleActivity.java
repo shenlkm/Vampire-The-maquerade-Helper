@@ -14,60 +14,63 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
 import co.com.lkm.shen.vampirehelper.Contracts.NoticeDialogListener;
-import co.com.lkm.shen.vampirehelper.Fragments.CharacterFragment;
+import co.com.lkm.shen.vampirehelper.Contracts.Views.ChronicleView;
 import co.com.lkm.shen.vampirehelper.Fragments.CreateCharacterDialogFragment;
+import co.com.lkm.shen.vampirehelper.Presenter.ChronicleActivityPresenter;
 
-public class ChronicleActivity extends AppCompatActivity {
+public class ChronicleActivity extends AppCompatActivity implements ChronicleView {
 
+    @BindView(R.id.toolbar) public Toolbar mToolbar;
     @BindView(R.id.chronicleFloatingMenu) public FloatingActionButton menuButton;
     @BindView(R.id.chronicle_pager) public ViewPager chroniclePager;
     @BindView(R.id.sceneLayout) public LinearLayout sceneLayout;
     @BindView(R.id.characterLayout) public LinearLayout characterLayout;
 
     public ChroniclePageAdapter mChroniclePageAdapter;
+    private ChronicleActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chronicle);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager());
-        chroniclePager.setAdapter(mChroniclePageAdapter);
+        mPresenter = new ChronicleActivityPresenter(this);
+        mPresenter.setupView();
     }
 
     public void showOptions(View v) {
-        Animation showBottons = AnimationUtils.loadAnimation(this, R.anim.show_button);
-        Animation showLayouts = AnimationUtils.loadAnimation(this, R.anim.show_layout);
-
-        Animation hideButtons = AnimationUtils.loadAnimation(this, R.anim.hide_button);
-        Animation hideLayouts = AnimationUtils.loadAnimation(this, R.anim.hide_layout);
-
-
         if(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE){
-            sceneLayout.setVisibility(View.VISIBLE);
-            characterLayout.setVisibility(View.VISIBLE);
-
-            menuButton.startAnimation(showBottons);
-            sceneLayout.startAnimation(showLayouts);
-            characterLayout.startAnimation(showLayouts);
+            animateButton(AnimationUtils
+                    .loadAnimation(this, R.anim.show_button),
+                    AnimationUtils.loadAnimation(this, R.anim.show_layout), View.VISIBLE);
         } else {
-            sceneLayout.setVisibility(View.GONE);
-            characterLayout.setVisibility(View.GONE);
-
-            menuButton.startAnimation(hideButtons);
-            sceneLayout.startAnimation(hideLayouts);
-            characterLayout.startAnimation(hideLayouts);
+            animateButton(AnimationUtils
+                    .loadAnimation(this, R.anim.hide_button),
+                    AnimationUtils.loadAnimation(this, R.anim.hide_layout), View.GONE);
         }
     }
 
-    public void createCharacter(View v){
-        CreateCharacterDialogFragment dialogFragment = CreateCharacterDialogFragment
-                .newInstance((NoticeDialogListener) this.getFragmentManager().findFragmentById(R.id.fragment_dialog_create_character));
+    @Override
+    public void animateButton(Animation showBottons, Animation showLayouts, int visible) {
+        sceneLayout.setVisibility(visible);
+        characterLayout.setVisibility(visible);
 
-        dialogFragment.show(getSupportFragmentManager(), getString(R.string.title_dialog_create_chronicles));
+        menuButton.startAnimation(showBottons);
+        sceneLayout.startAnimation(showLayouts);
+        characterLayout.startAnimation(showLayouts);
     }
 
+    public void createCharacter(View v){
+        CreateCharacterDialogFragment dialogFragment = new CreateCharacterDialogFragment();
+        dialogFragment.setListener((NoticeDialogListener) this.getFragmentManager().findFragmentById(R.id.fragment_dialog_create_character));
+        dialogFragment.show(getFragmentManager(), "tag");
+    }
+
+    @Override
+    public void setupView() {
+        setSupportActionBar(mToolbar);
+        mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager());
+        chroniclePager.setAdapter(mChroniclePageAdapter);
+    }
 }

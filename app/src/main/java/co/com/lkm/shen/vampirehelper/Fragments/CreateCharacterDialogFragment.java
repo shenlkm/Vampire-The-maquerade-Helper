@@ -1,12 +1,14 @@
 package co.com.lkm.shen.vampirehelper.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+
 import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -22,6 +24,10 @@ public class CreateCharacterDialogFragment extends DialogFragment {
     @BindView(R.id.spinner_clans) Spinner mSpiner;
 
     private NoticeDialogListener mNoticeDialogListener;
+
+    public void setListener(NoticeDialogListener noticeDialogListener){
+        mNoticeDialogListener = noticeDialogListener;
+    }
 
     @NonNull
     @Override
