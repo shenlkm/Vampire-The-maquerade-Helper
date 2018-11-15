@@ -2,6 +2,7 @@ package co.com.lkm.shen.vampirehelper.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,11 +14,14 @@ import android.widget.Spinner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.com.lkm.shen.vampirehelper.Contracts.NoticeDialogListener;
 import co.com.lkm.shen.vampirehelper.R;
 
 public class CreateCharacterDialogFragment extends DialogFragment {
 
     @BindView(R.id.spinner_clans) Spinner mSpiner;
+
+    private NoticeDialogListener mNoticeDialogListener;
 
     @NonNull
     @Override
@@ -36,11 +40,28 @@ public class CreateCharacterDialogFragment extends DialogFragment {
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                mNoticeDialogListener.onDialogNegativeClick(CreateCharacterDialogFragment.this);
                 CreateCharacterDialogFragment.this.getDialog().cancel();
             }
         });
 
         return builder.create();
+    }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mNoticeDialogListener = (NoticeDialogListener) getActivity().getFragmentManager().findFragmentById(R.id.fragment_dialog_create_character);
+        }catch (ClassCastException ex){
+            throw new ClassCastException(context.toString() + " must implement NoticeDialogListener");
+
+        }
+    }
+
+    public static CreateCharacterDialogFragment newInstance(NoticeDialogListener listener){
+        CreateCharacterDialogFragment instance = new CreateCharacterDialogFragment();
+        instance.mNoticeDialogListener = listener;
+        return instance;
     }
 }

@@ -63,6 +63,4 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
         //noinspection ConstantConditions
         return getItem(index).getId();
     }
-
-
 }

@@ -17,24 +17,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import co.com.lkm.shen.vampirehelper.Adapters.ChronicleAdapter;
+import co.com.lkm.shen.vampirehelper.Contracts.Views.HomeView;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
-import io.realm.Realm;
-import io.realm.exceptions.RealmException;
+import co.com.lkm.shen.vampirehelper.Presenter.HomeActivityPresenter;
+import io.realm.OrderedRealmCollection;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeView {
 
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.chronicles) public RecyclerView mRecyclerView;
     @BindView(R.id.createChronicle) public FloatingActionButton create;
+    @BindView(R.id.toolbar) public Toolbar mToolbar;
+    @BindView(R.id.drawer_layout) public DrawerLayout mDrawer;
+    @BindView(R.id.nav_view) public NavigationView mNavigationView;
 
-    private Realm realm;
+    private HomeActivityPresenter mPresenter;
 
     private RecyclerView.Adapter mChronicleAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -43,34 +43,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         ButterKnife.bind(this);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        realm = Realm.getDefaultInstance();
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.chronicles);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mChronicleAdapter = new ChronicleAdapter(this, realm.where(Chronicle.class).findAll());
-        mRecyclerView.setAdapter(mChronicleAdapter);
+        mPresenter = new HomeActivityPresenter(this);
+        mPresenter.setupView();
+        mPresenter.showList();
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawer.isDrawerOpen(GravityCompat.START)) {
+            mDrawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -117,9 +100,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_send) {
 
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mDrawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -127,11 +108,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onDestroy() {
         super.onDestroy();
         mRecyclerView.setAdapter(null);
-        realm.close();
+        mPresenter.onDistroy();
     }
 
-    @OnClick(R.id.createChronicle)
-    public  void CreateChhronicle(View view)
+    @Override
+    public void setupView() {
+        setSupportActionBar(mToolbar);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void showList(OrderedRealmCollection<Chronicle> chronicles) {
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mChronicleAdapter = new ChronicleAdapter(this, mPresenter.getChronicles());
+        mRecyclerView.setAdapter(mChronicleAdapter);
+    }
+
+    public  void createChronicle(View view)
     {
         AlertDialog.Builder builder = getInputDialog();
         builder.show();
@@ -148,7 +148,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(addCronicle(input.getText().toString()))
+                if(mPresenter.addChronicle(input.getText().toString()))
                 {
                     dialogInterface.dismiss();;
                 }
@@ -165,27 +165,4 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return builder;
     }
 
-    private boolean addCronicle(String name) {
-        if("".equals(name))
-            return false;
-        try {
-            Chronicle results = realm.where(Chronicle.class)
-                    .equalTo("name", name)
-                    .findFirst();
-            if(results == null)
-            {
-                realm.beginTransaction();
-                results = realm.createObject(Chronicle.class, UUID.randomUUID().getMostSignificantBits());
-                results.setName(name);
-                realm.commitTransaction();
-                return true;
-            }
-        }
-        catch (RealmException re)
-        {
-            Toast.makeText(this,"Item not added", Toast.LENGTH_LONG).show();
-        }
-
-        return  false;
-    }
 }

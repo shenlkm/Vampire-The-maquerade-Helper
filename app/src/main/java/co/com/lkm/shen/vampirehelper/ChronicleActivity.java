@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
+import co.com.lkm.shen.vampirehelper.Contracts.NoticeDialogListener;
+import co.com.lkm.shen.vampirehelper.Fragments.CharacterFragment;
 import co.com.lkm.shen.vampirehelper.Fragments.CreateCharacterDialogFragment;
 
 public class ChronicleActivity extends AppCompatActivity {
@@ -62,7 +64,9 @@ public class ChronicleActivity extends AppCompatActivity {
     }
 
     public void createCharacter(View v){
-        CreateCharacterDialogFragment dialogFragment = new CreateCharacterDialogFragment();
+        CreateCharacterDialogFragment dialogFragment = CreateCharacterDialogFragment
+                .newInstance((NoticeDialogListener) this.getFragmentManager().findFragmentById(R.id.fragment_dialog_create_character));
+
         dialogFragment.show(getSupportFragmentManager(), getString(R.string.title_dialog_create_chronicles));
     }
 
