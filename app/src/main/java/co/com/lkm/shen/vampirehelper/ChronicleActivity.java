@@ -1,5 +1,6 @@
 package co.com.lkm.shen.vampirehelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
@@ -13,9 +14,7 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
-import co.com.lkm.shen.vampirehelper.Contracts.NoticeDialogListener;
 import co.com.lkm.shen.vampirehelper.Contracts.Views.ChronicleView;
-import co.com.lkm.shen.vampirehelper.Fragments.CreateCharacterDialogFragment;
 import co.com.lkm.shen.vampirehelper.Presenter.ChronicleActivityPresenter;
 
 public class ChronicleActivity extends AppCompatActivity implements ChronicleView {
@@ -62,9 +61,8 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     }
 
     public void createCharacter(View v){
-        CreateCharacterDialogFragment dialogFragment = new CreateCharacterDialogFragment();
-        dialogFragment.setListener((NoticeDialogListener) this.getFragmentManager().findFragmentById(R.id.fragment_dialog_create_character));
-        dialogFragment.show(getFragmentManager(), "tag");
+        Intent intent = new Intent(this, CreateCharacterActivity.class);
+        startActivity(intent);
     }
 
     @Override

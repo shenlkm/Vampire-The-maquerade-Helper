@@ -12,6 +12,9 @@
     <string name="player_name">Player name</string>
     <string name="character_name">Character name</string>
     <string name="choose_clan">Choose clan</string>
+    <string name="clan_image">Clan image</string>
+    <string name="player_name_hint">Mauricio</string>
+    <string name="character_name_hint">Cratos</string>
 
     <string-array name="clan_list">
         <item>Brujah</item>

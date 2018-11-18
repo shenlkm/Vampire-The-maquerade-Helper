@@ -4,7 +4,7 @@ import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
 
 public class BasePresenter {
 
-    private BaseView mView;
+    protected BaseView mView;
 
     public BasePresenter(BaseView view){
         mView = view;

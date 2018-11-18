@@ -24,6 +24,10 @@
             android:name=".ChronicleActivity"
             android:label="@string/title_activity_chronicles"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".CreateCharacterActivity"
+            android:label="@string/title_activity_chronicles"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
