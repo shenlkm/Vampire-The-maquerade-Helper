@@ -18,7 +18,7 @@
         android:autofillHints="@string/player_name_hint"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/clan_logo_selected"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
@@ -34,7 +34,7 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/spinner_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/clan_logo_selected"
         app:layout_constraintTop_toBottomOf="@+id/input_player_name" />
 
     <LinearLayout
@@ -47,7 +47,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/clan_logo_selected">
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,15 +68,43 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/clan_logo_selected"
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/clan_image"
+        android:src="@drawable/ic_logo_no_clan"
         app:layout_constraintBottom_toTopOf="@+id/spinner_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <Button
+        android:id="@+id/save_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="136dp"
+        android:onClick="saveCharacter"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_initiative" />
+
+    <EditText
+        android:id="@+id/input_initiative"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Initiative"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_container" />
 </android.support.constraint.ConstraintLayout>

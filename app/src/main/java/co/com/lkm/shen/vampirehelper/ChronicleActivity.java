@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
 import co.com.lkm.shen.vampirehelper.Contracts.Views.ChronicleView;
-import co.com.lkm.shen.vampirehelper.Presenter.ChronicleActivityPresenter;
+import co.com.lkm.shen.vampirehelper.Presenter.BasePresenter;
 
 public class ChronicleActivity extends AppCompatActivity implements ChronicleView {
 
@@ -26,7 +26,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     @BindView(R.id.characterLayout) public LinearLayout characterLayout;
 
     public ChroniclePageAdapter mChroniclePageAdapter;
-    private ChronicleActivityPresenter mPresenter;
+    private BasePresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
         setContentView(R.layout.activity_chronicle);
         ButterKnife.bind(this);
 
-        mPresenter = new ChronicleActivityPresenter(this);
+        mPresenter = new BasePresenter(this);
         mPresenter.setupView();
     }
 
@@ -62,6 +62,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
 
     public void createCharacter(View v){
         Intent intent = new Intent(this, CreateCharacterActivity.class);
+        intent.putExtras(getIntent().getExtras());
         startActivity(intent);
     }
 

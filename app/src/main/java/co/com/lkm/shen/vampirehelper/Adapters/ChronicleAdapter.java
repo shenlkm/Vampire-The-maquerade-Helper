@@ -18,6 +18,7 @@ import io.realm.RealmRecyclerViewAdapter;
 public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, ChronicleAdapter.ChronicleViewHolder> {
 
     private Context mContext;
+    private final static String KEY_ID_EXTRAS = "ID";
 
     public ChronicleAdapter(Context context, OrderedRealmCollection<Chronicle> chronicles)
     {
@@ -53,6 +54,7 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ChronicleActivity.class);
+                intent.putExtra(KEY_ID_EXTRAS, chronicle.getId());
                 mContext.startActivity(intent);
             }
         });
