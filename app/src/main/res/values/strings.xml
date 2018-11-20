@@ -15,6 +15,7 @@
     <string name="clan_image">Clan image</string>
     <string name="player_name_hint">Mauricio</string>
     <string name="character_name_hint">Cratos</string>
+    <string name="base_initiative_hint">Base initiative</string>
 
     <string-array name="clan_list">
         <item>Brujah</item>

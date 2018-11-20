@@ -3,7 +3,6 @@ package co.com.lkm.shen.vampirehelper.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.CharacterAdapter;
-import co.com.lkm.shen.vampirehelper.Adapters.ChronicleAdapter;
 import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
 import co.com.lkm.shen.vampirehelper.Presenter.CharacterFragmentPresenter;
 import co.com.lkm.shen.vampirehelper.R;

@@ -70,7 +70,7 @@ public class CreateCharacterActivity extends Activity implements CreateCharacter
         mPresenter.saveChatacter(inputPlayerName.getText().toString(),
                 inputCharacterName.getText().toString(),
                 inputInitiativeName.getText().toString(),
-                getResources().getStringArray(R.array.clan_list)[mSpiner.getSelectedItemPosition()],
+                mSpiner.getSelectedItemPosition(),
                 id);
         finish();
     }

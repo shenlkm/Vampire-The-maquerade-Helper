@@ -6,9 +6,9 @@ public class Player extends RealmObject {
 
     private String name;
     private String characterName;
-    private String clan;
+    private int clan;
     private int stamina;
-    private int Initiative;
+    private int initiative;
     private int bashing;
     private int lethal;
     private int aggravated;
@@ -33,11 +33,11 @@ public class Player extends RealmObject {
         this.characterName = characterName;
     }
 
-    public String getClan() {
+    public int getClan() {
         return clan;
     }
 
-    public void setClan(String clan) {
+    public void setClan(int clan) {
         this.clan = clan;
     }
 
@@ -50,11 +50,11 @@ public class Player extends RealmObject {
     }
 
     public int getInitiative() {
-        return Initiative;
+        return initiative;
     }
 
     public void setInitiative(int initiative) {
-        Initiative = initiative;
+        this.initiative = initiative;
     }
 
     public int getBashing() {

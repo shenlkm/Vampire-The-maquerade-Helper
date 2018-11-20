@@ -42,7 +42,7 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
     @Override
     public ChronicleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.chronicle_row, parent, false);
+        View holder = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_chronicle, parent, false);
         return new ChronicleViewHolder(holder);
     }
 
