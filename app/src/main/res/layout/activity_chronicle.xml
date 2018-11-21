@@ -44,7 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fabSize="mini"
-            app:srcCompat="@android:drawable/ic_input_add"/>
+            style="@style/AppPrimaryTheme.FloatingActionButton"
+            app:srcCompat="@drawable/ic_white_scene_add"/>
 
     </LinearLayout>
 
@@ -73,7 +74,8 @@
             android:layout_gravity="bottom|end"
             android:onClick="createCharacter"
             app:fabSize="mini"
-            app:srcCompat="@android:drawable/ic_input_add"/>
+            style="@style/AppPrimaryTheme.FloatingActionButton"
+            app:srcCompat="@drawable/ic_white_person_add"/>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -83,6 +85,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/float_margin"
         android:onClick="showOptions"
-        app:srcCompat="@android:drawable/ic_input_add"/>
+        style="@style/AppPrimaryTheme.FloatingActionButton"
+        app:srcCompat="@drawable/ic_white_add"/>
 
 </android.support.design.widget.CoordinatorLayout>

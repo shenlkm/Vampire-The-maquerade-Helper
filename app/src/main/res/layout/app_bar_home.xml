@@ -28,9 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/float_margin"
-        android:tint="@color/colorAccent"
         android:onClick="createChronicle"
-        app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@drawable/ic_white_add"
+        style="@style/AppPrimaryTheme.FloatingActionButton"/>
 
 </android.support.design.widget.CoordinatorLayout>
