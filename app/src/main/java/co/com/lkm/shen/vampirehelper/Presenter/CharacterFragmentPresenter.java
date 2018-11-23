@@ -6,25 +6,18 @@ import co.com.lkm.shen.vampirehelper.Domain.Player;
 import io.realm.OrderedRealmCollection;
 import io.realm.Sort;
 
-public class CharacterFragmentPresenter extends BasePresenter {
-
-    private OrderedRealmCollection<Player> characters;
+public class CharacterFragmentPresenter extends BaseRecyclerPresenter<Player> {
 
     public CharacterFragmentPresenter(BaseView view, long id) {
-        super(view);
-        prepareRealm();
-        loadCharacteres(id);
+        super(view, id);
     }
-
-    private void loadCharacteres(long id) {
-        characters = realm.
+    @Override
+    public void loadMyList(long id) {
+        myList = realm.
                 where(Chronicle.class)
                 .equalTo("id", id)
                 .findFirst()
                 .getPlayers().sort("initiative", Sort.DESCENDING);
     }
 
-    public OrderedRealmCollection<Player> getCharacters() {
-        return characters;
-    }
 }

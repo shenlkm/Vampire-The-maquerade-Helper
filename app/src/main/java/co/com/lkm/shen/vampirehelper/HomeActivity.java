@@ -28,7 +28,7 @@ import io.realm.OrderedRealmCollection;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeView {
 
-    @BindView(R.id.chronicles) public RecyclerView mRecyclerView;
+    @BindView(R.id.frameList) public RecyclerView mRecyclerView;
     @BindView(R.id.createChronicle) public FloatingActionButton create;
     @BindView(R.id.toolbar) public Toolbar mToolbar;
     @BindView(R.id.drawer_layout) public DrawerLayout mDrawer;

@@ -38,6 +38,14 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
         mPresenter.setupView();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        animateButton(AnimationUtils
+                        .loadAnimation(this, R.anim.hide_button),
+                AnimationUtils.loadAnimation(this, R.anim.hide_layout), View.GONE);
+    }
+
     public void showOptions(View v) {
         if(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE){
             animateButton(AnimationUtils
@@ -69,7 +77,9 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     @Override
     public void setupView() {
         setSupportActionBar(mToolbar);
-        mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager());
+        Bundle extras = getIntent().getExtras();
+        long id = extras.getLong(Constants.KEY_ID_EXTRAS);
+        mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager(), id);
         chroniclePager.setAdapter(mChroniclePageAdapter);
     }
 }

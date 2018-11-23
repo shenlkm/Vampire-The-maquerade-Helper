@@ -16,4 +16,6 @@ public class Constants {
                 R.drawable.ic_logo_clan_giovanny,
                 R.drawable.ic_logo_clan_setfollowers,
                 R.drawable.ic_logo_clan_ravnos };
+    
+    public final static String KEY_ID_EXTRAS = "ID";
 }
