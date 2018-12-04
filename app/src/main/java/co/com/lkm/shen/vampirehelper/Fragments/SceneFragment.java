@@ -17,11 +17,22 @@ public class SceneFragment extends BaseRecyclerFragment implements BaseView {
     private SceneAdapter mSceneAdapter;
     private SceneFragmentPresenter mPresenter;
 
+    public SceneFragment(){
+    }
+
+    public static SceneFragment newInstance(long id) {
+        SceneFragment fragment = new SceneFragment();
+        Bundle args = new Bundle();
+        args.putLong(CHRONICLE_ID, id);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_character, container, false);
         ButterKnife.bind(this, rootView);
-        mPresenter = new SceneFragmentPresenter(this, 0);
+        mPresenter = new SceneFragmentPresenter(this, mId);
         mPresenter.setupView();
         return rootView;
     }
@@ -29,7 +40,7 @@ public class SceneFragment extends BaseRecyclerFragment implements BaseView {
     @Override
     public void setupView() {
         super.setupView();
-        mSceneAdapter = new SceneAdapter(getActivity(), mPresenter.getScenes());
+        mSceneAdapter = new SceneAdapter(getActivity(), mPresenter.getMyList());
         mRecyclerView.setAdapter(mSceneAdapter);
     }
 }

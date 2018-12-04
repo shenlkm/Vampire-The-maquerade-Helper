@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.CharacterAdapter;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
 import co.com.lkm.shen.vampirehelper.Presenter.CharacterFragmentPresenter;
 import co.com.lkm.shen.vampirehelper.R;
 

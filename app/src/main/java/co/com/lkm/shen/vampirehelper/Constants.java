@@ -18,4 +18,6 @@ public class Constants {
                 R.drawable.ic_logo_clan_ravnos };
     
     public final static String KEY_ID_EXTRAS = "ID";
+
+    public final static String datePattern = "MMMM dd, yyyy HH:mm:ss";
 }

@@ -3,7 +3,6 @@ package co.com.lkm.shen.vampirehelper.Presenter;
 import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
 import co.com.lkm.shen.vampirehelper.Domain.Player;
-import io.realm.OrderedRealmCollection;
 import io.realm.Sort;
 
 public class CharacterFragmentPresenter extends BaseRecyclerPresenter<Player> {

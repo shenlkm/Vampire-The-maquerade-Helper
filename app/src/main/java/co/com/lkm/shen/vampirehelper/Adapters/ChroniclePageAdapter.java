@@ -14,7 +14,7 @@ public class ChroniclePageAdapter extends FragmentStatePagerAdapter {
 
     public ChroniclePageAdapter(FragmentManager fm, long id) {
         super(fm);
-        titles = new String[]{"Characers", "Scenes"};
+        titles = new String[]{"Scenes", "Characers"};
         mId = id;
     }
 
@@ -23,10 +23,10 @@ public class ChroniclePageAdapter extends FragmentStatePagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment =  CharacterFragment.newInstance(mId);
+                fragment = SceneFragment.newInstance(mId);
                 break;
             case 1:
-                fragment = new SceneFragment();
+                fragment =  CharacterFragment.newInstance(mId);
                 break;
         }
         return fragment;
