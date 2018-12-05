@@ -40,8 +40,8 @@ public class SceneAdapter extends RealmRecyclerViewAdapter<Scene, SceneAdapter.S
     @Override
     public void onBindViewHolder(@NonNull SceneViewHolder holder, int position) {
         final Scene scene = getItem(position);
-        holder.characterIconBadge.setText("1");
-        holder.npcIconBadge.setText("3");
+        holder.characterIconBadge.setText(""+scene.getFighters().size());
+        holder.npcIconBadge.setText("0");
         holder.sceneName.setText(scene.getName());
         holder.startDate.setText(simpleDateFormat.format(scene.getStartDate()));
         String endDate = scene.getEndtDate() == null ? "On going" : simpleDateFormat.format(scene.getEndtDate());

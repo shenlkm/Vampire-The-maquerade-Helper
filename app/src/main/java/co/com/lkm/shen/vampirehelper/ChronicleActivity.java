@@ -45,25 +45,28 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     @Override
     protected void onPause() {
         super.onPause();
-        animateButton(AnimationUtils
-                        .loadAnimation(this, R.anim.hide_button),
-                AnimationUtils.loadAnimation(this, R.anim.hide_layout), View.GONE);
+        mPresenter.showButtons(false);
     }
 
-    public void showOptions(View v) {
-        if(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE){
+    @Override
+    public void showButtons(boolean show) {
+        if(show){
             animateButton(AnimationUtils
-                    .loadAnimation(this, R.anim.show_button),
+                            .loadAnimation(this, R.anim.show_button),
                     AnimationUtils.loadAnimation(this, R.anim.show_layout), View.VISIBLE);
-        } else {
+        } else{
             animateButton(AnimationUtils
-                    .loadAnimation(this, R.anim.hide_button),
+                            .loadAnimation(this, R.anim.hide_button),
                     AnimationUtils.loadAnimation(this, R.anim.hide_layout), View.GONE);
         }
     }
 
-    @Override
-    public void animateButton(Animation showBottons, Animation showLayouts, int visible) {
+    public void showOptions(View v) {
+        mPresenter.showButtons(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE);
+    }
+
+
+    private void animateButton(Animation showBottons, Animation showLayouts, int visible) {
         sceneLayout.setVisibility(visible);
         characterLayout.setVisibility(visible);
 
@@ -79,6 +82,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     }
 
     public void createScene(View v){
+        mPresenter.showButtons(false);
         AlertDialog.Builder builder = getInputDialog();
         builder.show();
     }

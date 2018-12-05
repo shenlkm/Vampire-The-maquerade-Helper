@@ -4,5 +4,5 @@ import android.view.animation.Animation;
 
 public interface ChronicleView extends BaseView {
 
-    void animateButton(Animation showBottons, Animation showLayouts, int visible);
+    void showButtons(boolean show);
 }
