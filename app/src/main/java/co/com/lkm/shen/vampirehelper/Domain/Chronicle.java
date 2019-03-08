@@ -1,15 +1,25 @@
 package co.com.lkm.shen.vampirehelper.Domain;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-public class Chronicle extends RealmObject {
+@Entity(tableName = "chronicle")
+public class Chronicle {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id")
     private long id;
+    @ColumnInfo(name = "name")
     private String name;
-    private RealmList<Scene> scenes;
+
+    public Chronicle(String name) {
+        this.name = name;
+    }
+
+    /*private RealmList<Scene> scenes;
     private RealmList<Player> players;
 
     public RealmList<Player> getPlayers() {
@@ -26,7 +36,7 @@ public class Chronicle extends RealmObject {
 
     public void setScenes(RealmList<Scene> scenes) {
         this.scenes = scenes;
-    }
+    }*/
 
     public String getName() {
         return name;

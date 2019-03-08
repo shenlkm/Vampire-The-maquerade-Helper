@@ -13,18 +13,14 @@ import java.text.SimpleDateFormat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
-import co.com.lkm.shen.vampirehelper.Domain.Scene;
 import co.com.lkm.shen.vampirehelper.R;
-import io.realm.OrderedRealmCollection;
-import io.realm.RealmRecyclerViewAdapter;
 
-public class SceneAdapter extends RealmRecyclerViewAdapter<Scene, SceneAdapter.SceneViewHolder> {
+public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHolder> {
 
     private Context mContext;
     private SimpleDateFormat simpleDateFormat;
 
-    public SceneAdapter(Context context, OrderedRealmCollection<Scene> scenes) {
-        super(scenes,  true );
+    public SceneAdapter(Context context) {
         mContext = context;
         setHasStableIds(false);
         simpleDateFormat = new SimpleDateFormat(Constants.datePattern);
@@ -39,13 +35,18 @@ public class SceneAdapter extends RealmRecyclerViewAdapter<Scene, SceneAdapter.S
 
     @Override
     public void onBindViewHolder(@NonNull SceneViewHolder holder, int position) {
-        final Scene scene = getItem(position);
+        /*final Scene scene = getItem(position);
         holder.characterIconBadge.setText(""+scene.getFighters().size());
         holder.npcIconBadge.setText("0");
         holder.sceneName.setText(scene.getName());
         holder.startDate.setText(simpleDateFormat.format(scene.getStartDate()));
         String endDate = scene.getEndtDate() == null ? "On going" : simpleDateFormat.format(scene.getEndtDate());
-        holder.endDate.setText(endDate);
+        holder.endDate.setText(endDate);*/
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
     }
 
     public static class SceneViewHolder extends RecyclerView.ViewHolder {

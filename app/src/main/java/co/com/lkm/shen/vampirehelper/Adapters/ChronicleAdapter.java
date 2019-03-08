@@ -9,20 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.List;
+
 import co.com.lkm.shen.vampirehelper.ChronicleActivity;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
 import co.com.lkm.shen.vampirehelper.R;
-import io.realm.OrderedRealmCollection;
-import io.realm.RealmRecyclerViewAdapter;
 
-public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, ChronicleAdapter.ChronicleViewHolder> {
+public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.ChronicleViewHolder> {
 
     private Context mContext;
     private final static String KEY_ID_EXTRAS = "ID";
 
-    public ChronicleAdapter(Context context, OrderedRealmCollection<Chronicle> chronicles)
+    private List<Chronicle> mChronicles;
+
+    public ChronicleAdapter(Context context)
     {
-        super(chronicles, true);
         mContext = context;
         setHasStableIds(true);
     }
@@ -48,7 +49,7 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
 
     @Override
     public void onBindViewHolder(ChronicleViewHolder holder, int position) {
-        final Chronicle chronicle = getItem(position);
+        final Chronicle chronicle = mChronicles.get(position);
         holder.mChronicleName.setText(chronicle.getName());
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,9 +61,21 @@ public class ChronicleAdapter extends RealmRecyclerViewAdapter<Chronicle, Chroni
         });
     }
 
+    public void setChronicles(List<Chronicle> chronicles){
+        mChronicles = chronicles;
+        notifyDataSetChanged();
+    }
+
     @Override
     public long getItemId(int index) {
         //noinspection ConstantConditions
-        return getItem(index).getId();
+        return mChronicles.get(index).getId();
+    }
+
+    @Override
+    public int getItemCount() {
+        if (mChronicles != null)
+            return mChronicles.size();
+        else return 0;
     }
 }

@@ -1,7 +1,10 @@
 package co.com.lkm.shen.vampirehelper;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,17 +19,18 @@ import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.EditText;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChronicleAdapter;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.HomeView;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
-import co.com.lkm.shen.vampirehelper.Presenter.HomeActivityPresenter;
-import io.realm.OrderedRealmCollection;
+import co.com.lkm.shen.vampirehelper.ViewModel.HomeViewModel;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeView {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.frameList) public RecyclerView mRecyclerView;
     @BindView(R.id.createChronicle) public FloatingActionButton create;
@@ -34,10 +38,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.drawer_layout) public DrawerLayout mDrawer;
     @BindView(R.id.nav_view) public NavigationView mNavigationView;
 
-    private HomeActivityPresenter mPresenter;
-
-    private RecyclerView.Adapter mChronicleAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
+    private ChronicleAdapter mChronicleAdapter;
+    private HomeViewModel mHomeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        mPresenter = new HomeActivityPresenter(this);
-        mPresenter.setupView();
-        mPresenter.showList();
+        mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        mHomeViewModel.getChronicles().observe(this, new Observer<List<Chronicle>>() {
+            @Override
+            public void onChanged(@Nullable List<Chronicle> chronicles) {
+                mChronicleAdapter.setChronicles(chronicles);
+            }
+        });
+        setupView();
     }
 
     @Override
@@ -108,10 +115,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onDestroy() {
         super.onDestroy();
         mRecyclerView.setAdapter(null);
-        mPresenter.onDistroy();
     }
 
-    @Override
     public void setupView() {
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -120,15 +125,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         mNavigationView.setNavigationItemSelectedListener(this);
-    }
 
-    @Override
-    public void showList(OrderedRealmCollection<Chronicle> chronicles) {
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mChronicleAdapter = new ChronicleAdapter(this, mPresenter.getChronicles());
+        mChronicleAdapter = new ChronicleAdapter(this);
         mRecyclerView.setAdapter(mChronicleAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     public  void createChronicle(View view)
@@ -148,10 +149,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if(mPresenter.addChronicle(input.getText().toString()))
-                {
-                    dialogInterface.dismiss();;
-                }
+                Chronicle chronicle = new Chronicle(input.getText().toString());
+                mHomeViewModel.insert(chronicle);
+                dialogInterface.dismiss();
             }
         });
 

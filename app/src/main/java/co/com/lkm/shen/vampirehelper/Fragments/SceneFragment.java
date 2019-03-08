@@ -7,15 +7,12 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.SceneAdapter;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
-import co.com.lkm.shen.vampirehelper.Presenter.SceneFragmentPresenter;
 import co.com.lkm.shen.vampirehelper.R;
 
 
-public class SceneFragment extends BaseRecyclerFragment implements BaseView {
+public class SceneFragment extends BaseRecyclerFragment{
 
     private SceneAdapter mSceneAdapter;
-    private SceneFragmentPresenter mPresenter;
 
     public SceneFragment(){
     }
@@ -32,15 +29,14 @@ public class SceneFragment extends BaseRecyclerFragment implements BaseView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_character, container, false);
         ButterKnife.bind(this, rootView);
-        mPresenter = new SceneFragmentPresenter(this, mId);
-        mPresenter.setupView();
+        this.setupView();
         return rootView;
     }
 
     @Override
     public void setupView() {
         super.setupView();
-        mSceneAdapter = new SceneAdapter(getActivity(), mPresenter.getMyList());
-        mRecyclerView.setAdapter(mSceneAdapter);
+        /*mSceneAdapter = new SceneAdapter(getActivity(), mPresenter.getMyList());
+        mRecyclerView.setAdapter(mSceneAdapter);*/
     }
 }

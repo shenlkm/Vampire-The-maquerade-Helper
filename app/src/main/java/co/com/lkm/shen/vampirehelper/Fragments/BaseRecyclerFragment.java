@@ -6,10 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import butterknife.BindView;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.BaseView;
 import co.com.lkm.shen.vampirehelper.R;
 
-public abstract class BaseRecyclerFragment extends Fragment implements BaseView {
+public abstract class BaseRecyclerFragment extends Fragment {
 
     @BindView(R.id.frameList)
     public RecyclerView mRecyclerView;
@@ -27,7 +26,6 @@ public abstract class BaseRecyclerFragment extends Fragment implements BaseView 
         }
     }
 
-    @Override
     public void setupView() {
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);

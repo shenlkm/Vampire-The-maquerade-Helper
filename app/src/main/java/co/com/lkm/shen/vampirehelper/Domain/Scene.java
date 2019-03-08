@@ -2,18 +2,13 @@ package co.com.lkm.shen.vampirehelper.Domain;
 
 import java.util.Date;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
+public class Scene{
 
-public class Scene extends RealmObject {
-
-    @PrimaryKey
     private long id;
     private String name;
     private Date startDate;
     private Date endtDate;
-    private RealmList<Player> fighters;
+    /*private RealmList<Player> fighters;
 
     public RealmList<Player> getFighters() {
         return fighters;
@@ -21,7 +16,7 @@ public class Scene extends RealmObject {
 
     public void setFighters(RealmList<Player> fighters) {
         this.fighters = fighters;
-    }
+    }*/
 
     public long getId() {
         return id;

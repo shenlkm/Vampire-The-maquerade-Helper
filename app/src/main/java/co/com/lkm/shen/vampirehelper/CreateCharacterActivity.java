@@ -12,10 +12,8 @@ import android.widget.Spinner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.CreateCharacterView;
-import co.com.lkm.shen.vampirehelper.Presenter.CreateCharacterActivityPresenter;
 
-public class CreateCharacterActivity extends Activity implements CreateCharacterView ,AdapterView.OnItemSelectedListener  {
+public class CreateCharacterActivity extends Activity implements AdapterView.OnItemSelectedListener  {
 
     @BindView(R.id.spinner_clans) Spinner mSpiner;
     @BindView(R.id.input_character_name) EditText inputCharacterName;
@@ -24,7 +22,6 @@ public class CreateCharacterActivity extends Activity implements CreateCharacter
     @BindView(R.id.clan_logo_selected) ImageView mImageView;
 
     private final static String KEY_ID_EXTRAS = "ID";
-    private CreateCharacterActivityPresenter mPresenter;
     private  long id = 0L;
 
     @Override
@@ -38,11 +35,9 @@ public class CreateCharacterActivity extends Activity implements CreateCharacter
             id =  extras.getLong(KEY_ID_EXTRAS);
         }
 
-        mPresenter = new CreateCharacterActivityPresenter(this);
-        mPresenter.setupView();
+        this.setupView();
     }
 
-    @Override
     public void setupView() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clan_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -52,7 +47,7 @@ public class CreateCharacterActivity extends Activity implements CreateCharacter
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        mImageView.setImageResource(mPresenter.getResource(i));
+        //mImageView.setImageResource(this.getResource(i));
     }
 
     @Override
@@ -63,15 +58,14 @@ public class CreateCharacterActivity extends Activity implements CreateCharacter
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.onDistroy();
     }
 
     public void saveCharacter(View v){
-        mPresenter.saveChatacter(inputPlayerName.getText().toString(),
+        /*mPresenter.saveChatacter(inputPlayerName.getText().toString(),
                 inputCharacterName.getText().toString(),
                 inputInitiativeName.getText().toString(),
                 mSpiner.getSelectedItemPosition(),
                 id);
-        finish();
+        finish();*/
     }
 }

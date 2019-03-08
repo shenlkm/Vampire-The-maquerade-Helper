@@ -13,18 +13,13 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import co.com.lkm.shen.vampirehelper.Constants;
-import co.com.lkm.shen.vampirehelper.Domain.Player;
 import co.com.lkm.shen.vampirehelper.R;
-import io.realm.OrderedRealmCollection;
-import io.realm.RealmRecyclerViewAdapter;
 
-public class CharacterAdapter extends RealmRecyclerViewAdapter<Player, CharacterAdapter.CharacterViewHolder> {
+public abstract class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder> {
 
     private Context mContext;
 
-    public CharacterAdapter(Context context, @Nullable OrderedRealmCollection<Player> data) {
-        super(data, true);
+    public CharacterAdapter(Context context) {
         mContext = context;
         setHasStableIds(false);
     }
@@ -38,11 +33,11 @@ public class CharacterAdapter extends RealmRecyclerViewAdapter<Player, Character
 
     @Override
     public void onBindViewHolder(@NonNull CharacterAdapter.CharacterViewHolder holder, int position) {
-        final Player player = getItem(position);
+        /*final Player player = getItem(position);
         holder.chraracterName.setText(player.getCharacterName());
         holder.playerName.setText(String.format("Player name: %s", player.getName()));
         holder.initiative.setText(String.format("Initiative: %d", player.getInitiative()));
-        holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
+        holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);*/
     }
 
     public static class CharacterViewHolder extends RecyclerView.ViewHolder {

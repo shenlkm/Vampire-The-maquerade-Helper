@@ -18,10 +18,8 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChroniclePageAdapter;
-import co.com.lkm.shen.vampirehelper.Contracts.Views.ChronicleView;
-import co.com.lkm.shen.vampirehelper.Presenter.ChronicleActivityPresenter;
 
-public class ChronicleActivity extends AppCompatActivity implements ChronicleView {
+public class ChronicleActivity extends AppCompatActivity{
 
     @BindView(R.id.toolbar) public Toolbar mToolbar;
     @BindView(R.id.chronicleFloatingMenu) public FloatingActionButton menuButton;
@@ -30,7 +28,6 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     @BindView(R.id.characterLayout) public LinearLayout characterLayout;
 
     public ChroniclePageAdapter mChroniclePageAdapter;
-    private ChronicleActivityPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +35,15 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
         setContentView(R.layout.activity_chronicle);
         ButterKnife.bind(this);
 
-        mPresenter = new ChronicleActivityPresenter(this);
-        mPresenter.setupView();
+        this.setupView();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mPresenter.showButtons(false);
+        this.showButtons(false);
     }
 
-    @Override
     public void showButtons(boolean show) {
         if(show){
             animateButton(AnimationUtils
@@ -62,7 +57,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     }
 
     public void showOptions(View v) {
-        mPresenter.showButtons(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE);
+        this.showButtons(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE);
     }
 
 
@@ -82,7 +77,7 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
     }
 
     public void createScene(View v){
-        mPresenter.showButtons(false);
+        this.showButtons(false);
         AlertDialog.Builder builder = getInputDialog();
         builder.show();
     }
@@ -100,10 +95,10 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
             public void onClick(DialogInterface dialogInterface, int i) {
                 Bundle extras = getIntent().getExtras();
                 long id = extras.getLong(Constants.KEY_ID_EXTRAS);
-                if(mPresenter.addScene(input.getText().toString(), id))
+                /*if(mPresenter.addScene(input.getText().toString(), id))
                 {
                     dialogInterface.dismiss();;
-                }
+                }*/
             }
         });
 
@@ -117,7 +112,6 @@ public class ChronicleActivity extends AppCompatActivity implements ChronicleVie
         return builder;
     }
 
-    @Override
     public void setupView() {
         setSupportActionBar(mToolbar);
         Bundle extras = getIntent().getExtras();

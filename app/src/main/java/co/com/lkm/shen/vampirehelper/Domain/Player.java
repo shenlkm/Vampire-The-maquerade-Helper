@@ -1,8 +1,6 @@
 package co.com.lkm.shen.vampirehelper.Domain;
 
-import io.realm.RealmObject;
-
-public class Player extends RealmObject {
+public class Player{
 
     private String name;
     private String characterName;

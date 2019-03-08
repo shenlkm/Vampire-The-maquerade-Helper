@@ -9,14 +9,12 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.CharacterAdapter;
-import co.com.lkm.shen.vampirehelper.Presenter.CharacterFragmentPresenter;
 import co.com.lkm.shen.vampirehelper.R;
 
 
 public class CharacterFragment extends BaseRecyclerFragment {
 
     private CharacterAdapter mCharacterAdapter;
-    private CharacterFragmentPresenter mPresenter;
 
     public CharacterFragment(){
     }
@@ -33,15 +31,14 @@ public class CharacterFragment extends BaseRecyclerFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_character, container, false);
         ButterKnife.bind(this, rootView);
-        mPresenter = new CharacterFragmentPresenter(this, mId);
-        mPresenter.setupView();
+        this.setupView();
         return rootView;
     }
 
     @Override
     public void setupView() {
         super.setupView();
-        mCharacterAdapter = new CharacterAdapter(getActivity(), mPresenter.getMyList());
-        mRecyclerView.setAdapter(mCharacterAdapter);
+        /*mCharacterAdapter = new CharacterAdapter(getActivity(), mPresenter.getMyList());
+        mRecyclerView.setAdapter(mCharacterAdapter);*/
     }
 }
