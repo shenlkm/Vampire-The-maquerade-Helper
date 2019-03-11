@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import butterknife.BindView;
+import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 
 public abstract class BaseRecyclerFragment extends Fragment {
@@ -16,13 +17,13 @@ public abstract class BaseRecyclerFragment extends Fragment {
 
     protected RecyclerView.LayoutManager mLayoutManager;
 
-    protected static final String CHRONICLE_ID = "CHRONICLE_ID";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mId = getArguments().getLong(CHRONICLE_ID);
+            mId = getArguments().getLong(Constants.CHRONICLE_ID);
         }
     }
 

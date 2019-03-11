@@ -12,13 +12,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import co.com.lkm.shen.vampirehelper.ChronicleActivity;
+import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
 import co.com.lkm.shen.vampirehelper.R;
 
 public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.ChronicleViewHolder> {
 
     private Context mContext;
-    private final static String KEY_ID_EXTRAS = "ID";
 
     private List<Chronicle> mChronicles;
 
@@ -55,7 +55,8 @@ public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.Chro
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ChronicleActivity.class);
-                intent.putExtra(KEY_ID_EXTRAS, chronicle.getId());
+                intent.putExtra(Constants.KEY_ID_EXTRAS, chronicle.getId());
+                intent.putExtra(Constants.KEY_TITLE_EXTRAS, chronicle.getName());
                 mContext.startActivity(intent);
             }
         });

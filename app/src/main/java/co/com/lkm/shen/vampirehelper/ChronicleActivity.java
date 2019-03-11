@@ -95,7 +95,7 @@ public class ChronicleActivity extends AppCompatActivity{
             public void onClick(DialogInterface dialogInterface, int i) {
                 Bundle extras = getIntent().getExtras();
                 long id = extras.getLong(Constants.KEY_ID_EXTRAS);
-                /*if(mPresenter.addScene(input.getText().toString(), id))
+                /*if(this.addScene(input.getText().toString(), id))
                 {
                     dialogInterface.dismiss();;
                 }*/
@@ -116,6 +116,7 @@ public class ChronicleActivity extends AppCompatActivity{
         setSupportActionBar(mToolbar);
         Bundle extras = getIntent().getExtras();
         long id = extras.getLong(Constants.KEY_ID_EXTRAS);
+        setTitle(extras.getString(Constants.KEY_TITLE_EXTRAS));
         mChroniclePageAdapter = new ChroniclePageAdapter(getSupportFragmentManager(), id);
         chroniclePager.setAdapter(mChroniclePageAdapter);
     }

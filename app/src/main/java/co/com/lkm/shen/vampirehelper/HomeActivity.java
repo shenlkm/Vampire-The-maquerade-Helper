@@ -19,7 +19,6 @@ import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Chronometer;
 import android.widget.EditText;
 
 import java.util.List;
@@ -29,6 +28,7 @@ import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.ChronicleAdapter;
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
 import co.com.lkm.shen.vampirehelper.ViewModel.HomeViewModel;
+import dagger.android.AndroidInjection;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,17 +43,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
         mHomeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
-        mHomeViewModel.getChronicles().observe(this, new Observer<List<Chronicle>>() {
+        /*mHomeViewModel.getChronicles().observe(this, new Observer<List<Chronicle>>() {
             @Override
             public void onChanged(@Nullable List<Chronicle> chronicles) {
                 mChronicleAdapter.setChronicles(chronicles);
             }
-        });
+        });*/
         setupView();
     }
 

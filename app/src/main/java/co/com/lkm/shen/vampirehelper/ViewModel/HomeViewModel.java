@@ -5,28 +5,32 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
-import co.com.lkm.shen.vampirehelper.MasterRepository;
-import co.com.lkm.shen.vampirehelper.MasterRoomDatabase;
+import co.com.lkm.shen.vampirehelper.DataSource.ChronicleDataSource;
+import co.com.lkm.shen.vampirehelper.Repository.ChronicleRepository;
 
 public class HomeViewModel extends AndroidViewModel {
 
     public LiveData<List<Chronicle>> Chronicles;
-    private MasterRepository mMasterRepository;
+
+    @Inject
+    public ChronicleRepository mChronicleDataSource;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
-        mMasterRepository = MasterRepository.getInstance(MasterRoomDatabase.getDatabase(application));
-        Chronicles = mMasterRepository.getAllChronicles();
+        //Chronicles = mChronicleDataSource.getAllChronicles();
     }
 
     public LiveData<List<Chronicle>> getChronicles() {
-        return Chronicles;
+        return null;
     }
 
     public void  insert(Chronicle chronicle){
-        mMasterRepository.insert(chronicle);
+        mChronicleDataSource.insert(chronicle);
     }
 }

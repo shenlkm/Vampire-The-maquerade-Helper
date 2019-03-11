@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.CharacterAdapter;
+import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 
 
@@ -22,7 +23,7 @@ public class CharacterFragment extends BaseRecyclerFragment {
     public static CharacterFragment newInstance(long id) {
         CharacterFragment fragment = new CharacterFragment();
         Bundle args = new Bundle();
-        args.putLong(CHRONICLE_ID, id);
+        args.putLong(Constants.CHRONICLE_ID, id);
         fragment.setArguments(args);
         return fragment;
     }

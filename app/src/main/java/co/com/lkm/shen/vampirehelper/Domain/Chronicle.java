@@ -19,7 +19,7 @@ public class Chronicle {
         this.name = name;
     }
 
-    /*private RealmList<Scene> scenes;
+    /*
     private RealmList<Player> players;
 
     public RealmList<Player> getPlayers() {
@@ -28,14 +28,6 @@ public class Chronicle {
 
     public void setPlayers(RealmList<Player> players) {
         this.players = players;
-    }
-
-    public RealmList<Scene> getScenes() {
-        return scenes;
-    }
-
-    public void setScenes(RealmList<Scene> scenes) {
-        this.scenes = scenes;
     }*/
 
     public String getName() {

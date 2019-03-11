@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Adapters.SceneAdapter;
+import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 
 
@@ -20,7 +21,7 @@ public class SceneFragment extends BaseRecyclerFragment{
     public static SceneFragment newInstance(long id) {
         SceneFragment fragment = new SceneFragment();
         Bundle args = new Bundle();
-        args.putLong(CHRONICLE_ID, id);
+        args.putLong(Constants.CHRONICLE_ID, id);
         fragment.setArguments(args);
         return fragment;
     }
