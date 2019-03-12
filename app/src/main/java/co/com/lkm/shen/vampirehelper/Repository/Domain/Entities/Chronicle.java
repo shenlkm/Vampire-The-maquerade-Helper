@@ -1,4 +1,4 @@
-package co.com.lkm.shen.vampirehelper.Domain;
+package co.com.lkm.shen.vampirehelper.Repository.Domain.Entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

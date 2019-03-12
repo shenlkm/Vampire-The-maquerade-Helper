@@ -1,4 +1,4 @@
-package co.com.lkm.shen.vampirehelper.DataSource;
+package co.com.lkm.shen.vampirehelper.Repository.DataSource;
 
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
-import co.com.lkm.shen.vampirehelper.Domain.Dao.ChronicleDao;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Dao.ChronicleDao;
 import co.com.lkm.shen.vampirehelper.Repository.ChronicleRepository;
 
 public class ChronicleDataSource implements ChronicleRepository {

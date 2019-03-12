@@ -4,7 +4,7 @@ import android.arch.lifecycle.LiveData;
 
 import java.util.List;
 
-import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
 
 public interface ChronicleRepository {
 

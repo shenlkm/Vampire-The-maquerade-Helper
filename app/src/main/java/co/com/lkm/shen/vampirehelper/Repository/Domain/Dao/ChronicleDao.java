@@ -1,4 +1,4 @@
-package co.com.lkm.shen.vampirehelper.Domain.Dao;
+package co.com.lkm.shen.vampirehelper.Repository.Domain.Dao;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
@@ -9,7 +9,7 @@ import android.arch.persistence.room.Update;
 
 import java.util.List;
 
-import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
 
 @Dao
 public interface ChronicleDao {

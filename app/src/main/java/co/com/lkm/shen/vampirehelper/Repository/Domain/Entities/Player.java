@@ -1,4 +1,4 @@
-package co.com.lkm.shen.vampirehelper.Domain;
+package co.com.lkm.shen.vampirehelper.Repository.Domain.Entities;
 
 public class Player{
 

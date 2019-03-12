@@ -1,4 +1,4 @@
-package co.com.lkm.shen.vampirehelper.Converters;
+package co.com.lkm.shen.vampirehelper.Repository.Converters;
 
 import android.arch.persistence.room.TypeConverter;
 

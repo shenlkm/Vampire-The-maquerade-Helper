@@ -7,9 +7,9 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import co.com.lkm.shen.vampirehelper.DataSource.ChronicleDataSource;
-import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
-import co.com.lkm.shen.vampirehelper.Domain.Scene;
+import co.com.lkm.shen.vampirehelper.Repository.DataSource.ChronicleDataSource;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Scene;
 
 public class ChronicleViewModel extends AndroidViewModel {
 
@@ -28,7 +28,7 @@ public class ChronicleViewModel extends AndroidViewModel {
     }
 
     public void  insert(Chronicle chronicle){
-        mChronicleDataSource.insert(chronicle);
+        //mChronicleDataSource.insert(chronicle);
     }
 
 }

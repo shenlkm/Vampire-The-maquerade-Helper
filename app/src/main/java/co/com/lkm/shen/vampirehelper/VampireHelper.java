@@ -5,6 +5,7 @@ import android.app.Application;
 
 import javax.inject.Inject;
 
+import co.com.lkm.shen.vampirehelper.di.AppInjector;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
@@ -17,6 +18,7 @@ public class VampireHelper extends Application implements HasActivityInjector {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppInjector.init(this);
 
     }
 

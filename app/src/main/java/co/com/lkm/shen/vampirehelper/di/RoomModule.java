@@ -1,13 +1,16 @@
-package co.com.lkm.shen.vampirehelper;
+package co.com.lkm.shen.vampirehelper.di;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
 import javax.inject.Singleton;
 
-import co.com.lkm.shen.vampirehelper.DataSource.ChronicleDataSource;
-import co.com.lkm.shen.vampirehelper.Domain.Dao.ChronicleDao;
+import co.com.lkm.shen.vampirehelper.Repository.DataSource.ChronicleDataSource;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Dao.ChronicleDao;
+import co.com.lkm.shen.vampirehelper.MasterRoomDatabase;
 import co.com.lkm.shen.vampirehelper.Repository.ChronicleRepository;
+import dagger.BindsInstance;
+import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 

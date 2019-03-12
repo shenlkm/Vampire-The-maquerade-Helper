@@ -13,7 +13,7 @@ import java.util.List;
 
 import co.com.lkm.shen.vampirehelper.ChronicleActivity;
 import co.com.lkm.shen.vampirehelper.Constants;
-import co.com.lkm.shen.vampirehelper.Domain.Chronicle;
+import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
 import co.com.lkm.shen.vampirehelper.R;
 
 public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.ChronicleViewHolder> {
