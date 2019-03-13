@@ -7,28 +7,39 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import co.com.lkm.shen.vampirehelper.Repository.DataSource.ChronicleDataSource;
-import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
-import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Scene;
+import javax.inject.Inject;
+
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
+import co.com.lkm.shen.vampirehelper.Data.Repository.PlayerRepository;
+import co.com.lkm.shen.vampirehelper.Data.Repository.SceneRepository;
 
 public class ChronicleViewModel extends AndroidViewModel {
 
     public LiveData<List<Scene>> Scenes;
-    private ChronicleDataSource mChronicleDataSource;
+    public LiveData<List<Player>> Players;
+    public SceneRepository mSceneRepository;
+    public PlayerRepository mPlayerRepository;
 
-    public ChronicleViewModel(@NonNull Application application) {
+    @Inject
+    public ChronicleViewModel(@NonNull SceneRepository sceneRepository, @NonNull PlayerRepository playerRepository, @NonNull Application application) {
         super(application);
-
-        //mChronicleDataSource = ChronicleDataSource.getInstance();
+        mSceneRepository = sceneRepository;
+        mPlayerRepository = playerRepository;
     }
 
-    public LiveData<List<Scene>> getChronicles(int id) {
-        //Scenes = mChronicleDataSource.getChronicleScenes(id);
+    public LiveData<List<Scene>> getChronicleScenes(Long id) {
+        Scenes = mSceneRepository.getChronicleScenes(id);
         return Scenes;
     }
 
-    public void  insert(Chronicle chronicle){
-        //mChronicleDataSource.insert(chronicle);
+    public LiveData<List<Player>> getChroniclePlayers(Long id) {
+        Players = mPlayerRepository.getChroniclePlayers(id);
+        return Players;
+    }
+
+    public void  insert(Scene scene){
+        mSceneRepository.insert(scene);
     }
 
 }

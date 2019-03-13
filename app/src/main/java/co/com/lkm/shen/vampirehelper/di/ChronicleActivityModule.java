@@ -1,12 +1,11 @@
 package co.com.lkm.shen.vampirehelper.di;
 
 import co.com.lkm.shen.vampirehelper.View.ChronicleActivity;
-import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
 @Module
-public abstract class HomeActivityModule {
+public abstract class ChronicleActivityModule {
     @ContributesAndroidInjector(modules = FragmentBuildersModule.class)
-    abstract HomeActivity contributeHomeActivity();
+    abstract ChronicleActivity contributeChronicleActivity();
 }

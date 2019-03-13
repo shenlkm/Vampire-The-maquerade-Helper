@@ -22,7 +22,7 @@ public class MasterViewModelFactory implements ViewModelProvider.Factory {
         creators = new ArrayMap<>();
 
         creators.put(HomeViewModel.class, () -> viewModelSubComponent.homeViewModel() );
-        //creators.put(ChronicleViewModel.class, () -> viewModelSubComponent.chronicleViewModel() );
+        creators.put(ChronicleViewModel.class, () -> viewModelSubComponent.chronicleViewModel() );
     }
 
     @NonNull

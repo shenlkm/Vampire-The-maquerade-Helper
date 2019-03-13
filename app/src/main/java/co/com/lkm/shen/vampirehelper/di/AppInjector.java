@@ -66,19 +66,15 @@ public class AppInjector {
         if(activity instanceof HasSupportFragmentInjector){
             AndroidInjection.inject(activity);
         }
-
-        if(activity instanceof FragmentActivity){
-            ((FragmentActivity) activity).getSupportFragmentManager()
-                    .registerFragmentLifecycleCallbacks(
-                            new FragmentManager.FragmentLifecycleCallbacks() {
-                                @Override
-                                public void onFragmentCreated(FragmentManager fm, Fragment f, Bundle savedInstanceState) {
-                                    if(f instanceof Injectable){
-                                        AndroidSupportInjection.inject(f);
-                                    }
+        ((FragmentActivity) activity).getSupportFragmentManager()
+                .registerFragmentLifecycleCallbacks(
+                        new FragmentManager.FragmentLifecycleCallbacks() {
+                            @Override
+                            public void onFragmentCreated(FragmentManager fm, Fragment f, Bundle savedInstanceState) {
+                                if(f instanceof Injectable){
+                                    AndroidSupportInjection.inject(f);
                                 }
                             }
-                    , true);
-        }
+                        }, true);
     }
 }

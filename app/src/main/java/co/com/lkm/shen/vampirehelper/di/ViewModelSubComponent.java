@@ -12,5 +12,5 @@ public interface ViewModelSubComponent {
     }
 
     HomeViewModel homeViewModel();
-    //ChronicleViewModel chronicleViewModel();
+    ChronicleViewModel chronicleViewModel();
 }

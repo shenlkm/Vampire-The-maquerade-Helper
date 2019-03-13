@@ -9,13 +9,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import co.com.lkm.shen.vampirehelper.Repository.Domain.Entities.Chronicle;
-import co.com.lkm.shen.vampirehelper.Repository.ChronicleRepository;
+import co.com.lkm.shen.vampirehelper.Data.Repository.ChronicleRepository;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Chronicle;
 
 public class HomeViewModel extends AndroidViewModel {
 
     public LiveData<List<Chronicle>> Chronicles;
-
     public ChronicleRepository mChronicleDataSource;
 
     @Inject

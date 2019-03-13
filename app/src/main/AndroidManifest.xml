@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppPrimaryTheme">
         <activity
-            android:name=".HomeActivity"
+            android:name=".View.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppPrimaryTheme.NoActionBar">
             <intent-filter>
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChronicleActivity"
+            android:name=".View.ChronicleActivity"
             android:label="@string/title_activity_chronicles"
             android:theme="@style/AppPrimaryTheme.NoActionBar"></activity>
         <activity
-            android:name=".CreateCharacterActivity"
+            android:name=".View.CreateCharacterActivity"
             android:label="@string/title_activity_chronicles"
             android:noHistory="true"
             android:theme="@style/AppPrimaryTheme.NoActionBar"></activity>

@@ -1,6 +1,8 @@
 package co.com.lkm.shen.vampirehelper.di;
 
-import co.com.lkm.shen.vampirehelper.Fragments.ChronicleFragment;
+import co.com.lkm.shen.vampirehelper.View.Fragments.CharacterFragment;
+import co.com.lkm.shen.vampirehelper.View.Fragments.ChronicleFragment;
+import co.com.lkm.shen.vampirehelper.View.Fragments.SceneFragment;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -8,4 +10,8 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class FragmentBuildersModule {
     @ContributesAndroidInjector
     abstract ChronicleFragment contributeChronicleFragment();
+    @ContributesAndroidInjector
+    abstract SceneFragment contributeSceneFragment();
+    @ContributesAndroidInjector
+    abstract CharacterFragment contributeCharacterFragment();
 }
