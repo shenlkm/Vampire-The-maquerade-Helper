@@ -43,7 +43,6 @@
             android:id="@+id/createPlayer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="createScene"
             app:fabSize="mini"
             style="@style/AppPrimaryTheme.FloatingActionButton"
             app:srcCompat="@drawable/ic_white_scene_add"/>

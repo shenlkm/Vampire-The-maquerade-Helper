@@ -21,7 +21,13 @@ public class Scene{
     @ColumnInfo(name = "end_date")
     private Date endtDate;
     @ColumnInfo(name = "chronicle_id")
-    private int ChronicleId;
+    private Long chronicleId;
+
+    public Scene(String name, Long chronicleId){
+        this.name = name;
+        this.chronicleId = chronicleId;
+        startDate = new Date();
+    }
 
     public long getId() {
         return id;
@@ -55,11 +61,11 @@ public class Scene{
         this.endtDate = endtDate;
     }
 
-    public int getChronicleId() {
-        return ChronicleId;
+    public Long getChronicleId() {
+        return chronicleId;
     }
 
-    public void setChronicleId(int chronicleId) {
-        ChronicleId = chronicleId;
+    public void setChronicleId(Long chronicleId) {
+        this.chronicleId = chronicleId;
     }
 }

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f7d1c118941888732cbb340b74eadea1",
+    "identityHash": "6a65f3bdd2587672bff118d2a2fda07d",
     "entities": [
       {
         "tableName": "chronicle",
@@ -32,7 +32,7 @@
       },
       {
         "tableName": "scene",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `start_date` INTEGER, `end_date` INTEGER, `chronicle_id` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `start_date` INTEGER, `end_date` INTEGER, `chronicle_id` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -62,7 +62,7 @@
             "fieldPath": "ChronicleId",
             "columnName": "chronicle_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -169,7 +169,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"f7d1c118941888732cbb340b74eadea1\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6a65f3bdd2587672bff118d2a2fda07d\")"
     ]
   }
 }

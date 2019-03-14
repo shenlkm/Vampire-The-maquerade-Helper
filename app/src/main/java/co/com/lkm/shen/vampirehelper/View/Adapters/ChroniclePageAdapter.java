@@ -32,6 +32,8 @@ public class ChroniclePageAdapter extends FragmentStatePagerAdapter {
         return fragment;
     }
 
+
+
     @Override
     public int getCount() {
         return titles.length;

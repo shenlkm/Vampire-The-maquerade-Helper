@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -21,8 +22,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.View.Adapters.ChroniclePageAdapter;
+import co.com.lkm.shen.vampirehelper.View.Fragments.SceneFragment;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
@@ -71,7 +74,6 @@ public class ChronicleActivity extends AppCompatActivity implements HasSupportFr
         this.showButtons(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE);
     }
 
-
     private void animateButton(Animation showBottons, Animation showLayouts, int visible) {
         sceneLayout.setVisibility(visible);
         characterLayout.setVisibility(visible);
@@ -85,42 +87,6 @@ public class ChronicleActivity extends AppCompatActivity implements HasSupportFr
         Intent intent = new Intent(this, CreateCharacterActivity.class);
         intent.putExtras(getIntent().getExtras());
         startActivity(intent);
-    }
-
-    public void createScene(View v){
-        this.showButtons(false);
-        AlertDialog.Builder builder = getInputDialog();
-        builder.show();
-    }
-
-    private AlertDialog.Builder getInputDialog() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("New Scene");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Bundle extras = getIntent().getExtras();
-                long id = extras.getLong(Constants.KEY_ID_EXTRAS);
-                /*if(this.addScene(input.getText().toString(), id))
-                {
-                    dialogInterface.dismiss();;
-                }*/
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-
-        return builder;
     }
 
     public void setupView() {
