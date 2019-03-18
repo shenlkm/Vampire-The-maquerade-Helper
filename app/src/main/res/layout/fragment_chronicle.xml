@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".View.ChronicleActivity">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -72,7 +70,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:onClick="createCharacter"
             app:fabSize="mini"
             style="@style/AppPrimaryTheme.FloatingActionButton"
             app:srcCompat="@drawable/ic_white_person_add"/>
@@ -84,7 +81,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/float_margin"
-        android:onClick="showOptions"
         style="@style/AppPrimaryTheme.FloatingActionButton"
         app:srcCompat="@drawable/ic_white_add"/>
 

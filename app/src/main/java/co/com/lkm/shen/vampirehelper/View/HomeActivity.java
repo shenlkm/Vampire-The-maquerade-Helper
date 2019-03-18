@@ -1,8 +1,10 @@
 package co.com.lkm.shen.vampirehelper.View;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -36,10 +38,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        ChronicleFragment fragment = new ChronicleFragment();
-
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, fragment, ChronicleFragment.TAG).commit();
+        addFragment(new ChronicleFragment(), R.id.fragment_container);
         setupView();
     }
 
@@ -104,7 +103,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     public void setupView() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawer, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -117,5 +115,29 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public AndroidInjector<Fragment> supportFragmentInjector() {
         return dispatchingAndroidInjector;
+    }
+
+    public void addFragment(Fragment fragment, @IdRes int containerId) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(containerId, fragment);
+        transaction.commit();
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        replaceFragment(fragment, R.id.fragment_container, true);
+    }
+
+    public void replaceFragment(Fragment fragment, boolean addToBackStack) {
+
+        replaceFragment(fragment, R.id.fragment_container, addToBackStack);
+    }
+
+    public void replaceFragment(Fragment fragment, @IdRes int containerId, boolean addToBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(containerId, fragment);
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 }

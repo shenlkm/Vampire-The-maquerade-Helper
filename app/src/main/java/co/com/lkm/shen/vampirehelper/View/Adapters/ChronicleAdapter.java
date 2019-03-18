@@ -1,7 +1,6 @@
 package co.com.lkm.shen.vampirehelper.View.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +10,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Chronicle;
-import co.com.lkm.shen.vampirehelper.View.ChronicleActivity;
+import co.com.lkm.shen.vampirehelper.View.Fragments.DashboardFragment;
+import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 
 public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.ChronicleViewHolder> {
 
@@ -54,10 +53,8 @@ public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.Chro
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ChronicleActivity.class);
-                intent.putExtra(Constants.KEY_ID_EXTRAS, chronicle.getId());
-                intent.putExtra(Constants.KEY_TITLE_EXTRAS, chronicle.getName());
-                mContext.startActivity(intent);
+                DashboardFragment fragment = DashboardFragment.newInstance(chronicle.getId());
+                ((HomeActivity) mContext).replaceFragment(fragment);
             }
         });
     }
@@ -69,7 +66,6 @@ public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.Chro
 
     @Override
     public long getItemId(int index) {
-        //noinspection ConstantConditions
         return mChronicles.get(index).getId();
     }
 

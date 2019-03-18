@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -19,13 +18,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
 import co.com.lkm.shen.vampirehelper.View.Adapters.SceneAdapter;
-import co.com.lkm.shen.vampirehelper.View.ChronicleActivity;
 import co.com.lkm.shen.vampirehelper.ViewModel.ChronicleViewModel;
 
 
@@ -37,6 +34,7 @@ public class SceneFragment extends BaseRecyclerFragment {
     public ViewModelProvider.Factory viewModelFactory;
     public ChronicleViewModel mChronicleViewModel;
     private SceneAdapter mSceneAdapter;
+    private Long chronicle_id;
 
     public SceneFragment(){
     }
@@ -73,6 +71,12 @@ public class SceneFragment extends BaseRecyclerFragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        chronicle_id = getArguments().getLong(Constants.CHRONICLE_ID);
+    }
+
+    @Override
     public void setupView() {
         super.setupView();
         mSceneAdapter = new SceneAdapter(getActivity());
@@ -82,7 +86,10 @@ public class SceneFragment extends BaseRecyclerFragment {
     }
 
     public void createScene(View v){
-        ((ChronicleActivity) getActivity()).showButtons(false);
+
+        DashboardFragment dashboardFragment = (DashboardFragment)  getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        dashboardFragment.showButtons(false);
+
         AlertDialog.Builder builder = getInputDialog();
         builder.show();
     }
@@ -98,9 +105,7 @@ public class SceneFragment extends BaseRecyclerFragment {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Bundle extras = getActivity().getIntent().getExtras();
-                long id = extras.getLong(Constants.KEY_ID_EXTRAS);
-                Scene scene= new Scene(input.getText().toString(), id);
+                Scene scene= new Scene(input.getText().toString(), chronicle_id);
                 mChronicleViewModel.insert(scene);
                 dialogInterface.dismiss();
             }

@@ -4,8 +4,10 @@ package co.com.lkm.shen.vampirehelper.View.Fragments;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +21,18 @@ import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.View.Adapters.CharacterAdapter;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
+import co.com.lkm.shen.vampirehelper.View.CreateCharacterActivity;
 import co.com.lkm.shen.vampirehelper.ViewModel.ChronicleViewModel;
 
 
 public class CharacterFragment extends BaseRecyclerFragment {
 
+    public FloatingActionButton create;
+
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
 
     public ChronicleViewModel mChronicleViewModel;
-
     private CharacterAdapter mCharacterAdapter;
 
     public CharacterFragment(){
@@ -68,7 +72,16 @@ public class CharacterFragment extends BaseRecyclerFragment {
     @Override
     public void setupView() {
         super.setupView();
+        create = (FloatingActionButton) getActivity().findViewById(R.id.createCharacter);
+        create.setOnClickListener((v) -> createCharacter(v));
+
         mCharacterAdapter = new CharacterAdapter(getActivity());
         mRecyclerView.setAdapter(mCharacterAdapter);
+    }
+
+    public void createCharacter(View v){
+        /*Intent intent = new Intent(this, CreateCharacterActivity.class);
+        intent.putExtras(getIntent().getExtras());
+        startActivity(intent);*/
     }
 }

@@ -1,8 +1,9 @@
 package co.com.lkm.shen.vampirehelper.View;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,63 +11,36 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.R;
+import co.com.lkm.shen.vampirehelper.View.Fragments.ChronicleFragment;
+import co.com.lkm.shen.vampirehelper.View.Fragments.CreateCharacterFragment;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
-public class CreateCharacterActivity extends Activity implements AdapterView.OnItemSelectedListener  {
+public class CreateCharacterActivity extends AppCompatActivity implements HasSupportFragmentInjector {
 
-    @BindView(R.id.spinner_clans) Spinner mSpiner;
-    @BindView(R.id.input_character_name) EditText inputCharacterName;
-    @BindView(R.id.input_player_name) EditText inputPlayerName;
-    @BindView(R.id.input_initiative) EditText inputInitiativeName;
-    @BindView(R.id.clan_logo_selected) ImageView mImageView;
-
-    private final static String KEY_ID_EXTRAS = "ID";
-    private  long id = 0L;
+    @Inject
+    DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_character);
+        setContentView(R.layout.activity_dummy_content);
         ButterKnife.bind(this);
 
-        Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            id =  extras.getLong(KEY_ID_EXTRAS);
-        }
+        CreateCharacterFragment fragment = new CreateCharacterFragment();
 
-        this.setupView();
-    }
-
-    public void setupView() {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clan_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSpiner.setOnItemSelectedListener(this);
-        mSpiner.setAdapter(adapter);
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragment, ChronicleFragment.TAG).commit();
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //mImageView.setImageResource(this.getResource(i));
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-        mImageView.setImageResource(R.drawable.ic_logo_no_clan);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    public void saveCharacter(View v){
-        /*mPresenter.saveChatacter(inputPlayerName.getText().toString(),
-                inputCharacterName.getText().toString(),
-                inputInitiativeName.getText().toString(),
-                mSpiner.getSelectedItemPosition(),
-                id);
-        finish();*/
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return dispatchingAndroidInjector;
     }
 }

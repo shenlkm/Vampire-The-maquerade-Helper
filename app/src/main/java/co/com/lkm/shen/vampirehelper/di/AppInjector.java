@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import co.com.lkm.shen.vampirehelper.VampireHelper;
 import dagger.android.AndroidInjection;
@@ -66,15 +67,17 @@ public class AppInjector {
         if(activity instanceof HasSupportFragmentInjector){
             AndroidInjection.inject(activity);
         }
-        ((FragmentActivity) activity).getSupportFragmentManager()
-                .registerFragmentLifecycleCallbacks(
-                        new FragmentManager.FragmentLifecycleCallbacks() {
-                            @Override
-                            public void onFragmentCreated(FragmentManager fm, Fragment f, Bundle savedInstanceState) {
-                                if(f instanceof Injectable){
-                                    AndroidSupportInjection.inject(f);
+        if(activity instanceof AppCompatActivity){
+            ((FragmentActivity) activity).getSupportFragmentManager()
+                    .registerFragmentLifecycleCallbacks(
+                            new FragmentManager.FragmentLifecycleCallbacks() {
+                                @Override
+                                public void onFragmentCreated(FragmentManager fm, Fragment f, Bundle savedInstanceState) {
+                                    if(f instanceof Injectable){
+                                        AndroidSupportInjection.inject(f);
+                                    }
                                 }
-                            }
-                        }, true);
+                            }, true);
+        }
     }
 }

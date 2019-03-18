@@ -15,8 +15,7 @@ import dagger.android.AndroidInjectionModule;
                 AndroidInjectionModule.class,
                 AppModule.class,
                 RoomModule.class,
-                HomeActivityModule.class,
-                ChronicleActivityModule.class
+                HomeActivityModule.class
         })
 interface AppComponent {
 

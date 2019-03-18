@@ -21,10 +21,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.ChronicleActivity"
-            android:label="@string/title_activity_chronicles"
-            android:theme="@style/AppPrimaryTheme.NoActionBar"></activity>
-        <activity
             android:name=".View.CreateCharacterActivity"
             android:label="@string/title_activity_chronicles"
             android:noHistory="true"
