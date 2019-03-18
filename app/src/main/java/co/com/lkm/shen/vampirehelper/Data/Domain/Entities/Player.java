@@ -36,7 +36,7 @@ public class Player{
     @ColumnInfo(name = "dead")
     private boolean dead;
     @ColumnInfo(name = "chronicle_id")
-    private int ChronicleId;
+    private Long ChronicleId;
 
     public long getId() {
         return id;
@@ -141,11 +141,11 @@ public class Player{
         this.totalDamage = totalDamage;
     }
 
-    public int getChronicleId() {
+    public Long getChronicleId() {
         return ChronicleId;
     }
 
-    public void setChronicleId(int chronicleId) {
+    public void setChronicleId(Long chronicleId) {
         ChronicleId = chronicleId;
     }
 }

@@ -4,7 +4,6 @@ package co.com.lkm.shen.vampirehelper.View.Fragments;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -21,7 +20,7 @@ import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.View.Adapters.CharacterAdapter;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
-import co.com.lkm.shen.vampirehelper.View.CreateCharacterActivity;
+import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 import co.com.lkm.shen.vampirehelper.ViewModel.ChronicleViewModel;
 
 
@@ -34,6 +33,7 @@ public class CharacterFragment extends BaseRecyclerFragment {
 
     public ChronicleViewModel mChronicleViewModel;
     private CharacterAdapter mCharacterAdapter;
+    private long chronicle_id;
 
     public CharacterFragment(){
     }
@@ -44,6 +44,12 @@ public class CharacterFragment extends BaseRecyclerFragment {
         args.putLong(Constants.CHRONICLE_ID, id);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        chronicle_id = getArguments().getLong(Constants.CHRONICLE_ID);
     }
 
     @Override
@@ -80,8 +86,10 @@ public class CharacterFragment extends BaseRecyclerFragment {
     }
 
     public void createCharacter(View v){
-        /*Intent intent = new Intent(this, CreateCharacterActivity.class);
-        intent.putExtras(getIntent().getExtras());
-        startActivity(intent);*/
+        DashboardFragment dashboardFragment = (DashboardFragment)  getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        dashboardFragment.showButtons(false);
+
+        CreateCharacterFragment fragment = CreateCharacterFragment.newInstance(chronicle_id);
+        ((HomeActivity) getActivity()).replaceFragment(fragment);
     }
 }

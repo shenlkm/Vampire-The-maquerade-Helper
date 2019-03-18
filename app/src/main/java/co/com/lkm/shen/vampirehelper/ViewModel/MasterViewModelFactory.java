@@ -23,6 +23,7 @@ public class MasterViewModelFactory implements ViewModelProvider.Factory {
 
         creators.put(HomeViewModel.class, () -> viewModelSubComponent.homeViewModel() );
         creators.put(ChronicleViewModel.class, () -> viewModelSubComponent.chronicleViewModel() );
+        creators.put(CreateCharacterViewModel.class, () -> viewModelSubComponent.createCharacterViewModel() );
     }
 
     @NonNull

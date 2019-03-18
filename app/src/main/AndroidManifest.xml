@@ -20,11 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".View.CreateCharacterActivity"
-            android:label="@string/title_activity_chronicles"
-            android:noHistory="true"
-            android:theme="@style/AppPrimaryTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

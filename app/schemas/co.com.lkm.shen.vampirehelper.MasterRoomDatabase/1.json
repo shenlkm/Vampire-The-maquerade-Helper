@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6a65f3bdd2587672bff118d2a2fda07d",
+    "identityHash": "c90bc4e48b518c91f427221e230d2b8a",
     "entities": [
       {
         "tableName": "chronicle",
@@ -59,7 +59,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "ChronicleId",
+            "fieldPath": "chronicleId",
             "columnName": "chronicle_id",
             "affinity": "INTEGER",
             "notNull": false
@@ -76,7 +76,7 @@
       },
       {
         "tableName": "player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -154,7 +154,7 @@
             "fieldPath": "ChronicleId",
             "columnName": "chronicle_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -169,7 +169,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6a65f3bdd2587672bff118d2a2fda07d\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c90bc4e48b518c91f427221e230d2b8a\")"
     ]
   }
 }
