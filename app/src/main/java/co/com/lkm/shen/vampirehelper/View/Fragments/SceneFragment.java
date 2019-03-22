@@ -62,18 +62,14 @@ public class SceneFragment extends BaseRecyclerFragment {
         mChronicleViewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(ChronicleViewModel.class);
 
-        mChronicleViewModel.getChronicleScenes(mId).observe(this, new Observer<List<Scene>>() {
+        mChronicleViewModel.setChronicle_id(chronicle_id);
+
+        mChronicleViewModel.getChronicleScenes().observe(this, new Observer<List<Scene>>() {
             @Override
             public void onChanged(@Nullable List<Scene> scenes) {
                 mSceneAdapter.setScenes(scenes);
             }
         });
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        chronicle_id = getArguments().getLong(Constants.CHRONICLE_ID);
     }
 
     @Override

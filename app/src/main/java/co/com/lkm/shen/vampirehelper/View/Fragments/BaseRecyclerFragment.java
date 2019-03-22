@@ -14,7 +14,7 @@ public abstract class BaseRecyclerFragment extends Fragment implements Injectabl
 
     @BindView(R.id.frameList)
     public RecyclerView mRecyclerView;
-    public Long mId;
+    public Long chronicle_id;
 
     protected RecyclerView.LayoutManager mLayoutManager;
 
@@ -22,7 +22,7 @@ public abstract class BaseRecyclerFragment extends Fragment implements Injectabl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mId = getArguments().getLong(Constants.CHRONICLE_ID);
+            chronicle_id = getArguments().getLong(Constants.CHRONICLE_ID);
         }
     }
 

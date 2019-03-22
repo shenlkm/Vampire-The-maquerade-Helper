@@ -3,6 +3,7 @@ package co.com.lkm.shen.vampirehelper.ViewModel;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -21,20 +22,26 @@ public class ChronicleViewModel extends AndroidViewModel {
     public SceneRepository mSceneRepository;
     public PlayerRepository mPlayerRepository;
 
+    public void setChronicle_id(Long chronicle_id) {
+        this.chronicle_id = chronicle_id;
+    }
+
+    private Long chronicle_id;
+
     @Inject
     public ChronicleViewModel(@NonNull SceneRepository sceneRepository, @NonNull PlayerRepository playerRepository, @NonNull Application application) {
         super(application);
         mSceneRepository = sceneRepository;
         mPlayerRepository = playerRepository;
+        Scenes = mSceneRepository.getChronicleScenes(chronicle_id);
+        Players = mPlayerRepository.getChroniclePlayers(chronicle_id);
     }
 
-    public LiveData<List<Scene>> getChronicleScenes(Long id) {
-        Scenes = mSceneRepository.getChronicleScenes(id);
+    public LiveData<List<Scene>> getChronicleScenes() {
         return Scenes;
     }
 
-    public LiveData<List<Player>> getChroniclePlayers(Long id) {
-        Players = mPlayerRepository.getChroniclePlayers(id);
+    public LiveData<List<Player>> getChroniclePlayers() {
         return Players;
     }
 
