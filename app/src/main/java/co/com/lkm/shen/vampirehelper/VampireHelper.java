@@ -1,20 +1,29 @@
 package co.com.lkm.shen.vampirehelper;
 
+import android.app.Activity;
 import android.app.Application;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
+import javax.inject.Inject;
 
-public class VampireHelper extends Application {
+import co.com.lkm.shen.vampirehelper.di.AppInjector;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+
+public class VampireHelper extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder()
-                .name("vampireHelper.realm")
-                .schemaVersion(1)
-                .build();
-        Realm.setDefaultConfiguration(config);
+        AppInjector.init(this);
+
+    }
+
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return activityDispatchingAndroidInjector;
     }
 }
