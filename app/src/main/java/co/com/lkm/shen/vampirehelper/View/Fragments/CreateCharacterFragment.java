@@ -88,7 +88,7 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        //mImageView.setImageResource(getActivity().getResource(position));
+        mImageView.setImageResource(Constants.CLAN_LOGOS[position]);
     }
 
     public void saveCharacter(View v){
