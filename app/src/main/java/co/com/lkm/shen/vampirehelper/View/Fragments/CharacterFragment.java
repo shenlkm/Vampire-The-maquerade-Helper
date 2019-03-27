@@ -33,7 +33,6 @@ public class CharacterFragment extends BaseRecyclerFragment {
 
     public ChronicleViewModel mChronicleViewModel;
     private CharacterAdapter mCharacterAdapter;
-    private long chronicle_id;
 
     public CharacterFragment(){
     }
@@ -61,9 +60,7 @@ public class CharacterFragment extends BaseRecyclerFragment {
         mChronicleViewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(ChronicleViewModel.class);
 
-        mChronicleViewModel.setChronicle_id(chronicle_id);
-
-        mChronicleViewModel.getChroniclePlayers().observe(this, new Observer<List<Player>>() {
+        mChronicleViewModel.getChroniclePlayers(chronicle_id).observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(@Nullable List<Player> players) {
                 mCharacterAdapter.setPlayers(players);
@@ -82,9 +79,7 @@ public class CharacterFragment extends BaseRecyclerFragment {
     }
 
     public void createCharacter(View v){
-        DashboardFragment dashboardFragment = (DashboardFragment)  getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        dashboardFragment.showButtons(false);
-
+        HideButtons();
         CreateCharacterFragment fragment = CreateCharacterFragment.newInstance(chronicle_id);
         ((HomeActivity) getActivity()).replaceFragment(fragment);
     }

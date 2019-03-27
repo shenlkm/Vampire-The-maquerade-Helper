@@ -30,4 +30,15 @@ public abstract class BaseRecyclerFragment extends Fragment implements Injectabl
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mRecyclerView.setAdapter(null);
+    }
+
+    protected void HideButtons() {
+        DashboardFragment dashboardFragment = (DashboardFragment)  getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        dashboardFragment.showButtons(false);
+    }
 }

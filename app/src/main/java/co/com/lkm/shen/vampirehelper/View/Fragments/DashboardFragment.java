@@ -45,17 +45,28 @@ public class DashboardFragment extends Fragment implements Injectable {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        showButtons(false);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_chronicle, container, false);
         ButterKnife.bind(this, rootView);
-        this.setupView();
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        this.setupView();
     }
 
     public void setupView() {
 
         menuButton.setOnClickListener((v) -> showOptions(v));
-        mChroniclePageAdapter = new ChroniclePageAdapter(getActivity().getSupportFragmentManager(), chronicle_id);
+        mChroniclePageAdapter = new ChroniclePageAdapter(getChildFragmentManager(), chronicle_id);
         chroniclePager.setAdapter(mChroniclePageAdapter);
     }
 

@@ -33,15 +33,19 @@ public class ChronicleViewModel extends AndroidViewModel {
         super(application);
         mSceneRepository = sceneRepository;
         mPlayerRepository = playerRepository;
-        Scenes = mSceneRepository.getChronicleScenes(chronicle_id);
-        Players = mPlayerRepository.getChroniclePlayers(chronicle_id);
     }
 
-    public LiveData<List<Scene>> getChronicleScenes() {
+    public LiveData<List<Scene>> getChronicleScenes(Long chronicle_id) {
+        if(Scenes == null){
+            Scenes = mSceneRepository.getChronicleScenes(chronicle_id);
+        }
         return Scenes;
     }
 
-    public LiveData<List<Player>> getChroniclePlayers() {
+    public LiveData<List<Player>> getChroniclePlayers(Long chronicle_id) {
+        if(Players == null){
+            Players = mPlayerRepository.getChroniclePlayers(chronicle_id);
+        }
         return Players;
     }
 

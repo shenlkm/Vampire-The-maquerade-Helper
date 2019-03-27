@@ -34,7 +34,6 @@ public class SceneFragment extends BaseRecyclerFragment {
     public ViewModelProvider.Factory viewModelFactory;
     public ChronicleViewModel mChronicleViewModel;
     private SceneAdapter mSceneAdapter;
-    private Long chronicle_id;
 
     public SceneFragment(){
     }
@@ -62,9 +61,7 @@ public class SceneFragment extends BaseRecyclerFragment {
         mChronicleViewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(ChronicleViewModel.class);
 
-        mChronicleViewModel.setChronicle_id(chronicle_id);
-
-        mChronicleViewModel.getChronicleScenes().observe(this, new Observer<List<Scene>>() {
+        mChronicleViewModel.getChronicleScenes(chronicle_id).observe(this, new Observer<List<Scene>>() {
             @Override
             public void onChanged(@Nullable List<Scene> scenes) {
                 mSceneAdapter.setScenes(scenes);
@@ -83,8 +80,7 @@ public class SceneFragment extends BaseRecyclerFragment {
 
     public void createScene(View v){
 
-        DashboardFragment dashboardFragment = (DashboardFragment)  getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        dashboardFragment.showButtons(false);
+        HideButtons();;
 
         AlertDialog.Builder builder = getInputDialog();
         builder.show();

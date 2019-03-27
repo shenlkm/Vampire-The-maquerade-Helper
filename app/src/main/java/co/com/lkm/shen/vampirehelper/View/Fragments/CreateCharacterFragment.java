@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +25,6 @@ import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.ViewModel.CreateCharacterViewModel;
-import co.com.lkm.shen.vampirehelper.ViewModel.HomeViewModel;
 import co.com.lkm.shen.vampirehelper.di.Injectable;
 
 public class CreateCharacterFragment extends Fragment implements Injectable , AdapterView.OnItemSelectedListener {
@@ -99,7 +99,11 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
         player.setClan(mSpiner.getSelectedItemPosition());
         player.setChronicleId(chronicle_id);
         mCreateCharacterViewModel.insert(player);
-        getActivity().onBackPressed();;
+
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+        getFragmentManager().popBackStack();
     }
 
     @Override
