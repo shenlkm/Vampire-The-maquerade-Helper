@@ -8,14 +8,16 @@
 
     <EditText
         android:id="@+id/input_player_name"
-        android:layout_width="209dp"
+        android:layout_width="208dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="@string/player_name"
+        android:layout_marginBottom="8dp"
         android:autofillHints="@string/player_name_hint"
+        android:hint="@string/player_name"
         android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/input_character_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clan_logo_selected"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,28 +27,31 @@
         android:layout_width="208dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="@string/character_name"
+        android:layout_marginBottom="8dp"
         android:autofillHints="@string/character_name_hint"
+        android:hint="@string/character_name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/spinner_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/clan_logo_selected"
-        app:layout_constraintTop_toBottomOf="@+id/input_player_name" />
+        app:layout_constraintTop_toBottomOf="@+id/input_player_name"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/spinner_container"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="208dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/input_initiative"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clan_logo_selected">
+        app:layout_constraintStart_toEndOf="@+id/clan_logo_selected"
+        app:layout_constraintTop_toBottomOf="@+id/input_character_name">
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,9 +80,9 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/clan_image"
         android:src="@drawable/ic_logo_no_clan"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_container"
+        app:layout_constraintBottom_toTopOf="@+id/input_initiative"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_player"
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Button
@@ -85,10 +90,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="136dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="136dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_initiative" />
 
@@ -103,6 +109,18 @@
         android:hint="@string/base_initiative_hint"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_container" />
+
+    <Switch
+        android:id="@+id/switch_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Player  "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

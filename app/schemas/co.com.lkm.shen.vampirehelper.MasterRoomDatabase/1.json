@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c90bc4e48b518c91f427221e230d2b8a",
+    "identityHash": "ba45100120da71f0e11ce2b9bb24c481",
     "entities": [
       {
         "tableName": "chronicle",
@@ -76,7 +76,7 @@
       },
       {
         "tableName": "player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER, `is_player` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -155,6 +155,12 @@
             "columnName": "chronicle_id",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "isPlayer",
+            "columnName": "is_player",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -169,7 +175,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c90bc4e48b518c91f427221e230d2b8a\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ba45100120da71f0e11ce2b9bb24c481\")"
     ]
   }
 }

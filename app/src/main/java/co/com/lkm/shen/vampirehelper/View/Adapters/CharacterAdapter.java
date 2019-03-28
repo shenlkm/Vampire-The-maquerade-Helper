@@ -40,7 +40,8 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
     public void onBindViewHolder(@NonNull CharacterAdapter.CharacterViewHolder holder, int position) {
         final Player player = mPayers.get(position);
         holder.chraracterName.setText(player.getCharacterName());
-        holder.playerName.setText(String.format("Player name: %s", player.getName()));
+        String playerName = player.isPlayer() ? player.getName() : "NPC";
+        holder.playerName.setText(String.format("Player name: %s", playerName));
         holder.initiative.setText(String.format("Initiative: %d", player.getInitiative()));
         holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
     }

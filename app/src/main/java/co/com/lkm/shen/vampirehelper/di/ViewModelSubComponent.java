@@ -1,5 +1,6 @@
 package co.com.lkm.shen.vampirehelper.di;
 
+import co.com.lkm.shen.vampirehelper.ViewModel.BattleViewModel;
 import co.com.lkm.shen.vampirehelper.ViewModel.ChronicleViewModel;
 import co.com.lkm.shen.vampirehelper.ViewModel.CreateCharacterViewModel;
 import co.com.lkm.shen.vampirehelper.ViewModel.HomeViewModel;
@@ -15,4 +16,5 @@ public interface ViewModelSubComponent {
     HomeViewModel homeViewModel();
     ChronicleViewModel chronicleViewModel();
     CreateCharacterViewModel createCharacterViewModel();
+    BattleViewModel battleViewModel();
 }

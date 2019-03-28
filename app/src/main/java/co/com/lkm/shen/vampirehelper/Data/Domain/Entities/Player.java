@@ -38,6 +38,17 @@ public class Player{
     @ColumnInfo(name = "chronicle_id")
     private Long ChronicleId;
 
+    public boolean isPlayer() {
+        return isPlayer;
+    }
+
+    public void setPlayer(boolean player) {
+        isPlayer = player;
+    }
+
+    @ColumnInfo(name = "is_player")
+    private boolean isPlayer;
+
     public long getId() {
         return id;
     }

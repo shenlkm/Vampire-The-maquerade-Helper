@@ -13,9 +13,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import javax.inject.Inject;
 
@@ -44,6 +46,8 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
     ImageView mImageView;
     @BindView(R.id.save_character)
     Button saveCharacter;
+    @BindView(R.id.switch_player)
+    Switch switchPlayer;
 
     private long chronicle_id = 0L;
 
@@ -84,6 +88,12 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
         mSpiner.setAdapter(adapter);
 
         saveCharacter.setOnClickListener((v -> saveCharacter(v)));
+        switchPlayer.setChecked(true);
+        switchPlayer.setOnCheckedChangeListener((v, checked) -> onToggle(checked));
+    }
+
+    private void onToggle(boolean checked) {
+        inputPlayerName.setEnabled(checked);
     }
 
     @Override
@@ -93,11 +103,14 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
 
     public void saveCharacter(View v){
         Player player = new Player();
-        player.setName(inputPlayerName.getText().toString());
+        if(switchPlayer.isChecked()){
+            player.setName(inputPlayerName.getText().toString());
+        }
         player.setCharacterName(inputCharacterName.getText().toString());
         player.setInitiative(Integer.parseInt(inputInitiativeName.getText().toString()));
         player.setClan(mSpiner.getSelectedItemPosition());
         player.setChronicleId(chronicle_id);
+        player.setPlayer(switchPlayer.isChecked());
         mCreateCharacterViewModel.insert(player);
 
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);

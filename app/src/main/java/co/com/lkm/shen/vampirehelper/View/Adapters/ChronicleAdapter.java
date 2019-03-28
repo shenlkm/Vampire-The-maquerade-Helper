@@ -50,13 +50,12 @@ public class ChronicleAdapter extends RecyclerView.Adapter<ChronicleAdapter.Chro
     public void onBindViewHolder(ChronicleViewHolder holder, int position) {
         final Chronicle chronicle = mChronicles.get(position);
         holder.mChronicleName.setText(chronicle.getName());
-        holder.parentLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DashboardFragment fragment = DashboardFragment.newInstance(chronicle.getId());
-                ((HomeActivity) mContext).replaceFragment(fragment);
-            }
-        });
+        holder.parentLayout.setOnClickListener((v -> onItemSelected(v, chronicle)));
+    }
+
+    private void onItemSelected(View v, Chronicle chronicle) {
+        DashboardFragment fragment = DashboardFragment.newInstance(chronicle.getId());
+        ((HomeActivity) mContext).replaceFragment(fragment);
     }
 
     public void setChronicles(List<Chronicle> chronicles){

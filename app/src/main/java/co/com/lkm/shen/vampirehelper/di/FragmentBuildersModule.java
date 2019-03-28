@@ -1,5 +1,6 @@
 package co.com.lkm.shen.vampirehelper.di;
 
+import co.com.lkm.shen.vampirehelper.View.Fragments.BattleFragment;
 import co.com.lkm.shen.vampirehelper.View.Fragments.CharacterFragment;
 import co.com.lkm.shen.vampirehelper.View.Fragments.ChronicleFragment;
 import co.com.lkm.shen.vampirehelper.View.Fragments.CreateCharacterFragment;
@@ -20,4 +21,6 @@ public abstract class FragmentBuildersModule {
     abstract CreateCharacterFragment contributeCreateCharacterFragment();
     @ContributesAndroidInjector
     abstract DashboardFragment contributeDashboardFragment();
+    @ContributesAndroidInjector
+    abstract BattleFragment contributeBattleFragment();
 }

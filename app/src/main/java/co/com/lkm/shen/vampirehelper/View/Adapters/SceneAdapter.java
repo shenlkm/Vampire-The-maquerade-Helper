@@ -2,6 +2,7 @@ package co.com.lkm.shen.vampirehelper.View.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
+import co.com.lkm.shen.vampirehelper.View.Fragments.BattleFragment;
+import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 
 public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHolder> {
 
@@ -46,6 +49,13 @@ public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHo
         holder.startDate.setText(simpleDateFormat.format(scene.getStartDate()));
         String endDate = scene.getEndtDate() == null ? "On going" : simpleDateFormat.format(scene.getEndtDate());
         holder.endDate.setText(endDate);
+
+        holder.parentLayout.setOnClickListener((v -> onItemSelected(v, scene.getId())));
+    }
+
+    private void onItemSelected(View v, Long id) {
+        BattleFragment fragment = BattleFragment.newInstance(id);
+        ((HomeActivity) mContext).replaceFragment(fragment);
     }
 
     @Override
@@ -66,6 +76,8 @@ public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHo
         public TextView startDate;
         @BindView(R.id.endDate)
         public TextView endDate;
+        @BindView(R.id.scene_row_container)
+        public ConstraintLayout parentLayout;
 
         public SceneViewHolder(View view) {
             super(view);
