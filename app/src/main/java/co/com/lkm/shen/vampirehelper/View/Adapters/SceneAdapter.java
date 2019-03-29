@@ -50,11 +50,11 @@ public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHo
         String endDate = scene.getEndtDate() == null ? "On going" : simpleDateFormat.format(scene.getEndtDate());
         holder.endDate.setText(endDate);
 
-        holder.parentLayout.setOnClickListener((v -> onItemSelected(v, scene.getId())));
+        holder.parentLayout.setOnClickListener((v -> onItemSelected(v, scene)));
     }
 
-    private void onItemSelected(View v, Long id) {
-        BattleFragment fragment = BattleFragment.newInstance(id);
+    private void onItemSelected(View v, Scene scene) {
+        BattleFragment fragment = BattleFragment.newInstance(scene.getChronicleId(),scene.getId());
         ((HomeActivity) mContext).replaceFragment(fragment);
     }
 

@@ -103,9 +103,8 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
 
     public void saveCharacter(View v){
         Player player = new Player();
-        if(switchPlayer.isChecked()){
-            player.setName(inputPlayerName.getText().toString());
-        }
+        String playerName = switchPlayer.isChecked() ? inputPlayerName.getText().toString() : "NPC";
+        player.setName(playerName);
         player.setCharacterName(inputCharacterName.getText().toString());
         player.setInitiative(Integer.parseInt(inputInitiativeName.getText().toString()));
         player.setClan(mSpiner.getSelectedItemPosition());

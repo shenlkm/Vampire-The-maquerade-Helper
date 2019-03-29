@@ -20,4 +20,5 @@ public class Constants {
     public static final String CHRONICLE_ID = "CHRONICLE_ID";
 
     public final static String datePattern = "MMMM dd, yyyy HH:mm:ss";
+    public static final String SCENE_ID = "SCENE_ID";
 }
