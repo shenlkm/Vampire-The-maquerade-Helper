@@ -8,6 +8,7 @@
     <include layout="@layout/content_home" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/select_party"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

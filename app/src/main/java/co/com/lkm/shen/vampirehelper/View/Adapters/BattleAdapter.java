@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,11 +24,13 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private Context mContext;
     private List<Player> mPayers;
+    private List<Player> partyMembers;
     private boolean mPartyCreated;
 
     public BattleAdapter(Context context, boolean partyCreated) {
         mContext = context;
         mPartyCreated = partyCreated;
+        partyMembers = new ArrayList<>();
         setHasStableIds(false);
     }
 
@@ -60,12 +63,24 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         holder.name.setText(String.format("%s (%s)", player.getCharacterName(), player.getName()));
         holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
         holder.initiative.setText(String.format("%d", player.getInitiative()));
-        holder.minusInitiative.setOnClickListener(v -> modifyInitiative(false));
-        holder.plusInitiative.setOnClickListener(v -> modifyInitiative(true));
+        holder.plusInitiative.setOnClickListener(v -> { player.setInitiative(player.getInitiative()+1); notifyItemChanged(position);});
+        holder.minusInitiative.setOnClickListener(v -> { reduceInitiative(player, position);});
+        holder.playerSelected.setOnClickListener(v -> onCheckToggle((CheckBox) v, position));
     }
 
-    private void modifyInitiative(boolean increase) {
+    private void onCheckToggle(CheckBox checkBox, int position) {
+        if(checkBox.isChecked()){
+            partyMembers.add (mPayers.get(position));
+        } else if(partyMembers.contains(mPayers.get(position))){
+            partyMembers.remove(mPayers.get(position));
+        }
+    }
 
+    private void reduceInitiative(Player player, int position) {
+        if(player.getInitiative() > 0){
+            player.setInitiative(player.getInitiative()-1);
+            notifyItemChanged(position);
+        }
     }
 
     public static class BattleParticipantViewHolder extends RecyclerView.ViewHolder{
@@ -110,7 +125,10 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
-    public void setPartyCreated(boolean mPartyCreated) {
-        this.mPartyCreated = mPartyCreated;
+    public void createParty() {
+        this.mPartyCreated = true;
+        this.mPayers.clear();
+        this.mPayers.addAll(partyMembers);
+        notifyDataSetChanged();
     }
 }
