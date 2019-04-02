@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +23,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Battle;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.View.Adapters.BattleAdapter;
@@ -83,7 +85,16 @@ public class BattleFragment extends Fragment implements Injectable {
         mBattleViewModel.getChroniclePlayers(chronicle_id).observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(@Nullable List<Player> players) {
-                mBattleAdapter.setPlayers(players);
+                if(!mBattleAdapter.isPartyCreated())
+                    mBattleAdapter.setPlayers(players);
+            }
+        });
+
+        mBattleViewModel.getChroniclePlayersOnBattle(scene_id).observe(this, new Observer<List<Player>>() {
+            @Override
+            public void onChanged(@Nullable List<Player> players) {
+                if(mBattleAdapter.isPartyCreated())
+                    mBattleAdapter.setPlayers(players);
             }
         });
     }
@@ -109,6 +120,9 @@ public class BattleFragment extends Fragment implements Injectable {
     }
 
     private void onConfirm(DialogInterface dialog) {
-        mBattleAdapter.createParty();
+        List<Player> players = mBattleAdapter.createParty();
+        for (Player player : players) {
+            mBattleViewModel.insert(new Battle(scene_id, player.getId()));
+        }
     }
 }

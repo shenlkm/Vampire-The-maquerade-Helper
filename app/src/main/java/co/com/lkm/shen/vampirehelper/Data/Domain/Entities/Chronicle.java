@@ -2,10 +2,11 @@ package co.com.lkm.shen.vampirehelper.Data.Domain.Entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "chronicle")
+@Entity(tableName = "chronicle", indices = {@Index("id")})
 public class Chronicle {
 
     @PrimaryKey(autoGenerate = true)

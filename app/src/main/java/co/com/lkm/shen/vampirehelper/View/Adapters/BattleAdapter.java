@@ -44,6 +44,10 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 container = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_battle_selection, parent, false);
                 viewHolder = new BattleParticipantViewHolder(container);
                 break;
+            case 1:
+                container = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_battle_status, parent, false);
+                viewHolder = new BattleStatusViewHolder(container);
+                break;
         }
         return viewHolder;
     }
@@ -55,7 +59,16 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             case 0:
                 bindSelectionRow((BattleParticipantViewHolder) holder, position);
                 break;
+            case 1:
+                bindStatusRow((BattleStatusViewHolder) holder, position);
+                break;
         }
+    }
+
+    private void bindStatusRow(BattleStatusViewHolder holder, int position) {
+        final Player player = mPayers.get(position);
+        holder.name.setText(String.format("%s (%s)", player.getCharacterName(), player.getName()));
+        holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
     }
 
     private void bindSelectionRow(BattleParticipantViewHolder holder, int position) {
@@ -83,26 +96,6 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public static class BattleParticipantViewHolder extends RecyclerView.ViewHolder{
-
-        @BindView(R.id.player_selected)
-        CheckBox playerSelected;
-        @BindView(R.id.clan_logo)
-        ImageView clanLogo;
-        @BindView(R.id.label_name)
-        TextView name;
-        @BindView(R.id.label_initiative)
-        TextView initiative;
-        @BindView(R.id.minus_initiative)
-        Button minusInitiative;
-        @BindView(R.id.plus_initiative)
-        Button plusInitiative;
-        public BattleParticipantViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-    }
-
     @Override
     public long getItemId(int index) {
         return mPayers.get(index).getId();
@@ -125,10 +118,46 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
-    public void createParty() {
+    public List<Player> createParty() {
         this.mPartyCreated = true;
         this.mPayers.clear();
-        this.mPayers.addAll(partyMembers);
         notifyDataSetChanged();
+        return partyMembers;
+    }
+
+    public boolean isPartyCreated(){
+        return this.mPartyCreated;
+    }
+
+    public static class BattleParticipantViewHolder extends RecyclerView.ViewHolder{
+
+        @BindView(R.id.player_selected)
+        CheckBox playerSelected;
+        @BindView(R.id.clan_logo)
+        ImageView clanLogo;
+        @BindView(R.id.label_name)
+        TextView name;
+        @BindView(R.id.label_initiative)
+        TextView initiative;
+        @BindView(R.id.minus_initiative)
+        Button minusInitiative;
+        @BindView(R.id.plus_initiative)
+        Button plusInitiative;
+        public BattleParticipantViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
+
+    public static class BattleStatusViewHolder extends RecyclerView.ViewHolder{
+
+        @BindView(R.id.clan_logo)
+        ImageView clanLogo;
+        @BindView(R.id.label_name)
+        TextView name;
+        public BattleStatusViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
     }
 }

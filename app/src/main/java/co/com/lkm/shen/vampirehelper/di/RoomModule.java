@@ -5,17 +5,10 @@ import android.arch.persistence.room.Room;
 
 import javax.inject.Singleton;
 
-import co.com.lkm.shen.vampirehelper.Data.DataSource.PlayerDataSource;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.PlayerDao;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
-import co.com.lkm.shen.vampirehelper.Data.Repository.PlayerRepository;
+import co.com.lkm.shen.vampirehelper.Data.DataSource.*;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.*;
+import co.com.lkm.shen.vampirehelper.Data.Repository.*;
 import co.com.lkm.shen.vampirehelper.MasterRoomDatabase;
-import co.com.lkm.shen.vampirehelper.Data.Repository.ChronicleRepository;
-import co.com.lkm.shen.vampirehelper.Data.DataSource.ChronicleDataSource;
-import co.com.lkm.shen.vampirehelper.Data.DataSource.SceneDataSource;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.ChronicleDao;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.SceneDao;
-import co.com.lkm.shen.vampirehelper.Data.Repository.SceneRepository;
 import dagger.Module;
 import dagger.Provides;
 
@@ -69,4 +62,17 @@ public class RoomModule {
     PlayerRepository providesPlayerRepository(PlayerDao playerDao){
         return new PlayerDataSource(playerDao);
     }
+
+    @Singleton
+    @Provides
+    BattleDao providesBattleDao(MasterRoomDatabase database){
+        return mDatabase.battleDao();
+    }
+
+    @Singleton
+    @Provides
+    BattleRepository providesBattleRepository(BattleDao battleDao){
+        return new BattleDataSource(battleDao);
+    }
+
 }

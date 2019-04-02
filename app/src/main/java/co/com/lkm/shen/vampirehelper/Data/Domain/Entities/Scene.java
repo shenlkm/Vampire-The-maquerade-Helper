@@ -2,12 +2,18 @@ package co.com.lkm.shen.vampirehelper.Data.Domain.Entities;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.util.Date;
 
-@Entity(tableName = "scene")
+@Entity(tableName = "scene",
+        foreignKeys = @ForeignKey( entity = Chronicle.class,
+                                   parentColumns = "id",
+                                   childColumns = "chronicle_id"),
+        indices = {@Index("id"), @Index("chronicle_id")})
 public class Scene{
 
     @PrimaryKey(autoGenerate = true)

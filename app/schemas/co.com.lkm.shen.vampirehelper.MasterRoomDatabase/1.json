@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "ba45100120da71f0e11ce2b9bb24c481",
+    "identityHash": "112445e54ad0bc82eef32de32cdd62cd",
     "entities": [
       {
         "tableName": "chronicle",
@@ -27,12 +27,21 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_chronicle_id",
+            "unique": false,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE  INDEX `index_chronicle_id` ON `${TABLE_NAME}` (`id`)"
+          }
+        ],
         "foreignKeys": []
       },
       {
         "tableName": "scene",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `start_date` INTEGER, `end_date` INTEGER, `chronicle_id` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `start_date` INTEGER, `end_date` INTEGER, `chronicle_id` INTEGER, FOREIGN KEY(`chronicle_id`) REFERENCES `chronicle`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -71,12 +80,41 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
-        "foreignKeys": []
+        "indices": [
+          {
+            "name": "index_scene_id",
+            "unique": false,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE  INDEX `index_scene_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_scene_chronicle_id",
+            "unique": false,
+            "columnNames": [
+              "chronicle_id"
+            ],
+            "createSql": "CREATE  INDEX `index_scene_chronicle_id` ON `${TABLE_NAME}` (`chronicle_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "chronicle",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "chronicle_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       },
       {
         "tableName": "player",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER, `is_player` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `characterName` TEXT, `clan` INTEGER NOT NULL, `stamina` INTEGER NOT NULL, `initiative` INTEGER NOT NULL, `bashing` INTEGER NOT NULL, `lethal` INTEGER NOT NULL, `aggravated` INTEGER NOT NULL, `totalDamage` INTEGER NOT NULL, `dazed` INTEGER NOT NULL, `dead` INTEGER NOT NULL, `chronicle_id` INTEGER, `is_player` INTEGER NOT NULL, FOREIGN KEY(`chronicle_id`) REFERENCES `chronicle`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -169,13 +207,122 @@
           ],
           "autoGenerate": true
         },
-        "indices": [],
-        "foreignKeys": []
+        "indices": [
+          {
+            "name": "index_player_id",
+            "unique": false,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE  INDEX `index_player_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_player_chronicle_id",
+            "unique": false,
+            "columnNames": [
+              "chronicle_id"
+            ],
+            "createSql": "CREATE  INDEX `index_player_chronicle_id` ON `${TABLE_NAME}` (`chronicle_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "chronicle",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "chronicle_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "battle",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `scene_id` INTEGER, `chatacter_id` INTEGER, FOREIGN KEY(`scene_id`) REFERENCES `scene`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`chatacter_id`) REFERENCES `player`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sceneId",
+            "columnName": "scene_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "characterId",
+            "columnName": "chatacter_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_battle_id",
+            "unique": false,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE  INDEX `index_battle_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_battle_chatacter_id",
+            "unique": false,
+            "columnNames": [
+              "chatacter_id"
+            ],
+            "createSql": "CREATE  INDEX `index_battle_chatacter_id` ON `${TABLE_NAME}` (`chatacter_id`)"
+          },
+          {
+            "name": "index_battle_scene_id",
+            "unique": false,
+            "columnNames": [
+              "scene_id"
+            ],
+            "createSql": "CREATE  INDEX `index_battle_scene_id` ON `${TABLE_NAME}` (`scene_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "scene",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "scene_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "player",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "chatacter_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"ba45100120da71f0e11ce2b9bb24c481\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"112445e54ad0bc82eef32de32cdd62cd\")"
     ]
   }
 }
