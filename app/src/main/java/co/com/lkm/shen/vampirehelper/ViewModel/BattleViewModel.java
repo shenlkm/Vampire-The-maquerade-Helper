@@ -16,7 +16,8 @@ import co.com.lkm.shen.vampirehelper.Data.Repository.PlayerRepository;
 
 public class BattleViewModel extends AndroidViewModel {
 
-    public LiveData<List<Player>> Players;
+    public LiveData<List<Player>> choosablePlayer;
+    public LiveData<List<Player>> battlePlayer;
     public PlayerRepository mPlayerRepository;
     public BattleRepository mBattleRepository;
 
@@ -28,17 +29,13 @@ public class BattleViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Player>> getChroniclePlayers(Long chronicle_id){
-        if(Players == null){
-            Players = mPlayerRepository.getChroniclePlayers(chronicle_id);
-        }
-        return Players;
+        choosablePlayer = mPlayerRepository.getChroniclePlayers(chronicle_id);
+        return choosablePlayer;
     }
 
     public LiveData<List<Player>> getChroniclePlayersOnBattle(Long scene_id){
-        if(Players == null){
-            Players = mBattleRepository.getAllPlayersInBattle(scene_id);
-        }
-        return Players;
+        battlePlayer = mBattleRepository.getAllPlayersInBattle(scene_id);
+        return battlePlayer;
     }
 
     public void insert(Battle...items){

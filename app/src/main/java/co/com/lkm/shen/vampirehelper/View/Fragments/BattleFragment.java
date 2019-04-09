@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -75,9 +74,21 @@ public class BattleFragment extends Fragment implements Injectable {
         mRecyclerView.setAdapter(null);
     }
 
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+    }
+
+    private void setupView() {
+
+        mBattleAdapter = new BattleAdapter(getActivity(), false);
+
+        mRecyclerView.setAdapter(mBattleAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        buttonDone.setOnClickListener(v -> selectParty(v));
 
         mBattleViewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(BattleViewModel.class);
@@ -93,20 +104,12 @@ public class BattleFragment extends Fragment implements Injectable {
         mBattleViewModel.getChroniclePlayersOnBattle(scene_id).observe(this, new Observer<List<Player>>() {
             @Override
             public void onChanged(@Nullable List<Player> players) {
-                if(mBattleAdapter.isPartyCreated())
+                if(players.size() > 0){
+                    mBattleAdapter.setPartyCreated(true);
                     mBattleAdapter.setPlayers(players);
+                }
             }
         });
-    }
-
-    private void setupView() {
-
-        mBattleAdapter = new BattleAdapter(getActivity(), false);
-
-        mRecyclerView.setAdapter(mBattleAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        buttonDone.setOnClickListener(v -> selectParty(v));
     }
 
     private void selectParty(View v) {

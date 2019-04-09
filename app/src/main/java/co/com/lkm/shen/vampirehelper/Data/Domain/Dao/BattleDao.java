@@ -24,6 +24,9 @@ public interface BattleDao {
     @Delete
     public void delete(Battle...chronicles);
 
-    @Query("SELECT * FROM player INNER JOIN battle ON player.id = battle.chatacter_id INNER JOIN scene ON battle.scene_id = :sceneId")
+    @Query("SELECT player.* FROM player " +
+                            "INNER JOIN battle ON player.id = battle.chatacter_id " +
+                            "INNER JOIN scene ON battle.scene_id = scene.id " +
+                            "WHERE scene.id = :sceneId")
     public LiveData<List<Player>> getAllPlayersInBattle(Long sceneId);
 }

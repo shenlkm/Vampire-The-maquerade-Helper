@@ -23,7 +23,7 @@ import co.com.lkm.shen.vampirehelper.R;
 public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
-    private List<Player> mPayers;
+    private List<Player> mPlayers;
     private List<Player> partyMembers;
     private boolean mPartyCreated;
 
@@ -31,6 +31,7 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mContext = context;
         mPartyCreated = partyCreated;
         partyMembers = new ArrayList<>();
+        mPlayers= new ArrayList<>();
         setHasStableIds(false);
     }
 
@@ -66,13 +67,13 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     private void bindStatusRow(BattleStatusViewHolder holder, int position) {
-        final Player player = mPayers.get(position);
+        final Player player = mPlayers.get(position);
         holder.name.setText(String.format("%s (%s)", player.getCharacterName(), player.getName()));
         holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
     }
 
     private void bindSelectionRow(BattleParticipantViewHolder holder, int position) {
-        final Player player = mPayers.get(position);
+        final Player player = mPlayers.get(position);
         holder.name.setText(String.format("%s (%s)", player.getCharacterName(), player.getName()));
         holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
         holder.initiative.setText(String.format("%d", player.getInitiative()));
@@ -83,9 +84,9 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private void onCheckToggle(CheckBox checkBox, int position) {
         if(checkBox.isChecked()){
-            partyMembers.add (mPayers.get(position));
-        } else if(partyMembers.contains(mPayers.get(position))){
-            partyMembers.remove(mPayers.get(position));
+            partyMembers.add (mPlayers.get(position));
+        } else if(partyMembers.contains(mPlayers.get(position))){
+            partyMembers.remove(mPlayers.get(position));
         }
     }
 
@@ -98,13 +99,13 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public long getItemId(int index) {
-        return mPayers.get(index).getId();
+        return mPlayers.get(index).getId();
     }
 
     @Override
     public int getItemCount() {
-        if (mPayers != null)
-            return mPayers.size();
+        if (mPlayers != null)
+            return mPlayers.size();
         else return 0;
     }
 
@@ -114,19 +115,24 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public void setPlayers(List<Player> players){
-        mPayers = players;
+
+        this.mPlayers.clear();
+        this.mPlayers.addAll(players);
         notifyDataSetChanged();
     }
 
     public List<Player> createParty() {
         this.mPartyCreated = true;
-        this.mPayers.clear();
+        this.mPlayers.clear();
         notifyDataSetChanged();
         return partyMembers;
     }
 
     public boolean isPartyCreated(){
         return this.mPartyCreated;
+    }
+    public void setPartyCreated(boolean value){
+        mPartyCreated = value;
     }
 
     public static class BattleParticipantViewHolder extends RecyclerView.ViewHolder{
