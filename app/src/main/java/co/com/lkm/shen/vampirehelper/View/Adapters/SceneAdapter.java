@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +31,7 @@ public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHo
     public SceneAdapter(Context context) {
         mContext = context;
         setHasStableIds(false);
-        simpleDateFormat = new SimpleDateFormat(Constants.datePattern);
+        simpleDateFormat = new SimpleDateFormat(Constants.datePattern, Locale.US);
     }
 
     @NonNull

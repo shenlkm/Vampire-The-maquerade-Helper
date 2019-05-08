@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,16 +77,16 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         final Player player = mPlayers.get(position);
         holder.name.setText(String.format("%s (%s)", player.getCharacterName(), player.getName()));
         holder.clanLogo.setImageResource(Constants.CLAN_LOGOS[player.getClan()]);
-        holder.initiative.setText(String.format("%d", player.getInitiative()));
+        holder.initiative.setText(String.format(Locale.getDefault(), "%d", player.getInitiative()));
         holder.plusInitiative.setOnClickListener(v -> { player.setInitiative(player.getInitiative()+1); notifyItemChanged(position);});
-        holder.minusInitiative.setOnClickListener(v -> { reduceInitiative(player, position);});
+        holder.minusInitiative.setOnClickListener(v -> reduceInitiative(player, position));
         holder.playerSelected.setOnClickListener(v -> onCheckToggle((CheckBox) v, position));
     }
 
     private void onCheckToggle(CheckBox checkBox, int position) {
         if(checkBox.isChecked()){
-            partyMembers.add (mPlayers.get(position));
-        } else if(partyMembers.contains(mPlayers.get(position))){
+            partyMembers.add(mPlayers.get(position));
+        } else {
             partyMembers.remove(mPlayers.get(position));
         }
     }
