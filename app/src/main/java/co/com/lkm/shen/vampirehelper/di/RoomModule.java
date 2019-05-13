@@ -1,13 +1,23 @@
 package co.com.lkm.shen.vampirehelper.di;
 
 import android.app.Application;
-import android.arch.persistence.room.Room;
+
+import androidx.room.Room;
 
 import javax.inject.Singleton;
 
-import co.com.lkm.shen.vampirehelper.Data.DataSource.*;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.*;
-import co.com.lkm.shen.vampirehelper.Data.Repository.*;
+import co.com.lkm.shen.vampirehelper.Data.DataSource.BattleDataSource;
+import co.com.lkm.shen.vampirehelper.Data.DataSource.ChronicleDataSource;
+import co.com.lkm.shen.vampirehelper.Data.DataSource.PlayerDataSource;
+import co.com.lkm.shen.vampirehelper.Data.DataSource.SceneDataSource;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.BattleDao;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.ChronicleDao;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.PlayerDao;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.SceneDao;
+import co.com.lkm.shen.vampirehelper.Data.Repository.BattleRepository;
+import co.com.lkm.shen.vampirehelper.Data.Repository.ChronicleRepository;
+import co.com.lkm.shen.vampirehelper.Data.Repository.PlayerRepository;
+import co.com.lkm.shen.vampirehelper.Data.Repository.SceneRepository;
 import co.com.lkm.shen.vampirehelper.MasterRoomDatabase;
 import dagger.Module;
 import dagger.Provides;

@@ -1,8 +1,9 @@
 package co.com.lkm.shen.vampirehelper.ViewModel;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 
 import javax.inject.Inject;
 

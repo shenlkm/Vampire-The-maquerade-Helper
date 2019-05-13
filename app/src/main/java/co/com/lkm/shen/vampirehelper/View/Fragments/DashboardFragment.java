@@ -1,10 +1,6 @@
 package co.com.lkm.shen.vampirehelper.View.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +8,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.View.Adapters.ChroniclePageAdapter;
@@ -21,10 +21,10 @@ import co.com.lkm.shen.vampirehelper.di.Injectable;
 
 public class DashboardFragment extends Fragment implements Injectable {
 
-    @BindView(R.id.chronicleFloatingMenu) public FloatingActionButton menuButton;
-    @BindView(R.id.chronicle_pager) public ViewPager chroniclePager;
-    @BindView(R.id.sceneLayout) public LinearLayout sceneLayout;
-    @BindView(R.id.characterLayout) public LinearLayout characterLayout;
+    public FloatingActionButton menuButton;
+    public ViewPager chroniclePager;
+    public LinearLayout sceneLayout;
+    public LinearLayout characterLayout;
 
     private static Long chronicle_id;
 
@@ -53,7 +53,6 @@ public class DashboardFragment extends Fragment implements Injectable {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_chronicle, container, false);
-        ButterKnife.bind(this, rootView);
         return rootView;
     }
 

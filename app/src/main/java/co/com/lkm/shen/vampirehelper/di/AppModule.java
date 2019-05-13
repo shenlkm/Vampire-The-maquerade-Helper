@@ -1,7 +1,8 @@
 package co.com.lkm.shen.vampirehelper.di;
 
 import android.app.Application;
-import android.arch.lifecycle.ViewModelProvider;
+
+import androidx.lifecycle.ViewModelProvider;
 
 import javax.inject.Singleton;
 

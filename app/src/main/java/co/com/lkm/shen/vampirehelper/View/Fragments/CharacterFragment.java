@@ -1,25 +1,26 @@
 package co.com.lkm.shen.vampirehelper.View.Fragments;
 
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
-import co.com.lkm.shen.vampirehelper.View.Adapters.CharacterAdapter;
 import co.com.lkm.shen.vampirehelper.Constants;
+import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.R;
+import co.com.lkm.shen.vampirehelper.View.Adapters.CharacterAdapter;
 import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 import co.com.lkm.shen.vampirehelper.ViewModel.ChronicleViewModel;
 
@@ -48,7 +49,6 @@ public class CharacterFragment extends BaseRecyclerFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_character, container, false);
-        ButterKnife.bind(this, rootView);
         this.setupView();
         return rootView;
     }

@@ -1,23 +1,22 @@
 package co.com.lkm.shen.vampirehelper.View.Adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
-import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
+import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.View.Fragments.BattleFragment;
 import co.com.lkm.shen.vampirehelper.View.HomeActivity;
 
@@ -67,22 +66,15 @@ public class SceneAdapter extends RecyclerView.Adapter <SceneAdapter.SceneViewHo
     }
 
     public static class SceneViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.character_icon_badge)
         public TextView characterIconBadge;
-        @BindView(R.id.npc_icon_badge)
         public TextView npcIconBadge;
-        @BindView(R.id.sceneName)
         public TextView sceneName;
-        @BindView(R.id.startDate)
         public TextView startDate;
-        @BindView(R.id.endDate)
         public TextView endDate;
-        @BindView(R.id.scene_row_container)
         public ConstraintLayout parentLayout;
 
         public SceneViewHolder(View view) {
             super(view);
-            ButterKnife.bind(this, view);
         }
     }
 

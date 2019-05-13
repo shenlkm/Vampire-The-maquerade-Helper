@@ -1,11 +1,6 @@
 package co.com.lkm.shen.vampirehelper.View.Fragments;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +8,19 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.R;
@@ -36,17 +34,12 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
     public ViewModelProvider.Factory viewModelFactory;
     public CreateCharacterViewModel mCreateCharacterViewModel;
 
-    @BindView(R.id.spinner_clans)
     Spinner mSpiner;
-    @BindView(R.id.input_character_name)
     EditText inputCharacterName;
-    @BindView(R.id.input_player_name) EditText inputPlayerName;
-    @BindView(R.id.input_initiative) EditText inputInitiativeName;
-    @BindView(R.id.clan_logo_selected)
+    EditText inputPlayerName;
+    EditText inputInitiativeName;
     ImageView mImageView;
-    @BindView(R.id.save_character)
     Button saveCharacter;
-    @BindView(R.id.switch_player)
     Switch switchPlayer;
 
     private long chronicle_id = 0L;
@@ -69,7 +62,6 @@ public class CreateCharacterFragment extends Fragment implements Injectable , Ad
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_create_character, container, false);
-        ButterKnife.bind(this, rootView);
         setupView();
         return rootView;
     }

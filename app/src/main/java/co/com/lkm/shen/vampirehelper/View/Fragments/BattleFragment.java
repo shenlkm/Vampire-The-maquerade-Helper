@@ -1,26 +1,25 @@
 package co.com.lkm.shen.vampirehelper.View.Fragments;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Battle;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
@@ -31,8 +30,8 @@ import co.com.lkm.shen.vampirehelper.di.Injectable;
 
 public class BattleFragment extends Fragment implements Injectable {
 
-    @BindView(R.id.frameList) public RecyclerView mRecyclerView;
-    @BindView(R.id.select_party) public ConstraintLayout buttonDone;
+    public RecyclerView mRecyclerView;
+    public ConstraintLayout buttonDone;
 
     public BattleViewModel mBattleViewModel;
     private BattleAdapter mBattleAdapter;
@@ -63,7 +62,6 @@ public class BattleFragment extends Fragment implements Injectable {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_battle, container, false);
-        ButterKnife.bind(this, rootView);
         setupView();
         return rootView;
     }

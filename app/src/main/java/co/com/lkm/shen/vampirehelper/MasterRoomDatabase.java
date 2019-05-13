@@ -1,8 +1,8 @@
 package co.com.lkm.shen.vampirehelper;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.TypeConverters;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import co.com.lkm.shen.vampirehelper.Data.Converters.Converters;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.BattleDao;

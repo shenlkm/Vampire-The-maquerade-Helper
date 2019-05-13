@@ -1,16 +1,17 @@
 package co.com.lkm.shen.vampirehelper.ViewModel;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import co.com.lkm.shen.vampirehelper.Data.Repository.ChronicleRepository;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Chronicle;
+import co.com.lkm.shen.vampirehelper.Data.Repository.ChronicleRepository;
 
 public class HomeViewModel extends AndroidViewModel {
 

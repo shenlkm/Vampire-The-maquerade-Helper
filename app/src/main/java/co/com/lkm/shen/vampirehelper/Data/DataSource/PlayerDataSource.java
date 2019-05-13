@@ -1,7 +1,8 @@
 package co.com.lkm.shen.vampirehelper.Data.DataSource;
 
-import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
@@ -9,7 +10,6 @@ import javax.inject.Inject;
 
 import co.com.lkm.shen.vampirehelper.Data.Domain.Dao.PlayerDao;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
-import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Scene;
 import co.com.lkm.shen.vampirehelper.Data.Repository.PlayerRepository;
 
 public class PlayerDataSource implements PlayerRepository {

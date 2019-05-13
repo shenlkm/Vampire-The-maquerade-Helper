@@ -1,7 +1,7 @@
 package co.com.lkm.shen.vampirehelper.Data.Repository;
 
-import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.Update;
+import androidx.room.Insert;
+import androidx.room.Update;
 
 public interface BaseRepository<T> {
     @Insert

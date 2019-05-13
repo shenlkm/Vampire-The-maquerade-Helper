@@ -1,6 +1,6 @@
 package co.com.lkm.shen.vampirehelper.Data.Repository;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 

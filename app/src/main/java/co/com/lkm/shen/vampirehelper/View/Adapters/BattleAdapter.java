@@ -1,8 +1,6 @@
 package co.com.lkm.shen.vampirehelper.View.Adapters;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +9,13 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.Data.Domain.Entities.Player;
 import co.com.lkm.shen.vampirehelper.R;
@@ -138,33 +137,23 @@ public class BattleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     public static class BattleParticipantViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.player_selected)
         CheckBox playerSelected;
-        @BindView(R.id.clan_logo)
         ImageView clanLogo;
-        @BindView(R.id.label_name)
         TextView name;
-        @BindView(R.id.label_initiative)
         TextView initiative;
-        @BindView(R.id.minus_initiative)
         Button minusInitiative;
-        @BindView(R.id.plus_initiative)
         Button plusInitiative;
         public BattleParticipantViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
         }
     }
 
     public static class BattleStatusViewHolder extends RecyclerView.ViewHolder{
 
-        @BindView(R.id.clan_logo)
         ImageView clanLogo;
-        @BindView(R.id.label_name)
         TextView name;
         public BattleStatusViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
         }
     }
 }

@@ -1,7 +1,8 @@
 package co.com.lkm.shen.vampirehelper.Data.DataSource;
 
-import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
