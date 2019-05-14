@@ -1,88 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
-    <com.google.android.material.appbar.AppBarLayout
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <include layout="@layout/content_chronicle" />
-
-    <LinearLayout
-        android:id="@+id/sceneLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="126dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:text="Scene"/>
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/createPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fabSize="mini"
-            style="@style/AppPrimaryTheme.FloatingActionButton"
-            app:srcCompat="@drawable/ic_white_scene_add"/>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/characterLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="78dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="horizontal"
-        android:visibility="gone">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/chronicle_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="16dp"
-            android:text="Charactetr"/>
+            <androidx.viewpager.widget.PagerTabStrip
+                android:id="@+id/chornicle_pager_title_strip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"/>
 
+        </androidx.viewpager.widget.ViewPager>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/createCharacter"
+        <LinearLayout
+            android:id="@+id/scene_layout_menu_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            app:fabSize="mini"
+            android:layout_marginBottom="126dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                android:text="Scene" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/create_scene_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fabSize="mini"
+                style="@style/AppPrimaryTheme.FloatingActionButton"
+                app:srcCompat="@drawable/ic_white_scene_add"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/character_layout_menu_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="78dp"
+            android:layout_marginEnd="24dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="16dp"
+                android:text="@string/character_label"/>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/create_character_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                app:fabSize="mini"
+                style="@style/AppPrimaryTheme.FloatingActionButton"
+                app:srcCompat="@drawable/ic_white_person_add"/>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/chronicle_floating_menu"
             style="@style/AppPrimaryTheme.FloatingActionButton"
-            app:srcCompat="@drawable/ic_white_person_add"/>
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/float_margin"
+            app:srcCompat="@drawable/ic_white_add" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/chronicleFloatingMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/float_margin"
-        style="@style/AppPrimaryTheme.FloatingActionButton"
-        app:srcCompat="@drawable/ic_white_add"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

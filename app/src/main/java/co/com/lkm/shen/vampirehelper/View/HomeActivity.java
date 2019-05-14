@@ -100,13 +100,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setupView() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, binding.drawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         binding.navView.setNavigationItemSelectedListener(this);
     }
 

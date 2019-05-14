@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -15,7 +16,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class ChronicleFragment  extends Fragment implements Injectable {
 
     public static final String TAG = "ChronicleFragment";
 
-    public AppBarHomeBinding binding;
+    private AppBarHomeBinding binding;
 
     @Inject
     public ViewModelProvider.Factory viewModelFactory;
@@ -41,7 +41,7 @@ public class ChronicleFragment  extends Fragment implements Injectable {
     public HomeViewModel mHomeViewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         binding = AppBarHomeBinding.inflate(inflater,container,  false);
         setupView();
         return binding.getRoot();
@@ -67,7 +67,7 @@ public class ChronicleFragment  extends Fragment implements Injectable {
         mChronicleAdapter = new ChronicleAdapter(getActivity());
         binding.contentLayout.frameList.setAdapter(mChronicleAdapter);
         binding.contentLayout.frameList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        binding.createChronicle.setOnClickListener( (v) -> createChronicle(v));
+        binding.createChronicle.setOnClickListener(this::createChronicle);
     }
 
     @Override

@@ -6,26 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import co.com.lkm.shen.vampirehelper.Constants;
 import co.com.lkm.shen.vampirehelper.R;
 import co.com.lkm.shen.vampirehelper.View.Adapters.ChroniclePageAdapter;
+import co.com.lkm.shen.vampirehelper.databinding.FragmentChronicleBinding;
 import co.com.lkm.shen.vampirehelper.di.Injectable;
 
 public class DashboardFragment extends Fragment implements Injectable {
 
-    public FloatingActionButton menuButton;
-    public ViewPager chroniclePager;
-    public LinearLayout sceneLayout;
-    public LinearLayout characterLayout;
-
+    private FragmentChronicleBinding binding;
     private static Long chronicle_id;
 
     public ChroniclePageAdapter mChroniclePageAdapter;
@@ -51,9 +45,9 @@ public class DashboardFragment extends Fragment implements Injectable {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_chronicle, container, false);
-        return rootView;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentChronicleBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -64,9 +58,9 @@ public class DashboardFragment extends Fragment implements Injectable {
 
     public void setupView() {
 
-        menuButton.setOnClickListener((v) -> showOptions(v));
+        binding.chronicleFloatingMenu.setOnClickListener(this::showOptions);
         mChroniclePageAdapter = new ChroniclePageAdapter(getChildFragmentManager(), chronicle_id);
-        chroniclePager.setAdapter(mChroniclePageAdapter);
+        binding.chroniclePager.setAdapter(mChroniclePageAdapter);
     }
 
     public void showButtons(boolean show) {
@@ -82,15 +76,15 @@ public class DashboardFragment extends Fragment implements Injectable {
     }
 
     public void showOptions(View v) {
-        this.showButtons(sceneLayout.getVisibility() == View.GONE && characterLayout.getVisibility() == View.GONE);
+        this.showButtons(binding.sceneLayoutMenuContainer.getVisibility() == View.GONE && binding.characterLayoutMenuContainer.getVisibility() == View.GONE);
     }
 
     private void animateButton(Animation showBottons, Animation showLayouts, int visible) {
-        sceneLayout.setVisibility(visible);
-        characterLayout.setVisibility(visible);
+        binding.sceneLayoutMenuContainer.setVisibility(visible);
+        binding.characterLayoutMenuContainer.setVisibility(visible);
 
-        menuButton.startAnimation(showBottons);
-        sceneLayout.startAnimation(showLayouts);
-        characterLayout.startAnimation(showLayouts);
+        binding.chronicleFloatingMenu.startAnimation(showBottons);
+        binding.sceneLayoutMenuContainer.startAnimation(showLayouts);
+        binding.characterLayoutMenuContainer.startAnimation(showLayouts);
     }
 }
