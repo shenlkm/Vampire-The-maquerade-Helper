@@ -6,12 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_fisical_attributes"
+    <com.example.vampiremasterhelper.views.PointGroupView
+        android:id="@+id/pgv_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/point_item_view"
-        tools:itemCount="10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

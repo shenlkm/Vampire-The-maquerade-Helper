@@ -5,7 +5,8 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vampiremasterhelper.databinding.ActivityMainBinding
-import com.example.vampiremasterhelper.views.PointItemModel
+import com.example.vampiremasterhelper.model.PointGroupModel
+import com.example.vampiremasterhelper.model.PointItemModel
 import com.example.vampiremasterhelper.views.PointSetAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +19,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getDataSet().let {
-            binding.rvFisicalAttributes.layoutManager  = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-            binding.rvFisicalAttributes.adapter = PointSetAdapter(it)
+            binding.pgvOne.setData(it)
         }
     }
 
-    private fun getDataSet() : Array<PointItemModel> {
-        return arrayOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))
+    private fun getDataSet() : PointGroupModel {
+        return PointGroupModel(title = "Fisicos", items = arrayOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia")))
     }
 }

@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vampiremasterhelper.databinding.PointSetItemViewBinding
+import com.example.vampiremasterhelper.model.PointItemModel
 
 class PointSetAdapter(private val dataSet: Array<PointItemModel>) : RecyclerView.Adapter<PointSetAdapter.PointSetViewHolder>() {
 
