@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PointView">
+        <attr name="state" format="integer">
+            <flag name="empty" value="0" />
+            <flag name="temporal" value="1" />
+            <flag name="filled" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
