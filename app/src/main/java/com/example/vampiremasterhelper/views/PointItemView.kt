@@ -13,7 +13,7 @@ class PointItemView @JvmOverloads constructor(context: Context,
 
     private var  binding: PointItemViewBinding = PointItemViewBinding.inflate(LayoutInflater.from(context), this, false)
     var filledPoints: Int = 1
-    var temporalPoints: Int = 3
+    var temporalPoints: Int = 0
 
     init {
         addView(binding.root)
