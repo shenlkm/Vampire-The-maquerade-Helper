@@ -1,10 +1,8 @@
-package com.example.vampiremasterhelper.custom
+package com.example.vampiremasterhelper.views
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import androidx.annotation.AttrRes
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.example.vampiremasterhelper.R
 
 class PointView @JvmOverloads constructor(context: Context,

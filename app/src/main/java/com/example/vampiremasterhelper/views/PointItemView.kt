@@ -1,4 +1,4 @@
-package com.example.vampiremasterhelper.custom
+package com.example.vampiremasterhelper.views
 
 import android.content.Context
 import android.util.AttributeSet
@@ -31,6 +31,10 @@ class PointItemView @JvmOverloads constructor(context: Context,
             (binding.llPointContainer.getChildAt(lastFilled) as PointView).setState(1)
             lastFilled++
         }
+    }
+
+    fun setLabel(label: String) {
+        binding.tvItemPointLabel.text = label
     }
 
     companion object {

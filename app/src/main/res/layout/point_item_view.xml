@@ -18,27 +18,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.example.vampiremasterhelper.custom.PointView
+        <com.example.vampiremasterhelper.views.PointView
             android:layout_width="16dp"
             android:layout_height="16dp"
             app:state="empty"/>
 
-        <com.example.vampiremasterhelper.custom.PointView
+        <com.example.vampiremasterhelper.views.PointView
             android:layout_width="16dp"
             android:layout_height="16dp"
             app:state="empty"/>
 
-        <com.example.vampiremasterhelper.custom.PointView
+        <com.example.vampiremasterhelper.views.PointView
             android:layout_width="16dp"
             android:layout_height="16dp"
             app:state="empty"/>
 
-        <com.example.vampiremasterhelper.custom.PointView
+        <com.example.vampiremasterhelper.views.PointView
             android:layout_width="16dp"
             android:layout_height="16dp"
             app:state="empty"/>
 
-        <com.example.vampiremasterhelper.custom.PointView
+        <com.example.vampiremasterhelper.views.PointView
             android:layout_width="16dp"
             android:layout_height="16dp"
             app:state="empty"/>
