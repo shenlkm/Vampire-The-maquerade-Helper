@@ -9,7 +9,6 @@
         android:id="@+id/tv_point_group_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/delavan"
         android:text="Fisicos"
         android:textColor="@color/black"

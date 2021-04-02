@@ -2,7 +2,6 @@ package com.example.vampiremasterhelper
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vampiremasterhelper.databinding.ActivityMainBinding
 import com.example.vampiremasterhelper.model.PointGroupModel
 import com.example.vampiremasterhelper.model.PointGroupSetModel
@@ -16,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //binding.tvPointGroupSetTitle.setText("ATRIBUTOS")
 
         getDataSet().let {
             binding.pgsvAttributes.setData(it[0])
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getDataSet() : Array<PointGroupSetModel> {
         return arrayOf(
-                PointGroupSetModel(title = "ATRIBUTOS",
+                PointGroupSetModel(title = "Atributos",
                         items = arrayOf(
                             PointGroupModel(title = "Fisicos",
                                     items = arrayOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
@@ -35,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                             PointGroupModel(title = "Sociales",
                                     items = arrayOf(PointItemModel("Percepcion"), PointItemModel("Inteligencia"), PointItemModel("Astucia"))),
                 )),
-                PointGroupSetModel(title = "HABILIDADES",
+                PointGroupSetModel(title = "Habilidades",
                         items = arrayOf(
                                 PointGroupModel(title = "Talentos",
                                         items = arrayOf(PointItemModel("Alerta"), PointItemModel("Atletismo"), PointItemModel("Callejeo"))),

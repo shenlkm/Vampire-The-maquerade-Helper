@@ -12,8 +12,8 @@ class PointItemView @JvmOverloads constructor(context: Context,
     : FrameLayout(context, attributeSet, defStyleAttr) {
 
     private var  binding: PointItemViewBinding = PointItemViewBinding.inflate(LayoutInflater.from(context), this, false)
-    var filledPoints: Int = 1
-    var temporalPoints: Int = 0
+    private var filledPoints: Int = 1
+    private var temporalPoints: Int = 0
 
     init {
         addView(binding.root)
@@ -30,6 +30,13 @@ class PointItemView @JvmOverloads constructor(context: Context,
         while (lastFilled < temporalPoints) {
             (binding.llPointContainer.getChildAt(lastFilled) as PointView).setState(1)
             lastFilled++
+        }
+    }
+
+    fun fillPoint() {
+        if (filledPoints+1 <= maxPoints) {
+            (binding.llPointContainer.getChildAt(filledPoints) as PointView).setState(2)
+            filledPoints++
         }
     }
 
