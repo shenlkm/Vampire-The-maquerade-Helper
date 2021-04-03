@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.annotation.Dimension
+import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.TitleViewBinding
 
 class TitleView @JvmOverloads constructor(
@@ -19,7 +20,11 @@ class TitleView @JvmOverloads constructor(
 
     init {
            addView(binding.root)
+        val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.TitleView)
+        attributes.getString(R.styleable.TitleView_title)?.let {
+            setText(it)
         }
+    }
 
     fun setText(title: String) {
         binding.tvTitle.text = title

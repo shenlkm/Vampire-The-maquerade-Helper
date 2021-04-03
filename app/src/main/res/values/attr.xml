@@ -7,4 +7,18 @@
             <flag name="filled" value="2" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="PointItemView">
+        <attr name="pointLength" format="integer">
+            <flag name="half" value="5" />
+            <flag name="full" value="10" />
+        </attr>
+        <attr name="label" format="string"/>
+        <attr name="equalWeight" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="TitleView">
+        <attr name="title" format="string"/>
+    </declare-styleable>
+
 </resources>

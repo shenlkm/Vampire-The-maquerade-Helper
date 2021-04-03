@@ -2,52 +2,24 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:layout_marginBottom="2dp">
 
     <TextView
         android:id="@+id/tv_item_point_label"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mrs_eaves_roman"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:layout_marginBottom="4dp"
-        android:text="Fuerza"/>
+        android:layout_marginBottom="4dp"/>
 
     <LinearLayout
         android:id="@+id/ll_point_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:state="empty"/>
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:state="empty"/>
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:state="empty"/>
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:state="empty"/>
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            app:state="empty"/>
-
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
 </LinearLayout>

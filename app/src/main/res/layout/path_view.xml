@@ -10,91 +10,30 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Humanidad/Senda"/>
 
-    <TextView
-        android:id="@+id/tv_choosen_path"
+    <com.example.vampiremasterhelper.views.PointItemView
+        android:id="@+id/piv_chosen_path"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Humanidad"
+        app:pointLength="full"
+        app:label="Humanidad"
+        app:equalWeight="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_path_title" />
-
-    <LinearLayout
-        android:id="@+id/ll_path_point_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_choosen_path">
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.example.vampiremasterhelper.views.PointView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/tv_path_title"/>
 
     <TextView
         android:id="@+id/tv_bearing_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textStyle="bold"
         android:text="Porte:"
         app:layout_constraintEnd_toStartOf="@id/tv_bearing_value"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_path_point_container" />
+        app:layout_constraintTop_toBottomOf="@+id/piv_chosen_path" />
 
     <TextView
         android:id="@+id/tv_bearing_value"
@@ -105,7 +44,7 @@
         android:text="Normal"
         app:layout_constraintEnd_toStartOf="@id/tv_bearing_modificator"
         app:layout_constraintStart_toEndOf="@id/tv_bearing_title"
-        app:layout_constraintTop_toBottomOf="@+id/ll_path_point_container" />
+        app:layout_constraintTop_toBottomOf="@+id/piv_chosen_path" />
 
     <TextView
         android:id="@+id/tv_bearing_modificator"
@@ -113,8 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:text="( +2 )"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_bearing_value"
-        app:layout_constraintTop_toBottomOf="@+id/ll_path_point_container" />
+        app:layout_constraintTop_toBottomOf="@+id/piv_chosen_path" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
