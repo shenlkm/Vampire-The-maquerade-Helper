@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -43,17 +42,24 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages"/>
+            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
 
-        <include
-            android:id="@+id/i_path_view"
-            layout="@layout/path_view"
+        <com.example.vampiremasterhelper.views.PathView
+            android:id="@+id/pv_humanity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/wpv_willpower"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
+
+        <com.example.vampiremasterhelper.views.WillPowerView
+            android:id="@+id/wpv_willpower"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages"/>
+            app:layout_constraintStart_toEndOf="@+id/pv_humanity"
+            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

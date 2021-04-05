@@ -18,7 +18,7 @@ class PointView @JvmOverloads constructor(context: Context,
     init {
         addView(binding.root)
         val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.PointView)
-        state = attributes.getInt(R.styleable.PointView_state, 0)
+        state = attributes.getInt(R.styleable.PointView_pointState, 0)
         setState()
         attributes.recycle()
     }

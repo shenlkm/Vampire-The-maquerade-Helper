@@ -3,6 +3,7 @@ package com.example.vampiremasterhelper
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vampiremasterhelper.databinding.ActivityMainBinding
+import com.example.vampiremasterhelper.model.PathModel
 import com.example.vampiremasterhelper.model.PointGroupModel
 import com.example.vampiremasterhelper.model.PointGroupSetModel
 import com.example.vampiremasterhelper.model.PointItemModel
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
             binding.pgsvSkills.setData(it[1])
             binding.pgsvAdvantages.setData(it[2])
         }
+        binding.pvHumanity.setData(PathModel("Humanidad", "normal", 9))
 
     }
 

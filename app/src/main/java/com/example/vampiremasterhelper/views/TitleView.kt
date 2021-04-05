@@ -21,6 +21,9 @@ class TitleView @JvmOverloads constructor(
     init {
            addView(binding.root)
         val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.TitleView)
+        if (attributes.getBoolean(R.styleable.TitleView_isSubtitle, false)) {
+            setAsSubTitle()
+        }
         attributes.getString(R.styleable.TitleView_title)?.let {
             setText(it)
         }
@@ -39,5 +42,8 @@ class TitleView @JvmOverloads constructor(
 
         binding.vDecoratorRight.layoutParams.width = pixels
         binding.vDecoratorRight.layoutParams.height = pixels
+
+        binding.vLineDecoratorLeft.layoutParams.height = 2
+        binding.vLineDecorator.layoutParams.height = 2
     }
 }
