@@ -15,6 +15,7 @@
         </attr>
         <attr name="label" format="string"/>
         <attr name="equalWeight" format="boolean"/>
+        <attr name="autoFillPoints" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="TitleView">

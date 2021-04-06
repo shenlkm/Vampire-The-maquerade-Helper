@@ -16,12 +16,20 @@ class PathView @JvmOverloads constructor(context: Context,
 
     init {
         addView(binding.root)
+        binding.pivChosenPath.setOnClickListener {
+            setBearingModifier(binding.pivChosenPath.fillPoint())
+        }
     }
 
     fun setData(data: PathModel) {
         binding.pivChosenPath.setLabel(data.path)
         binding.tvBearingValue.text = data.bearing
-        binding.tvBearingModificator.text = when (data.points) {
+        binding.pivChosenPath.setFilledPoints(data.points)
+        setBearingModifier(data.points)
+    }
+
+    private fun setBearingModifier(points: Int) {
+        binding.tvBearingModifier.text = when (points) {
             1 -> "( +2 )"
             2,3 -> "( +1 )"
             8,9 -> "( -1 )"

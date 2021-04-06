@@ -21,16 +21,21 @@ class PointItemView @JvmOverloads constructor(
             context
         ), this, false
     )
-    private var filledPoints: Int = 1
+    private var filledPoints: Int = 0
     private var temporalPoints: Int = 0
     private var length: Int = 5
     private var equalWeight: Boolean = false
+    private var autoFillPoints: Boolean = false
+
+    val totalPoints: Int
+        get() = filledPoints + temporalPoints
 
     init {
         addView(binding.root)
         val attributes = context.obtainStyledAttributes(attributeSet, R.styleable.PointItemView)
         length = attributes.getInt(R.styleable.PointItemView_pointLength, 5)
         equalWeight = attributes.getBoolean(R.styleable.PointItemView_equalWeight, false)
+        autoFillPoints = attributes.getBoolean(R.styleable.PointItemView_autoFillPoints, true)
         attributes.getString(R.styleable.PointItemView_label)?.let {
             setLabel(it)
         }
@@ -39,11 +44,14 @@ class PointItemView @JvmOverloads constructor(
     }
 
     private fun setup() {
+        addPointsToView()
+        setTemporalPoints()
+        redrawPoints()
+    }
+
+    private fun addPointsToView() {
         for (i in 0 until length) {
             val pointView = PointView(context)
-            if (i < filledPoints) {
-                pointView.setState(2)
-            }
             if (equalWeight) {
                 val param = LinearLayout.LayoutParams(
                     LayoutParams.MATCH_PARENT,
@@ -52,20 +60,48 @@ class PointItemView @JvmOverloads constructor(
                 )
                 pointView.layoutParams = param
             }
+            if (autoFillPoints) {
+                pointView.setOnClickListener {
+                    setFilledPoints(binding.llPointContainer.indexOfChild(it) + 1)
+                }
+            }
             binding.llPointContainer.addView(pointView)
         }
+    }
+
+    private fun setTemporalPoints() {
         var lastFilled = filledPoints
         while (lastFilled < temporalPoints) {
-            (binding.llPointContainer.getChildAt(lastFilled) as PointView).setState(1)
+            setPointStateAtIndex(lastFilled, 1)
             lastFilled++
         }
     }
 
-    fun fillPoint() {
+    private fun redrawPoints() {
+        for (i in 0 until binding.llPointContainer.childCount) {
+            when  {
+                i < filledPoints -> setPointStateAtIndex(i, 2)
+                i >= filledPoints && i < filledPoints + temporalPoints -> setPointStateAtIndex(i, 1)
+                else -> setPointStateAtIndex(i, 0)
+            }
+        }
+    }
+
+    private fun setPointStateAtIndex(index: Int, state: Int) {
+        (binding.llPointContainer.getChildAt(index) as PointView).setState(state)
+    }
+
+    fun setFilledPoints(value: Int) {
+        this.filledPoints = value
+        redrawPoints()
+    }
+
+    fun fillPoint() : Int {
         if (filledPoints+1 <= length) {
-            (binding.llPointContainer.getChildAt(filledPoints) as PointView).setState(2)
+            setPointStateAtIndex(filledPoints, 2)
             filledPoints++
         }
+        return filledPoints
     }
 
     fun setLabel(label: String) {

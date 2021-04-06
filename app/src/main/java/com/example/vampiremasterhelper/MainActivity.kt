@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             binding.pgsvSkills.setData(it[1])
             binding.pgsvAdvantages.setData(it[2])
         }
-        binding.pvHumanity.setData(PathModel("Humanidad", "normal", 9))
+        binding.pvHumanity.setData(PathModel("Humanidad", "normal", 1))
 
     }
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                 PointGroupSetModel(title = "Atributos",
                         items = arrayOf(
                             PointGroupModel(title = "Fisicos",
-                                    items = arrayOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
+                                    items = arrayOf(PointItemModel("Fuerza", filled = 3), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
                             PointGroupModel(title = "Mentales",
                                     items = arrayOf(PointItemModel("Manipulacion"), PointItemModel("Carisma"), PointItemModel("Apariencia"))),
                             PointGroupModel(title = "Sociales",

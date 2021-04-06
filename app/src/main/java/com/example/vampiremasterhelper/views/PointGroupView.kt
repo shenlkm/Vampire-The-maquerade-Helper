@@ -19,15 +19,15 @@ class PointGroupView @JvmOverloads constructor(context: Context,
             addView(binding.root)
         }
 
-    fun setGroupTitle(title: String) {
+    private fun setGroupTitle(title: String) {
         binding.tvPointGroupLabel.text = title
     }
 
     fun setData(data: PointGroupModel) {
         setGroupTitle(data.title)
         data.items.let {
-            binding.rvFisicalAttributes.layoutManager  = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding.rvFisicalAttributes.adapter = PointSetAdapter(it)
+            binding.rvGroupOfAttributes.layoutManager  = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            binding.rvGroupOfAttributes.adapter = PointSetAdapter(it)
         }
     }
 }

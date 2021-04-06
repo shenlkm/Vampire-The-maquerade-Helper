@@ -28,6 +28,8 @@ class PointView @JvmOverloads constructor(context: Context,
         setState()
     }
 
+    fun getState() = state
+
     private fun setState() {
         when (state) {
             1 -> binding.root.setBackgroundResource(R.drawable.ic_temporal_point)
