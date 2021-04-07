@@ -28,6 +28,14 @@ class WillPowerView @JvmOverloads constructor(context: Context,
                 1.0f
             )
             squarePointView.layoutParams = param
+
+            squarePointView.setOnClickListener {
+                val index = binding.llTempPointContainer.indexOfChild(it)
+                if (index < binding.pivWillpowerPermanentPoints.totalPoints) {
+                    val newState = if (squarePointView.getState() == 0) 1 else 0
+                    squarePointView.setState(newState)
+                }
+            }
             binding.llTempPointContainer.addView(squarePointView)
         }
     }
