@@ -1,4 +1,4 @@
-# Vampire: The-maquerade-Helper (WIP: 🚧)
+# Vampire: The maquerade - Helper (WIP: 🚧)
 
 A tool to help to maintain your character sheet up to date
 
