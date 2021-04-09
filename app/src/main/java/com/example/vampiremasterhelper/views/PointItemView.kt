@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.PointItemViewBinding
+import com.example.vampiremasterhelper.views.listener.PointItemViewListener
 
 
 class PointItemView @JvmOverloads constructor(
@@ -21,11 +22,14 @@ class PointItemView @JvmOverloads constructor(
             context
         ), this, false
     )
+
     private var filledPoints: Int = 0
     private var temporalPoints: Int = 0
     private var length: Int = 5
     private var equalWeight: Boolean = false
     private var autoFillPoints: Boolean = false
+
+    private var dataChangeListener: PointItemViewListener? = null
 
     val totalPoints: Int
         get() = filledPoints + temporalPoints
@@ -94,6 +98,7 @@ class PointItemView @JvmOverloads constructor(
     fun setFilledPoints(value: Int) {
         this.filledPoints = value
         redrawPoints()
+        dataChangeListener?.onPunctuationChanged(totalPoints)
     }
 
     fun fillPoint() : Int {
@@ -101,10 +106,15 @@ class PointItemView @JvmOverloads constructor(
             setPointStateAtIndex(filledPoints, 2)
             filledPoints++
         }
+        dataChangeListener?.onPunctuationChanged(totalPoints)
         return filledPoints
     }
 
     fun setLabel(label: String) {
         binding.tvItemPointLabel.text = label
+    }
+
+    fun setViewDataChangeListener(listener: PointItemViewListener) {
+        dataChangeListener = listener
     }
 }

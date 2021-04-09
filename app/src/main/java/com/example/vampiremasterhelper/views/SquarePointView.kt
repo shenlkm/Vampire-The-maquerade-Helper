@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.SquarePointViewBinding
 
-class SquarePointView constructor(context: Context,
+class SquarePointView @JvmOverloads constructor(context: Context,
                                   attributeSet: AttributeSet? = null,
                                   defStyleAttr: Int = 0)
     : FrameLayout(context, attributeSet, defStyleAttr) {

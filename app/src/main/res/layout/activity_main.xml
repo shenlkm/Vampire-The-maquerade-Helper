@@ -61,6 +61,13 @@
             app:layout_constraintStart_toEndOf="@+id/pv_humanity"
             app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
+        <com.example.vampiremasterhelper.views.BloodPoolView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
