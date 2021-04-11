@@ -48,10 +48,9 @@
             android:id="@+id/pv_humanity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toStartOf="@+id/wpv_willpower"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
+            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
         <com.example.vampiremasterhelper.views.WillPowerView
             android:id="@+id/wpv_willpower"
@@ -62,11 +61,20 @@
             app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
         <com.example.vampiremasterhelper.views.BloodPoolView
-            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/bpl_blood_pool"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/hv_health_view"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
+
+        <com.example.vampiremasterhelper.views.HealthView
+            android:id="@+id/hv_health_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bpl_blood_pool"
+            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
