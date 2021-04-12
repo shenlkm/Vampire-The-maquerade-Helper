@@ -1,4 +1,4 @@
-package com.example.vampiremasterhelper.views.Adapters
+package com.example.vampiremasterhelper.views.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,9 +11,7 @@ class PointSetAdapter(private val dataSet: Array<PointItemModel>) : RecyclerView
 
     private lateinit var binding: PointSetItemViewBinding
 
-    class PointSetViewHolder(val binding: PointSetItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
-
-    private var  holderBinding: PointSetItemViewBinding = binding
+    class PointSetViewHolder(private val holderBinding: PointSetItemViewBinding) : RecyclerView.ViewHolder(holderBinding.root) {
 
         fun bind(item: PointItemModel) {
             holderBinding.pivItem.setLabel(item.label)

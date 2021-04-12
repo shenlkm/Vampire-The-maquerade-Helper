@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vampiremasterhelper.databinding.PointGroupViewBinding
 import com.example.vampiremasterhelper.model.PointGroupModel
-import com.example.vampiremasterhelper.views.Adapters.PointSetAdapter
+import com.example.vampiremasterhelper.views.adapters.PointSetAdapter
 
 class PointGroupView @JvmOverloads constructor(context: Context,
                                                attributeSet: AttributeSet? = null,

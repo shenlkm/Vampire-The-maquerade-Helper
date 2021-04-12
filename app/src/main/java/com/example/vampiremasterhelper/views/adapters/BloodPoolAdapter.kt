@@ -1,4 +1,4 @@
-package com.example.vampiremasterhelper.views.Adapters
+package com.example.vampiremasterhelper.views.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.vampiremasterhelper.databinding.BloodPoolViewBinding
-import com.example.vampiremasterhelper.views.Adapters.BloodPoolAdapter
+import com.example.vampiremasterhelper.views.adapters.BloodPoolAdapter
 
 class BloodPoolView @JvmOverloads constructor(context: Context,
                                               attributeSet: AttributeSet? = null,
