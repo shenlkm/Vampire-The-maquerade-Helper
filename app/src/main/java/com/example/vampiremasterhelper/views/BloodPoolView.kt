@@ -14,12 +14,11 @@ class BloodPoolView @JvmOverloads constructor(context: Context,
     : FrameLayout(context, attributeSet, defStyleAttr) {
 
     private val binding = BloodPoolViewBinding.inflate(LayoutInflater.from(context), this, false)
-    private lateinit var adapter: BloodPoolAdapter
+    private var adapter: BloodPoolAdapter = BloodPoolAdapter(12)
 
     init {
         addView(binding.root)
         binding.rvBloodPool.layoutManager  = GridLayoutManager(context, 10)
-        adapter = BloodPoolAdapter(12)
         binding.rvBloodPool.adapter = adapter
     }
 

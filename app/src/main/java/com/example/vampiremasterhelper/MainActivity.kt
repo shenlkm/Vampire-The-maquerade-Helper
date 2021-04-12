@@ -2,8 +2,8 @@ package com.example.vampiremasterhelper
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
 import com.example.vampiremasterhelper.databinding.ActivityMainBinding
-import com.example.vampiremasterhelper.model.PathModel
 import com.example.vampiremasterhelper.model.PointGroupModel
 import com.example.vampiremasterhelper.model.PointGroupSetModel
 import com.example.vampiremasterhelper.model.PointItemModel
@@ -17,13 +17,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getDataSet().let {
+        /*getDataSet().let {
             binding.pgsvAttributes.setData(it[0])
             binding.pgsvSkills.setData(it[1])
             binding.pgsvAdvantages.setData(it[2])
         }
         binding.pvHumanity.setData(PathModel("Humanidad", "normal", 1))
 
+         */
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add(R.id.fl_container, CharacterCreationFragment())
+            }
+        }
     }
 
     private fun getDataSet() : Array<PointGroupSetModel> {
