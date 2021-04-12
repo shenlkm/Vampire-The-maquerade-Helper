@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add(R.id.fl_container, CharacterCreationFragment())
+                add(R.id.fl_container, CharacterCreationFragment.newInstance())
             }
         }
     }

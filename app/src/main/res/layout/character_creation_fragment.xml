@@ -1,145 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bc_border"
-    android:padding="8dp"
-    tools:context=".CharacterCreationFragment">
+    tools:context=".MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_name_input_layout"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="8dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_name_input"
+        <com.example.vampiremasterhelper.views.TitleView
+            android:id="@+id/tv_character_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Cratos"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_chronicle_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Cronica"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_name_input_layout">
+        <TextView
+            android:id="@+id/tv_nature_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_nature_value"
+            android:text="Naturaleza: "/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_chronicle_input"
+        <TextView
+            android:id="@+id/tv_nature_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
+            android:text="Conocedor"/>
+
+        <TextView
+            android:id="@+id/tv_demeanor_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_demeanor_value"
+            android:text="Conducta: "/>
+
+        <TextView
+            android:id="@+id/tv_demeanor_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_generation_label"
+            android:text="Ignorante"/>
+
+        <TextView
+            android:id="@+id/tv_concept_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_concept_value"
+            android:text="Concepto: "/>
+
+        <TextView
+            android:id="@+id/tv_concept_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_concept_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_sire_label"
+            android:text="Mendigo"/>
+
+        <TextView
+            android:id="@+id/tv_clan_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_nature_value"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_clan_value"
+            android:text="Clan: "/>
+
+        <TextView
+            android:id="@+id/tv_clan_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_clan_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Gangrel"/>
+
+        <TextView
+            android:id="@+id/tv_generation_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_demeanor_value"
+            app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_generation_value"
+            android:text="Generacion: "/>
+
+        <TextView
+            android:id="@+id/tv_generation_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_generation_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="IX"/>
+
+        <TextView
+            android:id="@+id/tv_sire_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_concept_value"
+            app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+            app:layout_constraintEnd_toStartOf="@id/tv_sire_value"
+            android:text="Sire: "/>
+
+        <TextView
+            android:id="@+id/tv_sire_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_sire_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Jhon Mc'lein"/>
+
+        <com.example.vampiremasterhelper.views.PointGroupSetView
+            android:id="@+id/pgsv_attributes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_concept_label" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_nature_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Naturaleza"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_chronicle_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_nature_input"
+        <com.example.vampiremasterhelper.views.PointGroupSetView
+            android:id="@+id/pgsv_skills"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pgsv_attributes" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_demeanor_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Conducta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_nature_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_demeanor_input"
+        <com.example.vampiremasterhelper.views.PointGroupSetView
+            android:id="@+id/pgsv_advantages"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pgsv_skills" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_concept_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Concepto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_demeanor_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_concept_input"
+        <include
+            android:id="@+id/isv_separator"
+            layout="@layout/separator_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_clan_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Clan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_concept_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_clan_input"
-            android:layout_width="match_parent"
+        <com.example.vampiremasterhelper.views.PathView
+            android:id="@+id/pv_humanity"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toStartOf="@+id/wpv_willpower"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_generation_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Generacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_clan_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_generation_input"
-            android:layout_width="match_parent"
+        <com.example.vampiremasterhelper.views.WillPowerView
+            android:id="@+id/wpv_willpower"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pv_humanity"
+            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_sire_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Sire"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_generation_input_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/til_sire_input"
-            android:layout_width="match_parent"
+        <com.example.vampiremasterhelper.views.BloodPoolView
+            android:id="@+id/bpl_blood_pool"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            app:layout_constraintEnd_toStartOf="@id/hv_health_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.example.vampiremasterhelper.views.HealthView
+            android:id="@+id/hv_health_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bpl_blood_pool"
+            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
