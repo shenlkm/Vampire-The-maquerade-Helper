@@ -21,11 +21,38 @@
             app:title="Cratos"/>
 
         <TextView
-            android:id="@+id/tv_nature_label"
+            android:id="@+id/tv_chronicle_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_chronicle_value"
+            android:text="Cronica: "/>
+
+        <TextView
+            android:id="@+id/tv_chronicle_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintEnd_toStartOf="@id/ib_edit_character_info"
+            android:text="El despertar de la oscuridad"/>
+
+        <ImageView
+            android:id="@+id/ib_edit_character_info"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_chronicle_value"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            android:src="@android:drawable/ic_menu_edit" />
+
+        <TextView
+            android:id="@+id/tv_nature_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
             app:layout_constraintEnd_toStartOf="@id/tv_nature_value"
             android:text="Naturaleza: "/>
 
@@ -34,7 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/tv_nature_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
             app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
             android:text="Conocedor"/>
 
@@ -79,7 +106,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/tv_nature_value"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
             app:layout_constraintEnd_toStartOf="@id/tv_clan_value"
             android:text="Clan: "/>
 
@@ -88,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/tv_clan_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="Gangrel"/>
 
