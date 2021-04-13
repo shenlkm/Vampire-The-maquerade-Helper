@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.PointGroupSetViewBinding
 import com.example.vampiremasterhelper.model.PointGroupSetModel
 
@@ -22,19 +23,19 @@ class PointGroupSetView @JvmOverloads constructor(context: Context,
                 binding.pgvOne.visibility = GONE
                 binding.pgvTwo.visibility = GONE
                 binding.pgvThree.visibility = GONE
-                binding.ivExpand.setImageResource(android.R.drawable.arrow_down_float)
+                binding.ivExpand.setImageResource(R.drawable.outline_expand_more_24)
             } else {
                 binding.pgvOne.visibility = VISIBLE
                 binding.pgvTwo.visibility = VISIBLE
                 binding.pgvThree.visibility = VISIBLE
-                binding.ivExpand.setImageResource(android.R.drawable.arrow_up_float)
+                binding.ivExpand.setImageResource(R.drawable.outline_expand_less_24)
             }
             isVisible = !isVisible
         }
     }
 
     fun setGroupTitle(title: String) {
-        binding.tvPointGroupSetTitle.setText(title)
+        binding.tvPointGroupSetTitle.setTitle(title)
     }
 
     fun setData(data: PointGroupSetModel) {

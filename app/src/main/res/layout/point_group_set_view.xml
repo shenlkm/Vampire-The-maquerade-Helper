@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_point_group_set_title"
-        app:srcCompat="@android:drawable/arrow_up_float" />
+        app:srcCompat="@drawable/outline_expand_more_24" />
 
     <com.example.vampiremasterhelper.views.PointGroupView
         android:id="@+id/pgv_one"

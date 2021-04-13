@@ -1,225 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <import type="androidx.lifecycle.LiveData" />
+        <variable
+            name="characterInfo"
+            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>"/>
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <com.example.vampiremasterhelper.views.TitleView
-            android:id="@+id/tv_character_name"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:title="Cratos"/>
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/tv_chronicle_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
-            app:layout_constraintEnd_toStartOf="@id/tv_chronicle_value"
-            android:text="Cronica: "/>
+            <com.example.vampiremasterhelper.views.TitleView
+                android:id="@+id/tv_character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@{characterInfo.name}"/>
 
-        <TextView
-            android:id="@+id/tv_chronicle_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_nature_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
-            app:layout_constraintEnd_toStartOf="@id/ib_edit_character_info"
-            android:text="El despertar de la oscuridad"/>
+            <TextView
+                android:id="@+id/tv_chronicle_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+                app:layout_constraintEnd_toStartOf="@id/tv_chronicle_value"
+                android:text="Cronica: "/>
 
-        <ImageView
-            android:id="@+id/ib_edit_character_info"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_chronicle_value"
-            app:layout_constraintTop_toBottomOf="@id/tv_character_name"
-            android:src="@android:drawable/ic_menu_edit" />
+            <TextView
+                android:id="@+id/tv_chronicle_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+                app:layout_constraintEnd_toStartOf="@id/iv_edit_character_info"
+                android:text="@{characterInfo.chronicle}"/>
 
-        <TextView
-            android:id="@+id/tv_nature_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_nature_value"
-            android:text="Naturaleza: "/>
+            <ImageView
+                android:id="@+id/iv_edit_character_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_chronicle_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+                android:src="@drawable/outline_edit_24" />
 
-        <TextView
-            android:id="@+id/tv_nature_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_nature_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
-            android:text="Conocedor"/>
+            <TextView
+                android:id="@+id/tv_nature_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_nature_value"
+                android:text="Naturaleza: "/>
 
-        <TextView
-            android:id="@+id/tv_demeanor_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_demeanor_value"
-            android:text="Conducta: "/>
+            <TextView
+                android:id="@+id/tv_nature_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
+                android:text="@{characterInfo.nature}"/>
 
-        <TextView
-            android:id="@+id/tv_demeanor_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_generation_label"
-            android:text="Ignorante"/>
+            <TextView
+                android:id="@+id/tv_demeanor_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_demeanor_value"
+                android:text="Conducta: "/>
 
-        <TextView
-            android:id="@+id/tv_concept_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_concept_value"
-            android:text="Concepto: "/>
+            <TextView
+                android:id="@+id/tv_demeanor_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_generation_label"
+                android:text="@{characterInfo.demeanor}"/>
 
-        <TextView
-            android:id="@+id/tv_concept_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_concept_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_sire_label"
-            android:text="Mendigo"/>
+            <TextView
+                android:id="@+id/tv_concept_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_concept_value"
+                android:text="Concepto: "/>
 
-        <TextView
-            android:id="@+id/tv_clan_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_nature_value"
-            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_clan_value"
-            android:text="Clan: "/>
+            <TextView
+                android:id="@+id/tv_concept_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_concept_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_sire_label"
+                android:text="@{characterInfo.concept}"/>
 
-        <TextView
-            android:id="@+id/tv_clan_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_clan_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Gangrel"/>
+            <TextView
+                android:id="@+id/tv_clan_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toEndOf="@id/tv_nature_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_clan_value"
+                android:text="Clan: "/>
 
-        <TextView
-            android:id="@+id/tv_generation_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_demeanor_value"
-            app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_generation_value"
-            android:text="Generacion: "/>
+            <TextView
+                android:id="@+id/tv_clan_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_clan_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{characterInfo.clan}"/>
 
-        <TextView
-            android:id="@+id/tv_generation_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_generation_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="IX"/>
+            <TextView
+                android:id="@+id/tv_generation_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toEndOf="@id/tv_demeanor_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_generation_value"
+                android:text="Generacion: "/>
 
-        <TextView
-            android:id="@+id/tv_sire_label"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_concept_value"
-            app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
-            app:layout_constraintEnd_toStartOf="@id/tv_sire_value"
-            android:text="Sire: "/>
+            <TextView
+                android:id="@+id/tv_generation_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_generation_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{characterInfo.generation}"/>
 
-        <TextView
-            android:id="@+id/tv_sire_value"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/tv_sire_label"
-            app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Jhon Mc'lein"/>
+            <TextView
+                android:id="@+id/tv_sire_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/delavan"
+                app:layout_constraintStart_toEndOf="@id/tv_concept_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+                app:layout_constraintEnd_toStartOf="@id/tv_sire_value"
+                android:text="Sire: "/>
 
-        <com.example.vampiremasterhelper.views.PointGroupSetView
-            android:id="@+id/pgsv_attributes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_concept_label" />
+            <TextView
+                android:id="@+id/tv_sire_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/tv_sire_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@{characterInfo.sire}"/>
 
-        <com.example.vampiremasterhelper.views.PointGroupSetView
-            android:id="@+id/pgsv_skills"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_attributes" />
+            <com.example.vampiremasterhelper.views.PointGroupSetView
+                android:id="@+id/pgsv_attributes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_concept_label" />
 
-        <com.example.vampiremasterhelper.views.PointGroupSetView
-            android:id="@+id/pgsv_advantages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_skills" />
+            <com.example.vampiremasterhelper.views.PointGroupSetView
+                android:id="@+id/pgsv_skills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pgsv_attributes" />
 
-        <include
-            android:id="@+id/isv_separator"
-            layout="@layout/separator_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
+            <com.example.vampiremasterhelper.views.PointGroupSetView
+                android:id="@+id/pgsv_advantages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pgsv_skills" />
 
-        <com.example.vampiremasterhelper.views.PathView
-            android:id="@+id/pv_humanity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@+id/wpv_willpower"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
+            <include
+                android:id="@+id/isv_separator"
+                layout="@layout/separator_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pgsv_advantages" />
 
-        <com.example.vampiremasterhelper.views.WillPowerView
-            android:id="@+id/wpv_willpower"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/pv_humanity"
-            app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
+            <com.example.vampiremasterhelper.views.PathView
+                android:id="@+id/pv_humanity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@+id/wpv_willpower"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
-        <com.example.vampiremasterhelper.views.BloodPoolView
-            android:id="@+id/bpl_blood_pool"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="@id/hv_health_view"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
+            <com.example.vampiremasterhelper.views.WillPowerView
+                android:id="@+id/wpv_willpower"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pv_humanity"
+                app:layout_constraintTop_toBottomOf="@+id/isv_separator" />
 
-        <com.example.vampiremasterhelper.views.HealthView
-            android:id="@+id/hv_health_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/bpl_blood_pool"
-            app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
+            <com.example.vampiremasterhelper.views.BloodPoolView
+                android:id="@+id/bpl_blood_pool"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="@id/hv_health_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.example.vampiremasterhelper.views.HealthView
+                android:id="@+id/hv_health_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bpl_blood_pool"
+                app:layout_constraintTop_toBottomOf="@+id/wpv_willpower" />
 
-</ScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

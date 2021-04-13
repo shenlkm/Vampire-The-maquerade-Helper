@@ -25,11 +25,11 @@ class TitleView @JvmOverloads constructor(
             setAsSubTitle()
         }
         attributes.getString(R.styleable.TitleView_title)?.let {
-            setText(it)
+            setTitle(it)
         }
     }
 
-    fun setText(title: String) {
+    fun setTitle(title: String) {
         binding.tvTitle.text = title
     }
 

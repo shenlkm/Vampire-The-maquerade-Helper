@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/delavan"
         android:text="Fisicos"
-        android:textColor="@color/black"
+        android:textColor="@color/primaryDarkColor"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
