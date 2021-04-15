@@ -8,17 +8,17 @@
         android:id="@+id/tv_blood_pool_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:isSubtitle="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:isSubtitle="true"
         app:title="Reserva de Sangre" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_blood_pool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_s"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_blood_pool_title" />

@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp">
+    android:layout_margin="@dimen/margin_xs">
 
     <com.example.vampiremasterhelper.views.TitleView
         android:id="@+id/tv_point_group_set_title"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_expand"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/margin_l"
+        android:layout_height="@dimen/margin_l"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_point_group_set_title"
@@ -27,7 +26,7 @@
         android:id="@+id/pgv_one"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_s"
         app:layout_constraintEnd_toStartOf="@+id/pgv_two"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_expand" />
@@ -36,9 +35,9 @@
         android:id="@+id/pgv_two"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/margin_s"
+        android:layout_marginTop="@dimen/margin_s"
+        android:layout_marginEnd="@dimen/margin_s"
         app:layout_constraintEnd_toStartOf="@+id/pgv_three"
         app:layout_constraintStart_toEndOf="@+id/pgv_one"
         app:layout_constraintTop_toBottomOf="@+id/iv_expand" />
@@ -47,9 +46,9 @@
         android:id="@+id/pgv_three"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/pgv_two"
+        android:layout_marginTop="@dimen/margin_s"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pgv_two"
         app:layout_constraintTop_toBottomOf="@+id/iv_expand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

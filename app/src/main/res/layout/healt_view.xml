@@ -8,8 +8,8 @@
         android:id="@+id/tv_healt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_s"
         app:isSubtitle="true"
-        android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,16 +20,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Magullado"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/spv_bruised"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_healt_title" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_bruised"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_bruised"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_bruised"
         app:layout_constraintTop_toBottomOf="@id/tv_healt_title" />
 
     <TextView
@@ -37,156 +37,151 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Lesionado"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_injured_modificator"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_hurt" />
 
     <TextView
         android:id="@+id/tv_injured_modificator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="-1"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_injured"
+        android:text="-1"
         app:layout_constraintEnd_toStartOf="@id/spv_injured"
+        app:layout_constraintStart_toEndOf="@+id/tv_injured"
         app:layout_constraintTop_toBottomOf="@id/tv_hurt" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_injured"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_hurt_modificator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_hurt"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_hurt_modificator"
+        app:layout_constraintTop_toBottomOf="@id/tv_hurt" />
 
     <TextView
         android:id="@+id/tv_wounded"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Herido"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_hurt_modificator"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_injured" />
 
     <TextView
         android:id="@+id/tv_wounded_modificator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="-2"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_wounded"
+        android:text="-2"
         app:layout_constraintEnd_toStartOf="@id/spv_wounded"
+        app:layout_constraintStart_toEndOf="@+id/tv_wounded"
         app:layout_constraintTop_toBottomOf="@id/tv_injured" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_wounded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_wounded_modificator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_injured"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_wounded_modificator"
+        app:layout_constraintTop_toBottomOf="@id/tv_injured" />
 
     <TextView
         android:id="@+id/tv_mauled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Malherido"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_mauled_modificator"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_wounded" />
 
     <TextView
         android:id="@+id/tv_mauled_modificator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="-2"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_mauled"
+        android:text="-2"
         app:layout_constraintEnd_toStartOf="@id/spv_mauled"
+        app:layout_constraintStart_toEndOf="@+id/tv_mauled"
         app:layout_constraintTop_toBottomOf="@id/tv_wounded" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_mauled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_mauled_modificator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_wounded"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_mauled_modificator"
+        app:layout_constraintTop_toBottomOf="@id/tv_wounded" />
 
     <TextView
         android:id="@+id/tv_crippled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Tullidp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_crippled_modificator"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_mauled" />
 
     <TextView
         android:id="@+id/tv_crippled_modificator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="-5"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_crippled"
+        android:text="-5"
         app:layout_constraintEnd_toStartOf="@id/spv_crippled"
+        app:layout_constraintStart_toEndOf="@+id/tv_crippled"
         app:layout_constraintTop_toBottomOf="@id/tv_mauled" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_crippled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_crippled_modificator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_mauled"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_crippled_modificator"
+        app:layout_constraintTop_toBottomOf="@id/tv_mauled" />
 
     <TextView
         android:id="@+id/tv_hurt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Lastimado"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_hurt_modificator"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bruised" />
 
     <TextView
         android:id="@+id/tv_hurt_modificator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="-1"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/tv_hurt"
+        android:text="-1"
         app:layout_constraintEnd_toStartOf="@id/spv_hurt"
+        app:layout_constraintStart_toEndOf="@+id/tv_hurt"
         app:layout_constraintTop_toBottomOf="@id/tv_bruised" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_hurt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_hurt_modificator"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_bruised"
-        />
+        app:layout_constraintStart_toEndOf="@+id/tv_hurt_modificator"
+        app:layout_constraintTop_toBottomOf="@id/tv_bruised" />
 
     <TextView
         android:id="@+id/tv_incapacitated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Incapacitado"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/spv_incapacitated"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_crippled" />
 
     <com.example.vampiremasterhelper.views.SquarePointView
         android:id="@+id/spv_incapacitated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/tv_incapacitated"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_incapacitated"
         app:layout_constraintTop_toBottomOf="@id/tv_crippled" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

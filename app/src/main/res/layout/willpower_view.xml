@@ -8,18 +8,18 @@
         android:id="@+id/tv_willpower_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:isSubtitle="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:isSubtitle="true"
         app:title="Fuerza de Voluntad" />
 
     <com.example.vampiremasterhelper.views.PointItemView
         android:id="@+id/piv_willpower_permanent_points"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/margin_s"
+        android:layout_marginEnd="@dimen/margin_s"
         app:equalWeight="true"
         app:layout_constraintTop_toBottomOf="@+id/tv_willpower_title"
         app:pointLength="full" />
@@ -28,9 +28,9 @@
         android:id="@+id/ll_temp_point_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/margin_s"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="@dimen/margin_s"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

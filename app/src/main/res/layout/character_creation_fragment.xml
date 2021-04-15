@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="androidx.lifecycle.LiveData" />
+
         <variable
             name="characterInfo"
-            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>"/>
+            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>" />
     </data>
 
     <ScrollView
@@ -18,7 +20,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
+            android:padding="@dimen/margin_s">
 
             <com.example.vampiremasterhelper.views.TitleView
                 android:id="@+id/tv_character_name"
@@ -27,149 +29,149 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="@{characterInfo.name}"/>
+                app:title="@{characterInfo.name}" />
 
             <TextView
                 android:id="@+id/tv_chronicle_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+                android:text="Cronica: "
                 app:layout_constraintEnd_toStartOf="@id/tv_chronicle_value"
-                android:text="Cronica: "/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name" />
 
             <TextView
                 android:id="@+id/tv_chronicle_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
+                android:text="@{characterInfo.chronicle}"
                 app:layout_constraintEnd_toStartOf="@id/iv_edit_character_info"
-                android:text="@{characterInfo.chronicle}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name" />
 
             <ImageView
                 android:id="@+id/iv_edit_character_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/outline_edit_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_chronicle_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_character_name"
-                android:src="@drawable/outline_edit_24" />
+                app:layout_constraintTop_toBottomOf="@id/tv_character_name" />
 
             <TextView
                 android:id="@+id/tv_nature_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                android:text="Naturaleza: "
                 app:layout_constraintEnd_toStartOf="@id/tv_nature_value"
-                android:text="Naturaleza: "/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
 
             <TextView
                 android:id="@+id/tv_nature_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                android:text="@{characterInfo.nature}"
                 app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
-                android:text="@{characterInfo.nature}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_nature_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
 
             <TextView
                 android:id="@+id/tv_demeanor_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+                android:text="Conducta: "
                 app:layout_constraintEnd_toStartOf="@id/tv_demeanor_value"
-                android:text="Conducta: "/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_nature_label" />
 
             <TextView
                 android:id="@+id/tv_demeanor_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_nature_label"
+                android:text="@{characterInfo.demeanor}"
                 app:layout_constraintEnd_toStartOf="@id/tv_generation_label"
-                android:text="@{characterInfo.demeanor}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_nature_label" />
 
             <TextView
                 android:id="@+id/tv_concept_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+                android:text="Concepto: "
                 app:layout_constraintEnd_toStartOf="@id/tv_concept_value"
-                android:text="Concepto: "/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label" />
 
             <TextView
                 android:id="@+id/tv_concept_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_concept_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label"
+                android:text="@{characterInfo.concept}"
                 app:layout_constraintEnd_toStartOf="@id/tv_sire_label"
-                android:text="@{characterInfo.concept}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_concept_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label" />
 
             <TextView
                 android:id="@+id/tv_clan_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toEndOf="@id/tv_nature_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                android:text="Clan: "
                 app:layout_constraintEnd_toStartOf="@id/tv_clan_value"
-                android:text="Clan: "/>
+                app:layout_constraintStart_toEndOf="@id/tv_nature_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
 
             <TextView
                 android:id="@+id/tv_clan_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_clan_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label"
+                android:text="@{characterInfo.clan}"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@{characterInfo.clan}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_clan_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
 
             <TextView
                 android:id="@+id/tv_generation_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toEndOf="@id/tv_demeanor_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+                android:text="Generacion: "
                 app:layout_constraintEnd_toStartOf="@id/tv_generation_value"
-                android:text="Generacion: "/>
+                app:layout_constraintStart_toEndOf="@id/tv_demeanor_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_clan_label" />
 
             <TextView
                 android:id="@+id/tv_generation_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_generation_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_clan_label"
+                android:text="@{characterInfo.generation}"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@{characterInfo.generation}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_generation_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_clan_label" />
 
             <TextView
                 android:id="@+id/tv_sire_label"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/delavan"
-                app:layout_constraintStart_toEndOf="@id/tv_concept_value"
-                app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+                android:text="Sire: "
                 app:layout_constraintEnd_toStartOf="@id/tv_sire_value"
-                android:text="Sire: "/>
+                app:layout_constraintStart_toEndOf="@id/tv_concept_value"
+                app:layout_constraintTop_toBottomOf="@id/tv_generation_label" />
 
             <TextView
                 android:id="@+id/tv_sire_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/tv_sire_label"
-                app:layout_constraintTop_toBottomOf="@id/tv_generation_label"
+                android:text="@{characterInfo.sire}"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@{characterInfo.sire}"/>
+                app:layout_constraintStart_toEndOf="@id/tv_sire_label"
+                app:layout_constraintTop_toBottomOf="@id/tv_generation_label" />
 
             <com.example.vampiremasterhelper.views.PointGroupSetView
                 android:id="@+id/pgsv_attributes"

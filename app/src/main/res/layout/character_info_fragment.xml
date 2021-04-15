@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="androidx.lifecycle.LiveData" />
+
         <variable
             name="characterInfo"
-            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>"/>
+            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
         android:background="#ffffff"
+        android:padding="@dimen/margin_s"
         tools:context=".CharacterInfoFragment">
 
         <com.example.vampiremasterhelper.views.TitleView
             android:id="@+id/tv_character_info_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/margin_s"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.name}"/>
+                android:text="@={characterInfo.name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.chronicle}"/>
+                android:text="@={characterInfo.chronicle}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.name}"/>
+                android:text="@={characterInfo.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.demeanor}"/>
+                android:text="@={characterInfo.demeanor}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.concept}"/>
+                android:text="@={characterInfo.concept}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +135,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:inputType="none"
-                android:text="@={characterInfo.clan}"/>
+                android:text="@={characterInfo.clan}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.generation}"/>
+                android:text="@={characterInfo.generation}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={characterInfo.sire}"/>
+                android:text="@={characterInfo.sire}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -177,10 +179,10 @@
             android:id="@+id/bt_save_character_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text="Guardar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_sire_input_layout"
-            android:text="Guardar"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_sire_input_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
