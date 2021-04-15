@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.PointItemViewBinding
+import com.example.vampiremasterhelper.model.PointItemModel
 import com.example.vampiremasterhelper.views.listener.PointItemViewListener
 
 
@@ -22,8 +23,7 @@ class PointItemView @JvmOverloads constructor(
         ), this, false
     )
 
-    private var filledPoints: Int = 0
-    private var temporalPoints: Int = 0
+    private var pointItem: PointItemModel = PointItemModel("", 0, 0)
     private var length: Int = 5
     private var equalWeight: Boolean = false
     private var autoFillPoints: Boolean = false
@@ -31,7 +31,7 @@ class PointItemView @JvmOverloads constructor(
     private var dataChangeListener: PointItemViewListener? = null
 
     val totalPoints: Int
-        get() = filledPoints + temporalPoints
+        get() = pointItem.filled + pointItem.temporal
 
     init {
         addView(binding.root)
@@ -41,8 +41,10 @@ class PointItemView @JvmOverloads constructor(
         autoFillPoints = attributes.getBoolean(R.styleable.PointItemView_autoFillPoints, true)
         attributes.getString(R.styleable.PointItemView_label)?.let {
             setLabel(it)
+            pointItem.label = it
         }
         setup()
+
         attributes.recycle()
     }
 
@@ -73,8 +75,8 @@ class PointItemView @JvmOverloads constructor(
     }
 
     private fun setTemporalPoints() {
-        var lastFilled = filledPoints
-        while (lastFilled < temporalPoints) {
+        var lastFilled = pointItem.filled
+        while (lastFilled < pointItem.temporal) {
             setPointStateAtIndex(lastFilled, 1)
             lastFilled++
         }
@@ -83,8 +85,8 @@ class PointItemView @JvmOverloads constructor(
     private fun redrawPoints() {
         for (i in 0 until binding.llPointContainer.childCount) {
             when {
-                i < filledPoints -> setPointStateAtIndex(i, 2)
-                i >= filledPoints && i < filledPoints + temporalPoints -> setPointStateAtIndex(i, 1)
+                i < pointItem.filled -> setPointStateAtIndex(i, 2)
+                i >= pointItem.filled && i < pointItem.filled + pointItem.temporal -> setPointStateAtIndex(i, 1)
                 else -> setPointStateAtIndex(i, 0)
             }
         }
@@ -95,18 +97,18 @@ class PointItemView @JvmOverloads constructor(
     }
 
     fun setFilledPoints(value: Int) {
-        this.filledPoints = value
+        this.pointItem.filled = value
         redrawPoints()
         dataChangeListener?.onPunctuationChanged(totalPoints)
     }
 
     fun fillPoint(): Int {
-        if (filledPoints + 1 <= length) {
-            setPointStateAtIndex(filledPoints, 2)
-            filledPoints++
+        if (pointItem.filled + 1 <= length) {
+            setPointStateAtIndex(pointItem.filled, 2)
+            pointItem.filled++
         }
         dataChangeListener?.onPunctuationChanged(totalPoints)
-        return filledPoints
+        return pointItem.filled
     }
 
     fun setLabel(label: String) {
