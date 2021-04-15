@@ -1,9 +1,11 @@
 package com.example.vampiremasterhelper.views.adapters
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vampiremasterhelper.R
 import com.example.vampiremasterhelper.databinding.SelectDialogItemListBinding
 import com.example.vampiremasterhelper.model.DialogSelectItem
 
@@ -15,7 +17,14 @@ class SelectDialogAdapter<T> constructor(private val items: List<T>, val onItemS
         fun bind(item: T) {
             holderBinding .tvItemLabel.text = item.value
             holderBinding.clDialogItemContainer.isSelected = item.selected
-            //if (item.selected) holderBinding .tvItemLabel.setTextAppearance(R.style.TextRobotoM_M_B) else holderBinding .tvItemLabel.setTextAppearance(R.style.TextRobotoR_M_B)
+            if (item.selected) {
+                holderBinding.tvItemLabel.setTypeface(holderBinding.tvItemLabel.typeface, Typeface.BOLD)
+                holderBinding.vItemSelectedIndicator.visibility = View.VISIBLE
+            }
+            else {
+                holderBinding.tvItemLabel.setTypeface(holderBinding.tvItemLabel.typeface, Typeface.NORMAL)
+                holderBinding.vItemSelectedIndicator.visibility = View.GONE
+            }
         }
     }
 
@@ -23,7 +32,7 @@ class SelectDialogAdapter<T> constructor(private val items: List<T>, val onItemS
         fun bind(item: T) {
             holderBinding .tvItemLabel.text = item.value
             holderBinding.clDialogItemContainer.isEnabled = false
-            //tv_item_label.setTextAppearance(R.style.TextRobotoR_M_B040)
+            holderBinding.tvItemLabel.setTextAppearance(R.style.TextHeader)
         }
     }
 

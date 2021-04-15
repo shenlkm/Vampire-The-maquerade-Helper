@@ -14,10 +14,9 @@ class PointItemView @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
-)
-    : FrameLayout(context, attributeSet, defStyleAttr) {
+) : FrameLayout(context, attributeSet, defStyleAttr) {
 
-    private var  binding: PointItemViewBinding = PointItemViewBinding.inflate(
+    private var binding: PointItemViewBinding = PointItemViewBinding.inflate(
         LayoutInflater.from(
             context
         ), this, false
@@ -83,7 +82,7 @@ class PointItemView @JvmOverloads constructor(
 
     private fun redrawPoints() {
         for (i in 0 until binding.llPointContainer.childCount) {
-            when  {
+            when {
                 i < filledPoints -> setPointStateAtIndex(i, 2)
                 i >= filledPoints && i < filledPoints + temporalPoints -> setPointStateAtIndex(i, 1)
                 else -> setPointStateAtIndex(i, 0)
@@ -101,8 +100,8 @@ class PointItemView @JvmOverloads constructor(
         dataChangeListener?.onPunctuationChanged(totalPoints)
     }
 
-    fun fillPoint() : Int {
-        if (filledPoints+1 <= length) {
+    fun fillPoint(): Int {
+        if (filledPoints + 1 <= length) {
             setPointStateAtIndex(filledPoints, 2)
             filledPoints++
         }

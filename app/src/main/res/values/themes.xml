@@ -23,4 +23,8 @@
         <item name="android:windowExitAnimation">@anim/slide_out_down</item>
     </style>
 
+    <style name="TextHeader">
+        <item name="fontFamily">@font/delavan</item>
+    </style>
+
 </resources>

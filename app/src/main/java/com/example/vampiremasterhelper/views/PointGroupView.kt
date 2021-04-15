@@ -9,16 +9,18 @@ import com.example.vampiremasterhelper.databinding.PointGroupViewBinding
 import com.example.vampiremasterhelper.model.PointGroupModel
 import com.example.vampiremasterhelper.views.adapters.PointSetAdapter
 
-class PointGroupView @JvmOverloads constructor(context: Context,
-                                               attributeSet: AttributeSet? = null,
-                                               defStyleAttr: Int = 0)
-    : FrameLayout(context, attributeSet, defStyleAttr) {
+class PointGroupView @JvmOverloads constructor(
+    context: Context,
+    attributeSet: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attributeSet, defStyleAttr) {
 
-    private var  binding: PointGroupViewBinding = PointGroupViewBinding.inflate(LayoutInflater.from(context), this, false)
+    private var binding: PointGroupViewBinding =
+        PointGroupViewBinding.inflate(LayoutInflater.from(context), this, false)
 
-        init {
-            addView(binding.root)
-        }
+    init {
+        addView(binding.root)
+    }
 
     private fun setGroupTitle(title: String) {
         binding.tvPointGroupLabel.text = title
@@ -27,7 +29,8 @@ class PointGroupView @JvmOverloads constructor(context: Context,
     fun setData(data: PointGroupModel) {
         setGroupTitle(data.title)
         data.items.let {
-            binding.rvGroupOfAttributes.layoutManager  = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            binding.rvGroupOfAttributes.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             binding.rvGroupOfAttributes.adapter = PointSetAdapter(it)
         }
     }

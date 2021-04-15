@@ -40,9 +40,30 @@ class CharacterInfoFragment : Fragment() {
         binding.tilClanInput.setOnClickListener {
             if (selectClanDialog == null) {
                 selectClanDialog = BottomDialogView(requireActivity())
-                selectClanDialog?.let { dialog -> dialog.window?.setBackgroundDrawableResource(R.drawable.bc_border)
+                selectClanDialog?.let { dialog ->
+                    dialog.window?.setBackgroundDrawableResource(R.drawable.bc_border)
 
-                    val selectDestinationView = SelectDialogViewHolder(listOf(DialogSelectItem("Assamita"), DialogSelectItem("Brujah")), requireActivity())
+                    val selectDestinationView = SelectDialogViewHolder(
+                        listOf(
+                            DialogSelectItem("Caitiff"),
+                            DialogSelectItem("Camarilla", isSection = true),
+                            DialogSelectItem("Brujah"),
+                            DialogSelectItem("Gangrel"),
+                            DialogSelectItem("Malkavian"),
+                            DialogSelectItem("Nosferatu"),
+                            DialogSelectItem("Toreador"),
+                            DialogSelectItem("Tremere"),
+                            DialogSelectItem("Centrue"),
+                            DialogSelectItem("Sabbat", isSection = true),
+                            DialogSelectItem("Lasombre"),
+                            DialogSelectItem("Tzimisce"),
+                            DialogSelectItem("Independiences", isSection = true),
+                            DialogSelectItem("Assamita"),
+                            DialogSelectItem("Giovanni"),
+                            DialogSelectItem("Seguidores de Set"),
+                            DialogSelectItem("Ravnos")
+                        ), requireActivity()
+                    )
                     dialog.setContentView(selectDestinationView.getView("Clan") {
                         it?.let { selected ->
                             binding.tilClanInput.setText(selected.value)
