@@ -48,7 +48,9 @@ class CharacterCreationFragment : Fragment() {
         getDataSet().let {
             binding.pgsvAttributes.setData(it[0])
             binding.pgsvSkills.setData(it[1])
+            binding.pgsvSkills.setIsExpanded(false)
             binding.pgsvAdvantages.setData(it[2])
+            binding.pgsvAdvantages.setIsExpanded(false)
         }
     }
 
