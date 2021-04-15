@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vampiremasterhelper.databinding.PointGroupViewBinding
 import com.example.vampiremasterhelper.model.PointGroupModel
+import com.example.vampiremasterhelper.model.PointItemModel
 import com.example.vampiremasterhelper.views.adapters.PointSetAdapter
 
 class PointGroupView @JvmOverloads constructor(
@@ -15,23 +16,23 @@ class PointGroupView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attributeSet, defStyleAttr) {
 
+    private var data: PointGroupModel = PointGroupModel("", listOf<PointItemModel>().toTypedArray())
     private var binding: PointGroupViewBinding =
         PointGroupViewBinding.inflate(LayoutInflater.from(context), this, false)
 
     init {
         addView(binding.root)
-    }
-
-    private fun setGroupTitle(title: String) {
-        binding.tvPointGroupLabel.text = title
+        binding.pointGroup = data
     }
 
     fun setData(data: PointGroupModel) {
-        setGroupTitle(data.title)
+        this.data.title = data.title
         data.items.let {
-            binding.rvGroupOfAttributes.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            binding.rvGroupOfAttributes.adapter = PointSetAdapter(it)
+            binding.rvGroupOfAttributes.apply {
+                layoutManager =
+                    LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                adapter = PointSetAdapter(it)
+            }
         }
     }
 }

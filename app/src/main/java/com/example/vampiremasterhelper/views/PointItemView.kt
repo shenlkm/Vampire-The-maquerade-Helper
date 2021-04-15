@@ -39,8 +39,8 @@ class PointItemView @JvmOverloads constructor(
         length = attributes.getInt(R.styleable.PointItemView_pointLength, 5)
         equalWeight = attributes.getBoolean(R.styleable.PointItemView_equalWeight, false)
         autoFillPoints = attributes.getBoolean(R.styleable.PointItemView_autoFillPoints, true)
+        binding.pointitem = pointItem
         attributes.getString(R.styleable.PointItemView_label)?.let {
-            setLabel(it)
             pointItem.label = it
         }
         setup()
@@ -112,7 +112,7 @@ class PointItemView @JvmOverloads constructor(
     }
 
     fun setLabel(label: String) {
-        binding.tvItemPointLabel.text = label
+        pointItem.label = label
     }
 
     fun setViewDataChangeListener(listener: PointItemViewListener) {
