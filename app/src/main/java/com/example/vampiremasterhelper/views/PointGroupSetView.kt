@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.example.vampiremasterhelper.databinding.PointGroupSetViewBinding
 import com.example.vampiremasterhelper.model.PointGroupSetModel
+import com.example.vampiremasterhelper.views.listener.PointItemViewListener
 
 class PointGroupSetView @JvmOverloads constructor(context: Context,
                                                   attributeSet: AttributeSet? = null,
@@ -40,6 +41,22 @@ class PointGroupSetView @JvmOverloads constructor(context: Context,
             binding.pgvOne.setData(it[0])
             binding.pgvTwo.setData(it[1])
             binding.pgvThree.setData(it[2])
+
+            binding.pgvOne.setViewDataChangeListener(object : PointItemViewListener {
+                override fun onPunctuationChanged(before: Int, after: Int) {
+
+                }
+            })
+            binding.pgvTwo.setViewDataChangeListener(object : PointItemViewListener {
+                override fun onPunctuationChanged(before: Int, after: Int) {
+
+                }
+            })
+            binding.pgvThree.setViewDataChangeListener(object : PointItemViewListener {
+                override fun onPunctuationChanged(before: Int, after: Int) {
+
+                }
+            })
         }
     }
 }

@@ -97,17 +97,19 @@ class PointItemView @JvmOverloads constructor(
     }
 
     fun setFilledPoints(value: Int) {
+        val before = totalPoints
         this.pointItem.filled = value
         redrawPoints()
-        dataChangeListener?.onPunctuationChanged(totalPoints)
+        dataChangeListener?.onPunctuationChanged(before, totalPoints)
     }
 
     fun fillPoint(): Int {
+        val before = totalPoints
         if (pointItem.filled + 1 <= length) {
             setPointStateAtIndex(pointItem.filled, 2)
             pointItem.filled++
         }
-        dataChangeListener?.onPunctuationChanged(totalPoints)
+        dataChangeListener?.onPunctuationChanged(before, totalPoints)
         return pointItem.filled
     }
 

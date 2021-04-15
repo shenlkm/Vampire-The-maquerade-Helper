@@ -47,8 +47,8 @@ class WillPowerView @JvmOverloads constructor(context: Context,
         }
     }
 
-    override fun onPunctuationChanged(points: Int) {
-        for (i in  points until 10) {
+    override fun onPunctuationChanged(before: Int, after: Int) {
+        for (i in  after until 10) {
             binding.llTempPointContainer.getChildAt(i)?.let {
                 (it as SquarePointView).setState(0)
             }

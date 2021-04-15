@@ -2,5 +2,5 @@ package com.example.vampiremasterhelper.views.listener
 
 interface PointItemViewListener {
 
-    fun onPunctuationChanged(points: Int)
+    fun onPunctuationChanged(before: Int, after: Int)
 }
