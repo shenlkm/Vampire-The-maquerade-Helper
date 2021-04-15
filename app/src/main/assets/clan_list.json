@@ -1,0 +1,70 @@
+[
+  {
+    "value": "Caitif",
+    "isSection": false
+  },
+  {
+    "value": "Camarilla",
+    "isSection": true
+  },
+  {
+    "value": "Bruja",
+    "isSection": false
+  },
+  {
+    "value": "Gangrel",
+    "isSection": false
+  },
+  {
+    "value": "Malkavian",
+    "isSection": false
+  },
+  {
+    "value": "Nosferatu",
+    "isSection": false
+  },
+  {
+    "value": "Toreador",
+    "isSection": false
+  },
+  {
+    "value": "Tremere",
+    "isSection": false
+  },
+  {
+    "value": "Ventrue",
+    "isSection": false
+  },
+  {
+    "value": "Sabbat",
+    "isSection": true
+  },
+  {
+    "value": "Lasombre",
+    "isSection": false
+  },
+  {
+    "value": "Tzimisce",
+    "isSection": false
+  },
+  {
+    "value": "Independientes",
+    "isSection": true
+  },
+  {
+    "value": "Assamita",
+    "isSection": false
+  },
+  {
+    "value": "Giovanni",
+    "isSection": false
+  },
+  {
+    "value": "Seguidores de Set",
+    "isSection": false
+  },
+  {
+    "value": "Ravnos",
+    "isSection": false
+  }
+]
