@@ -7,7 +7,7 @@ import com.example.vampiremasterhelper.databinding.PointSetItemViewBinding
 import com.example.vampiremasterhelper.model.PointItemModel
 
 
-class PointSetAdapter(private val dataSet: Array<PointItemModel>) : RecyclerView.Adapter<PointSetAdapter.PointSetViewHolder>() {
+class PointSetAdapter(private val dataSet: List<PointItemModel>) : RecyclerView.Adapter<PointSetAdapter.PointSetViewHolder>() {
 
     private lateinit var binding: PointSetItemViewBinding
 

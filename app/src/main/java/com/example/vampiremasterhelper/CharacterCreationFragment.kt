@@ -54,35 +54,35 @@ class CharacterCreationFragment : Fragment() {
         }
     }
 
-    private fun getDataSet() : Array<PointGroupSetModel> {
-        return arrayOf(
+    private fun getDataSet() : List<PointGroupSetModel> {
+        return listOf(
             PointGroupSetModel(title = "Atributos",
-                items = arrayOf(
+                items = listOf(
                     PointGroupModel(title = "Fisicos",
-                        items = arrayOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
+                        items = listOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
                     PointGroupModel(title = "Mentales",
-                        items = arrayOf(PointItemModel("Manipulacion"), PointItemModel("Carisma"), PointItemModel("Apariencia"))),
+                        items = listOf(PointItemModel("Manipulacion"), PointItemModel("Carisma"), PointItemModel("Apariencia"))),
                     PointGroupModel(title = "Sociales",
-                        items = arrayOf(PointItemModel("Percepcion"), PointItemModel("Inteligencia"), PointItemModel("Astucia"))),
+                        items = listOf(PointItemModel("Percepcion"), PointItemModel("Inteligencia"), PointItemModel("Astucia"))),
                 )),
             PointGroupSetModel(title = "Habilidades",
-                items = arrayOf(
+                items = listOf(
                     PointGroupModel(title = "Talentos",
-                        items = arrayOf(
+                        items = listOf(
                             PointItemModel("Alerta"), PointItemModel("Atletismo"), PointItemModel("Callejeo"),
                             PointItemModel("Conciencia"), PointItemModel("Empatia"), PointItemModel("Expresion"),
                             PointItemModel("Intimidacion"), PointItemModel("Liderazgo"), PointItemModel("Pelea"),
                             PointItemModel("Subterfugio")
                         )),
                     PointGroupModel(title = "Tecnicas",
-                        items = arrayOf(
+                        items = listOf(
                             PointItemModel("Armas de Fuego"), PointItemModel("Artesania"), PointItemModel("Conducir"),
                             PointItemModel("Etiqueta"), PointItemModel("Interpretacion"), PointItemModel("Latrocinio"),
                             PointItemModel("Pelea con armas"), PointItemModel("Sigilo"), PointItemModel("Supervivencia"),
                             PointItemModel("Trato con animales")
                         )),
                     PointGroupModel(title = "Conocimientos",
-                        items = arrayOf(
+                        items = listOf(
                             PointItemModel("Academisismo"), PointItemModel("Ciencias"), PointItemModel("Finanzas"),
                             PointItemModel("Informatica"), PointItemModel("Investigacion"), PointItemModel("Leyes"),
                             PointItemModel("Medcina"), PointItemModel("Ocultismo"), PointItemModel("Politica"),
@@ -90,13 +90,13 @@ class CharacterCreationFragment : Fragment() {
                         )),
                 )),
             PointGroupSetModel(title = "Ventajas",
-                items = arrayOf(
+                items = listOf(
                     PointGroupModel(title = "Disiplinas",
-                        items = arrayOf(PointItemModel("Animalismo"), PointItemModel("Auspex"), PointItemModel("Fortaleza"))),
+                        items = listOf(PointItemModel("Animalismo"), PointItemModel("Auspex"), PointItemModel("Fortaleza"))),
                     PointGroupModel(title = "Trasfondos",
-                        items = arrayOf(PointItemModel("Generacion"), PointItemModel("Recursos"), PointItemModel("Aliados"))),
+                        items = listOf(PointItemModel("Generacion"), PointItemModel("Recursos"), PointItemModel("Aliados"))),
                     PointGroupModel(title = "Virtudes",
-                        items = arrayOf(PointItemModel("Conciencia"), PointItemModel("Autocontrol"), PointItemModel("Coraje"))),
+                        items = listOf(PointItemModel("Conciencia"), PointItemModel("Autocontrol"), PointItemModel("Coraje"))),
                 )),
         )
     }

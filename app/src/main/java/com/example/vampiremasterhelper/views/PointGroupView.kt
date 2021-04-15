@@ -16,7 +16,7 @@ class PointGroupView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attributeSet, defStyleAttr) {
 
-    private var data: PointGroupModel = PointGroupModel("", listOf<PointItemModel>().toTypedArray())
+    private var data: PointGroupModel = PointGroupModel("", listOf())
     private var binding: PointGroupViewBinding =
         PointGroupViewBinding.inflate(LayoutInflater.from(context), this, false)
 
