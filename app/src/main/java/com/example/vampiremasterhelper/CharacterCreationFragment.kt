@@ -54,50 +54,116 @@ class CharacterCreationFragment : Fragment() {
         }
     }
 
-    private fun getDataSet() : List<PointGroupSetModel> {
+    private fun getDataSet(): List<PointGroupSetModel> {
         return listOf(
-            PointGroupSetModel(title = "Atributos",
-                items = listOf(
-                    PointGroupModel(title = "Fisicos",
-                        items = listOf(PointItemModel("Fuerza"), PointItemModel("Destreza"), PointItemModel("Resistencia"))),
-                    PointGroupModel(title = "Mentales",
-                        items = listOf(PointItemModel("Manipulacion"), PointItemModel("Carisma"), PointItemModel("Apariencia"))),
-                    PointGroupModel(title = "Sociales",
-                        items = listOf(PointItemModel("Percepcion"), PointItemModel("Inteligencia"), PointItemModel("Astucia"))),
-                )),
-            PointGroupSetModel(title = "Habilidades",
-                items = listOf(
-                    PointGroupModel(title = "Talentos",
+            PointGroupSetModel(
+                title = "Atributos",
+                items = mutableListOf(
+                    PointGroupModel(
+                        title = "Fisicos",
                         items = listOf(
-                            PointItemModel("Alerta"), PointItemModel("Atletismo"), PointItemModel("Callejeo"),
-                            PointItemModel("Conciencia"), PointItemModel("Empatia"), PointItemModel("Expresion"),
-                            PointItemModel("Intimidacion"), PointItemModel("Liderazgo"), PointItemModel("Pelea"),
+                            PointItemModel("Fuerza", filled = 1),
+                            PointItemModel("Destreza", filled = 1),
+                            PointItemModel("Resistencia", filled = 1)
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Mentales",
+                        items = listOf(
+                            PointItemModel("Manipulacion", filled = 1),
+                            PointItemModel("Carisma", filled = 1),
+                            PointItemModel("Apariencia", filled = 1)
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Sociales",
+                        items = listOf(
+                            PointItemModel("Percepcion", filled = 1),
+                            PointItemModel("Inteligencia", filled = 1),
+                            PointItemModel("Astucia", filled = 1)
+                        )
+                    ),
+                )
+            ),
+            PointGroupSetModel(
+                title = "Habilidades",
+                items = mutableListOf(
+                    PointGroupModel(
+                        title = "Talentos",
+                        items = listOf(
+                            PointItemModel("Alerta"),
+                            PointItemModel("Atletismo"),
+                            PointItemModel("Callejeo"),
+                            PointItemModel("Conciencia"),
+                            PointItemModel("Empatia"),
+                            PointItemModel("Expresion"),
+                            PointItemModel("Intimidacion"),
+                            PointItemModel("Liderazgo"),
+                            PointItemModel("Pelea"),
                             PointItemModel("Subterfugio")
-                        )),
-                    PointGroupModel(title = "Tecnicas",
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Tecnicas",
                         items = listOf(
-                            PointItemModel("Armas de Fuego"), PointItemModel("Artesania"), PointItemModel("Conducir"),
-                            PointItemModel("Etiqueta"), PointItemModel("Interpretacion"), PointItemModel("Latrocinio"),
-                            PointItemModel("Pelea con armas"), PointItemModel("Sigilo"), PointItemModel("Supervivencia"),
+                            PointItemModel("Armas de Fuego"),
+                            PointItemModel("Artesania"),
+                            PointItemModel("Conducir"),
+                            PointItemModel("Etiqueta"),
+                            PointItemModel("Interpretacion"),
+                            PointItemModel("Latrocinio"),
+                            PointItemModel("Pelea con armas"),
+                            PointItemModel("Sigilo"),
+                            PointItemModel("Supervivencia"),
                             PointItemModel("Trato con animales")
-                        )),
-                    PointGroupModel(title = "Conocimientos",
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Conocimientos",
                         items = listOf(
-                            PointItemModel("Academisismo"), PointItemModel("Ciencias"), PointItemModel("Finanzas"),
-                            PointItemModel("Informatica"), PointItemModel("Investigacion"), PointItemModel("Leyes"),
-                            PointItemModel("Medcina"), PointItemModel("Ocultismo"), PointItemModel("Politica"),
+                            PointItemModel("Academisismo"),
+                            PointItemModel("Ciencias"),
+                            PointItemModel("Finanzas"),
+                            PointItemModel("Informatica"),
+                            PointItemModel("Investigacion"),
+                            PointItemModel("Leyes"),
+                            PointItemModel("Medcina"),
+                            PointItemModel("Ocultismo"),
+                            PointItemModel("Politica"),
                             PointItemModel("Tecnologia")
-                        )),
-                )),
-            PointGroupSetModel(title = "Ventajas",
-                items = listOf(
-                    PointGroupModel(title = "Disiplinas",
-                        items = listOf(PointItemModel("Animalismo"), PointItemModel("Auspex"), PointItemModel("Fortaleza"))),
-                    PointGroupModel(title = "Trasfondos",
-                        items = listOf(PointItemModel("Generacion"), PointItemModel("Recursos"), PointItemModel("Aliados"))),
-                    PointGroupModel(title = "Virtudes",
-                        items = listOf(PointItemModel("Conciencia"), PointItemModel("Autocontrol"), PointItemModel("Coraje"))),
-                )),
+                        )
+                    ),
+                )
+            ),
+            PointGroupSetModel(
+                title = "Ventajas",
+                items = mutableListOf(
+                    PointGroupModel(
+                        title = "Disiplinas",
+                        items = listOf(
+                            PointItemModel("Animalismo"),
+                            PointItemModel("Auspex"),
+                            PointItemModel("Fortaleza")
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Trasfondos",
+                        items = listOf(
+                            PointItemModel("Generacion"),
+                            PointItemModel("Recursos"),
+                            PointItemModel("Aliados")
+                        )
+                    ),
+                    PointGroupModel(
+                        title = "Virtudes",
+                        items = listOf(
+                            PointItemModel("Conciencia"),
+                            PointItemModel("Autocontrol"),
+                            PointItemModel("Coraje")
+                        )
+                    ),
+                )
+            ),
         )
     }
 }

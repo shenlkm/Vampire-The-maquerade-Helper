@@ -1,3 +1,3 @@
 package com.example.vampiremasterhelper.model
 
-data class PointGroupSetModel(val title: String, val items: List<PointGroupModel>)
+data class PointGroupSetModel(var title: String, var items: MutableList<PointGroupModel>)
