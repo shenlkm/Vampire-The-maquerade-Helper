@@ -1,11 +1,13 @@
 package com.example.vampiremasterhelper
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vampiremasterhelper.databinding.CharacterCreationFragmentBinding
 import com.example.vampiremasterhelper.model.PointGroupSetModel
@@ -27,28 +29,45 @@ class CharacterCreationFragment : Fragment() {
     ): View {
         binding =
             CharacterCreationFragmentBinding.inflate(LayoutInflater.from(context), container, false)
+
         return binding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(CharacterCreationViewModel::class.java)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.characterInfo = viewModel.characterInfo
+        binding.viewmodel = viewModel
         binding.ivEditCharacterInfo.setOnClickListener {
             parentFragmentManager.commit {
                 setReorderingAllowed(true)
-                replace(R.id.fl_container, CharacterInfoFragment.newInstance())
+                add(R.id.fl_container, CharacterInfoFragment.newInstance())
                 addToBackStack(null)
             }
         }
 
-        getDataSet().let {
-            binding.pgsvAttributes.setData(it[0])
-            binding.pgsvSkills.setData(it[1])
-            binding.pgsvSkills.setIsExpanded(false)
-            binding.pgsvAdvantages.setData(it[2])
-            binding.pgsvAdvantages.setIsExpanded(false)
+        viewModel.characterInfo.observe(viewLifecycleOwner, { characterInformation ->
+            if (characterInformation.clan == "Nosferatur") {
+                viewModel.skillSets?.let {
+                    it.find { pgs -> pgs.title == "Atributos" }?.items?.find { pg -> pg.title == "Sociales" }?.items?.find { pi -> pi.label == "Apariencia" }
+                        ?.apply {
+                            filled = 0
+                        }
+                    binding.pgsvAttributes.setData(it[0])
+                }
+            }
+        })
+
+        if (viewModel.skillSets == null) {
+            getDataSet().let {
+                viewModel.skillSets = it
+                binding.pgsvAttributes.setData(it[0])
+                binding.pgsvSkills.setData(it[1])
+                binding.pgsvSkills.setIsExpanded(false)
+                binding.pgsvAdvantages.setData(it[2])
+                binding.pgsvAdvantages.setIsExpanded(false)
+            }
         }
     }
 

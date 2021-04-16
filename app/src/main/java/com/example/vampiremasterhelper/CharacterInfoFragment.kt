@@ -45,7 +45,7 @@ class CharacterInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(CharacterCreationViewModel::class.java)
-        binding.characterInfo = viewModel.characterInfo
+        binding.viewmodel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.tilClanInput.setOnClickListener {
             if (selectClanDialog == null) {
@@ -67,6 +67,9 @@ class CharacterInfoFragment : Fragment() {
         }
 
         binding.btSaveCharacterInfo.setOnClickListener {
+            binding.viewmodel?.characterInfo?.value?.let {
+                viewModel.saveCharacterInformation(it)
+            }
             requireActivity().onBackPressed()
         }
     }

@@ -8,8 +8,8 @@
         <import type="androidx.lifecycle.LiveData" />
 
         <variable
-            name="characterInfo"
-            type="LiveData&lt;com.example.vampiremasterhelper.model.CharacterInformation>" />
+            name="viewmodel"
+            type="com.example.vampiremasterhelper.viewmodel.CharacterCreationViewModel" />
     </data>
 
     <ScrollView
@@ -29,7 +29,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="@{characterInfo.name}" />
+                app:title="@{viewmodel.characterInfo.name}" />
 
             <TextView
                 android:id="@+id/tv_chronicle_label"
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_chronicle_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.chronicle}"
+                android:text="@{viewmodel.characterInfo.chronicle}"
                 app:layout_constraintEnd_toStartOf="@id/iv_edit_character_info"
                 app:layout_constraintStart_toEndOf="@id/tv_nature_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_character_name" />
@@ -73,7 +73,7 @@
                 android:id="@+id/tv_nature_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.nature}"
+                android:text="@{viewmodel.characterInfo.nature}"
                 app:layout_constraintEnd_toStartOf="@id/tv_clan_label"
                 app:layout_constraintStart_toEndOf="@id/tv_nature_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
@@ -92,7 +92,7 @@
                 android:id="@+id/tv_demeanor_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.demeanor}"
+                android:text="@{viewmodel.characterInfo.demeanor}"
                 app:layout_constraintEnd_toStartOf="@id/tv_generation_label"
                 app:layout_constraintStart_toEndOf="@id/tv_demeanor_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_nature_label" />
@@ -111,7 +111,7 @@
                 android:id="@+id/tv_concept_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.concept}"
+                android:text="@{viewmodel.characterInfo.concept}"
                 app:layout_constraintEnd_toStartOf="@id/tv_sire_label"
                 app:layout_constraintStart_toEndOf="@id/tv_concept_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_demeanor_label" />
@@ -130,7 +130,7 @@
                 android:id="@+id/tv_clan_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.clan}"
+                android:text="@{viewmodel.characterInfo.clan}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_clan_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_chronicle_label" />
@@ -149,7 +149,7 @@
                 android:id="@+id/tv_generation_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.generation}"
+                android:text="@{viewmodel.characterInfo.generation}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_generation_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_clan_label" />
@@ -168,7 +168,7 @@
                 android:id="@+id/tv_sire_value"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{characterInfo.sire}"
+                android:text="@{viewmodel.characterInfo.sire}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_sire_label"
                 app:layout_constraintTop_toBottomOf="@id/tv_generation_label" />

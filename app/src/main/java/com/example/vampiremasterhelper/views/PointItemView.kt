@@ -23,10 +23,11 @@ class PointItemView @JvmOverloads constructor(
         ), this, false
     )
 
-    private var pointItem: PointItemModel = PointItemModel("", 0, 0)
+    private var pointItem: PointItemModel = PointItemModel("")
     private var length: Int = 5
     private var equalWeight: Boolean = false
     private var autoFillPoints: Boolean = false
+    var isLocked: Boolean = false
 
     private var dataChangeListener: PointItemViewListener? = null
 
@@ -97,19 +98,23 @@ class PointItemView @JvmOverloads constructor(
     }
 
     fun setFilledPoints(value: Int) {
-        val before = totalPoints
-        this.pointItem.filled = value
-        redrawPoints()
-        dataChangeListener?.onPunctuationChanged(before, totalPoints)
+        if (!isLocked) {
+            val before = totalPoints
+            this.pointItem.filled = value
+            redrawPoints()
+            dataChangeListener?.onPunctuationChanged(before, totalPoints)
+        }
     }
 
     fun fillPoint(): Int {
-        val before = totalPoints
-        if (pointItem.filled + 1 <= length) {
-            setPointStateAtIndex(pointItem.filled, 2)
-            pointItem.filled++
+        if (!isLocked) {
+            val before = totalPoints
+            if (pointItem.filled + 1 <= length) {
+                setPointStateAtIndex(pointItem.filled, 2)
+                pointItem.filled++
+            }
+            dataChangeListener?.onPunctuationChanged(before, totalPoints)
         }
-        dataChangeListener?.onPunctuationChanged(before, totalPoints)
         return pointItem.filled
     }
 
