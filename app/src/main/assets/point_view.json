@@ -1,0 +1,203 @@
+[
+	{
+		"title" : "Atributos",
+		"items" : [
+			{
+				"title" : "Fisicos",
+				"items" : [
+					{
+						"label" : "Fuerza",
+						"filled" : 1
+					},
+					{
+						"label" : "Destreza",
+						"filled" : 1
+					},
+					{
+						"label" : "Resistencia",
+						"filled" : 1
+					}
+				]
+			},
+			{
+				"title" : "Mentales",
+				"items" : [
+					{
+						"label" : "Manipulacion",
+						"filled" : 1
+					},
+					{
+						"label" : "Carisma",
+						"filled" : 1
+					},
+					{
+						"label" : "Apariencia",
+						"filled" : 1
+					}
+				]
+			},
+			{
+				"title" : "Sociales",
+				"items" : [
+					{
+						"label" : "Percepcion",
+						"filled" : 1
+					},
+					{
+						"label" : "Inteligencia",
+						"filled" : 1
+					},
+					{
+						"label" : "Astucia",
+						"filled" : 1
+					}
+				]
+			}
+		]
+	},
+	{
+		"title" : "Habilidades",
+		"items" : [
+			{
+				"title" : "Talentos",
+				"items" : [
+					{
+						"label" : "Alerta"
+					},
+					{
+						"label" : "Atletismo"
+
+					},
+					{
+						"label" : "Callejeo"
+					},
+					{
+						"label" : "Conciencia"
+					},
+					{
+						"label" : "Empatia"
+
+					},
+					{
+						"label" : "Expresion"
+					},
+					{
+						"label" : "Intimidacion"
+					},
+					{
+						"label" : "Liderazgo"
+
+					},
+					{
+						"label" : "Pelea"
+					},
+					{
+						"label" : "Subterfugio"
+					}
+				]
+			},
+			{
+				"title" : "Tecnicas",
+				"items" : [
+					{
+						"label" : "Armas de Fuego"
+					},
+					{
+						"label" : "Artesania"
+
+					},
+					{
+						"label" : "Conducir"
+					},
+					{
+						"label" : "Etiqueta"
+					},
+					{
+						"label" : "Interpretacion"
+
+					},
+					{
+						"label" : "Latrocinio"
+					},
+					{
+						"label" : "Pelea con armas"
+					},
+					{
+						"label" : "Sigilo"
+
+					},
+					{
+						"label" : "Supervivencia"
+					},
+					{
+						"label" : "Trato con animales"
+					}
+				]
+			},
+			{
+				"title" : "Conocimientos",
+				"items" :[
+					{
+						"label" : "Academisismo"
+					},
+					{
+						"label" : "Ciencias"
+
+					},
+					{
+						"label" : "Finanzas"
+					},
+					{
+						"label" : "Informatica"
+					},
+					{
+						"label" : "Investigacion"
+					},
+					{
+						"label" : "Leyes"
+					},
+					{
+						"label" : "Medcina"
+					},
+					{
+						"label" : "Ocultismo"
+
+					},
+					{
+						"label" : "Politica"
+					},
+					{
+						"label" : "Tecnologia"
+					}
+				]
+			}
+		]
+	},
+	{
+		"title" : "Ventajas",
+		"items" : [
+			{
+				"title" : "Disiplinas",
+				"items" : []
+			},
+			{
+				"title" : "Trasfondos",
+				"items" : []
+			},
+			{
+				"title" : "Virtudes",
+				"items" : [
+					{
+						"label" : "Conciencia"
+					},
+					{
+						"label" : "Autocontrol"
+					},
+					{
+						"label" : "Coraje"
+					}
+				]
+			}
+		]
+	}
+]
