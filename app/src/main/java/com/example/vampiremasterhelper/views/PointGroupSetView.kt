@@ -8,6 +8,7 @@ import com.example.vampiremasterhelper.databinding.PointGroupSetViewBinding
 import com.example.vampiremasterhelper.model.PointGroupModel
 import com.example.vampiremasterhelper.model.PointGroupSetModel
 import com.example.vampiremasterhelper.views.listener.PointItemViewListener
+import com.example.vampiremasterhelper.views.listener.PointSetGroupViewListener
 
 class PointGroupSetView @JvmOverloads constructor(
     context: Context,
@@ -19,6 +20,7 @@ class PointGroupSetView @JvmOverloads constructor(
         PointGroupSetViewBinding.inflate(LayoutInflater.from(context), this, false)
     private var isExpanded = true
     private var pointSetData: PointGroupSetModel = PointGroupSetModel("", mutableListOf())
+    private var dataListener: PointSetGroupViewListener? = null
 
     init {
         addView(binding.root)
@@ -41,23 +43,34 @@ class PointGroupSetView @JvmOverloads constructor(
     fun getData(): PointGroupSetModel = pointSetData
 
     fun setData(data: PointGroupSetModel) {
+        this.updateData(data)
+
+        setupPointGroup(binding.pgvOne,  0)
+        setupPointGroup(binding.pgvTwo,  1)
+        setupPointGroup(binding.pgvThree, 2)
+    }
+
+    fun updateData(data: PointGroupSetModel) {
         this.pointSetData.title = data.title
         setGroupTitle(data.title)
         this.pointSetData.items.clear()
         this.pointSetData.items.addAll(data.items)
-
-        data.items.let { items ->
-            setupPointGroup(binding.pgvOne, items[0], 0)
-            setupPointGroup(binding.pgvTwo, items[1], 1)
-            setupPointGroup(binding.pgvThree, items[2], 2)
+        pointSetData.items.let { items ->
+            binding.pgvOne.setData(items[0])
+            binding.pgvTwo.setData(items[1])
+            binding.pgvThree.setData(items[2])
         }
     }
 
-    private fun setupPointGroup(pointGroupView: PointGroupView, item: PointGroupModel, index: Int) {
-        pointGroupView.setData(item)
+    fun setViewDataChangeListener(listener: PointSetGroupViewListener) {
+        dataListener = listener
+    }
+
+    private fun setupPointGroup(pointGroupView: PointGroupView, index: Int) {
         pointGroupView.setViewDataChangeListener(object : PointItemViewListener {
             override fun onPunctuationChanged(before: Int, after: Int) {
                 pointSetData.items[index].totalPoints = after
+                dataListener?.notifyPunctuationChange(this@PointGroupSetView)
             }
         })
     }

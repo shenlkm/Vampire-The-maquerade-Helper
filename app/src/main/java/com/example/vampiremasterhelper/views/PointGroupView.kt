@@ -29,6 +29,7 @@ class PointGroupView @JvmOverloads constructor(
 
     fun setData(data: PointGroupModel) {
         this.data.title = data.title
+        binding.pointGroup = data
 
         data.items.let { items ->
             binding.rvGroupOfAttributes.also {

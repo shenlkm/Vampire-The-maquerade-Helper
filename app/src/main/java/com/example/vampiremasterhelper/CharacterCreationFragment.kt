@@ -1,5 +1,6 @@
 package com.example.vampiremasterhelper
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,12 @@ import com.example.vampiremasterhelper.databinding.CharacterCreationFragmentBind
 import com.example.vampiremasterhelper.model.PointGroupSetModel
 import com.example.vampiremasterhelper.utils.Refrigerator
 import com.example.vampiremasterhelper.viewmodel.CharacterCreationViewModel
+import com.example.vampiremasterhelper.views.listener.PointSetGroupViewListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class CharacterCreationFragment : Fragment() {
+class CharacterCreationFragment : Fragment(), PointSetGroupViewListener {
 
     companion object {
         fun newInstance() = CharacterCreationFragment()
@@ -46,26 +51,46 @@ class CharacterCreationFragment : Fragment() {
         }
 
         viewModel.characterInfo.observe(viewLifecycleOwner, { characterInformation ->
-            viewModel.skillSets?.find { pgs -> pgs.title == "Atributos" }?.let { attr ->
-                binding.pgsvAttributes.setData(viewModel.applyWeakness(attr, characterInformation))
+            viewModel.applyWeakness(characterInformation)
+        })
+
+        viewModel.attributes.observe(viewLifecycleOwner, { attributes ->
+            attributes?.let {
+                binding.pgsvAttributes.setData(attributes)
             }
         })
 
-        if (viewModel.skillSets == null) {
+        viewModel.abilities.observe(viewLifecycleOwner, { abilities ->
+            abilities?.let {
+                binding.pgsvAbilities.setData(abilities)
+            }
+        })
+
+        viewModel.advantages.observe(viewLifecycleOwner, { advantages ->
+            advantages?.let {
+                binding.pgsvAdvantages.setData(advantages)
+            }
+        })
+
+        binding.pgsvAdvantages.setIsExpanded(false)
+        binding.pgsvAbilities.setIsExpanded(false)
+        binding.pgsvAttributes.setViewDataChangeListener(this)
+
+        CoroutineScope(Dispatchers.Default).launch {
             getDataSet().let {
-                viewModel.skillSets = it
-                binding.pgsvAttributes.setData(it[0])
-                binding.pgsvSkills.setData(it[1])
-                binding.pgsvSkills.setIsExpanded(false)
-                binding.pgsvAdvantages.setData(it[2])
-                binding.pgsvAdvantages.setIsExpanded(false)
+                viewModel.addSkills(it)
             }
         }
     }
 
 
-
     private fun getDataSet(): List<PointGroupSetModel> {
         return Refrigerator.getPointSetGroupItems(requireContext(), "point_view")
+    }
+
+    override fun notifyPunctuationChange(view: View) {
+        if (binding.pgsvAttributes.id == view.id) {
+            viewModel.checkAttributes(binding.pgsvAttributes.getData())
+        }
     }
 }
