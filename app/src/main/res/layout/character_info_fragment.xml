@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewmodel"
-            type="com.example.vampiremasterhelper.viewmodel.CharacterCreationViewModel" />
+            name="characterInfo"
+            type="com.example.vampiremasterhelper.model.CharacterInformation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.name}" />
+                android:text="@={characterInfo.name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.chronicle}" />
+                android:text="@={characterInfo.chronicle}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -75,7 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.nature}" />
+                android:text="@={characterInfo.nature}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.demeanor}" />
+                android:text="@={characterInfo.demeanor}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,7 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.concept}" />
+                android:text="@={characterInfo.concept}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +133,7 @@
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:inputType="none"
-                android:text="@={viewmodel.characterInfo.clan}" />
+                android:text="@={characterInfo.clan}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.generation}" />
+                android:text="@={characterInfo.generation}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -169,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:text="@={viewmodel.characterInfo.sire}" />
+                android:text="@={characterInfo.sire}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

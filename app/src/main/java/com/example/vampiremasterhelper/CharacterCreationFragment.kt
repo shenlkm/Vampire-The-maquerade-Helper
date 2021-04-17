@@ -1,13 +1,11 @@
 package com.example.vampiremasterhelper
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vampiremasterhelper.databinding.CharacterCreationFragmentBinding
 import com.example.vampiremasterhelper.model.PointGroupSetModel
@@ -48,14 +46,8 @@ class CharacterCreationFragment : Fragment() {
         }
 
         viewModel.characterInfo.observe(viewLifecycleOwner, { characterInformation ->
-            if (characterInformation.clan == "Nosferatur") {
-                viewModel.skillSets?.let {
-                    it.find { pgs -> pgs.title == "Atributos" }?.items?.find { pg -> pg.title == "Sociales" }?.items?.find { pi -> pi.label == "Apariencia" }
-                        ?.apply {
-                            filled = 0
-                        }
-                    binding.pgsvAttributes.setData(it[0])
-                }
+            viewModel.skillSets?.find { pgs -> pgs.title == "Atributos" }?.let { attr ->
+                binding.pgsvAttributes.setData(viewModel.applyWeakness(attr, characterInformation))
             }
         })
 
@@ -70,6 +62,8 @@ class CharacterCreationFragment : Fragment() {
             }
         }
     }
+
+
 
     private fun getDataSet(): List<PointGroupSetModel> {
         return Refrigerator.getPointSetGroupItems(requireContext(), "point_view")

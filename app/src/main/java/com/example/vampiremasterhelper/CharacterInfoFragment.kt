@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.vampiremasterhelper.databinding.CharacterCreationFragmentBinding
 import com.example.vampiremasterhelper.databinding.CharacterInfoFragmentBinding
+import com.example.vampiremasterhelper.model.CharacterInformation
 import com.example.vampiremasterhelper.model.DialogSelectItem
 import com.example.vampiremasterhelper.utils.Refrigerator
 import com.example.vampiremasterhelper.viewmodel.CharacterCreationViewModel
@@ -25,6 +26,7 @@ class CharacterInfoFragment : Fragment() {
     private lateinit var binding: CharacterInfoFragmentBinding
     private var clanList: List<DialogSelectItem>? = null
     private var selectClanDialog: BottomDialogView? = null
+    private var characterInfo : CharacterInformation? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +47,8 @@ class CharacterInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(CharacterCreationViewModel::class.java)
-        binding.viewmodel = viewModel
+        characterInfo = viewModel.characterInfo.value
+        binding.characterInfo = characterInfo
         binding.lifecycleOwner = viewLifecycleOwner
         binding.tilClanInput.setOnClickListener {
             if (selectClanDialog == null) {
@@ -67,7 +70,7 @@ class CharacterInfoFragment : Fragment() {
         }
 
         binding.btSaveCharacterInfo.setOnClickListener {
-            binding.viewmodel?.characterInfo?.value?.let {
+            binding.characterInfo?.let {
                 viewModel.saveCharacterInformation(it)
             }
             requireActivity().onBackPressed()

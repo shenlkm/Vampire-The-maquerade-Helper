@@ -27,4 +27,24 @@ class CharacterCreationViewModel : ViewModel() {
     fun saveCharacterInformation(info: CharacterInformation){
         _characterInfo.postValue(info)
     }
+
+    fun applyWeakness(
+        attr: PointGroupSetModel,
+        characterInformation: CharacterInformation
+    ): PointGroupSetModel {
+        attr.items.find { pg -> pg.title == "Mentales" }?.items?.find { pi -> pi.label == "Apariencia" }
+            ?.let {
+                when (characterInformation.clan) {
+                    "Nosferatu" -> {
+                        it.filled = 0
+                        it.locked = true
+                    }
+                    else -> {
+                        it.filled = 1
+                        it.locked = false
+                    }
+                }
+            }
+        return attr
+    }
 }

@@ -21,6 +21,7 @@ class PointSetAdapter(
         fun bind(item: PointItemModel) {
             holderBinding.pivItem.setLabel(item.label)
             holderBinding.pivItem.setFilledPoints(item.filled)
+            holderBinding.pivItem.isLocked = item.locked
         }
 
         fun setListener(listener: PointItemViewListener) {
